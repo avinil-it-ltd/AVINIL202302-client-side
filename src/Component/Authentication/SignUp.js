@@ -74,11 +74,14 @@ const SignUp = () => {
                                             </div>
                                         </div>
 
-                                        <div class=" w-full ">
-                                            <div class="relative">
-                                                <label for="email" class="leading-7 text-sm ">Upload Your Image</label>
-                                                <input type="file" class="file-input file-input-bordered file-input-sm w-full max-w-xs bg-gray-100 bg-opacity-50 rounded border border-gray-300" />
-                                            </div>
+
+                                    </div>
+
+
+                                    <div class="p-2 w-full  md:w-1/2 lg:w-72 ">
+                                        <div class="relative ">
+                                            <label for="email" class="leading-7 text-sm ">Upload Your Image</label> <br />
+                                            <input type="file" class="file-input file-input-bordered file-input-sm w-full max-w-xs bg-gray-100 bg-opacity-50 rounded border border-gray-300" />
                                         </div>
                                     </div>
 
@@ -143,15 +146,15 @@ const SignUp = () => {
                                             </div>
                                         </div>
 
-
-                                        <div class="p-2 w-full ">
-                                            <div class="relative">
-                                                <label for="email" class="leading-7 text-sm ">Upload Your Image</label>
+                                        <div class="p-2 w-full  md:w-1/2 lg:w-72 ">
+                                            <div class="relative ">
+                                                <label for="email" class="leading-7 text-sm ">Upload Your Image</label> <br />
                                                 <input type="file" class="file-input file-input-bordered file-input-sm w-full max-w-xs bg-gray-100 bg-opacity-50 rounded border border-gray-300" />
                                             </div>
                                         </div>
 
-                                        
+
+
                                     </div>
                                 </div>
                             </fieldset>
