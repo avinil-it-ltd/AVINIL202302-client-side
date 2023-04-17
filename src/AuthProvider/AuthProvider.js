@@ -1,7 +1,7 @@
 import React from 'react';
 import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth'
 import { createContext } from 'react';
-import app from '../image/firebase.config';
+import app from '../firebase/firebase.config';
 
 export const AuthContext  = createContext();
 const AuthProvider = ({children}) => {

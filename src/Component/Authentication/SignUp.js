@@ -6,11 +6,26 @@ import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const SignUp = () => {
     const {createUser} = useContext(AuthContext)
-   const handleRegister = event =>{
-    event.preventDefault();
-    const form = event.target;
-    const name = form.name.value; 
-    const email = form.email.value;
+    const handleRegister = e =>{
+
+    e.preventDefault();
+    console.log(e);   
+    const form = e.target;
+        const name = e.target[0].value;
+        const email = form[1].value;
+        createUser(email,123456)
+        .then(result=>{
+
+            const user=result.user;
+            //navigate(from,{replace: true})
+
+            
+
+
+        })
+        .catch(error=>console.error(error))
+       // const password = form.password.value;
+    console.log(name,email);
    }
     return (
         <div className='bg-slate-900 '>
@@ -26,7 +41,7 @@ const SignUp = () => {
 
                     <div class="lg:w-1/2 md:w-2/3 mx-auto bg-slate-800  p-16 rounded-sm">
                         {/* form code start here */}
-                        <form action="" class=" flex w-full flex-col md:flex-row lg:flex-row flex-wrap -m-2">
+                        <form onSubmit={handleRegister}  class=" flex w-full flex-col md:flex-row lg:flex-row flex-wrap -m-2">
 
                             {/* name field start here */}
                             <div class="p-2 w-full md:w-1/2  lg:w-72 ">
@@ -167,7 +182,7 @@ const SignUp = () => {
                             <div class="p-2 w-full pt-8 mt-8 border-t border-gray-200 text-center"> </div>
 
                             <div class="p-2 w-full">
-                                <button class="  w-full  text-center  text-white bg-cyan-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Sign Up</button>
+                                <button type='submit' class="  w-full  text-center  text-white bg-cyan-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Sign Up</button>
                             </div>
                         </form>
 
