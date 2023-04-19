@@ -65,8 +65,8 @@ const Navbar = () => {
           
           </> :
           <>
-                 <li><Link to='/login'>Login</Link></li>
-                <li><Link to='/register'>Register</Link></li>
+                 <li><Link to='/signIn'>Login</Link></li>
+                <li><Link to='/signUp'>Register</Link></li>
           </>
           
 
@@ -112,8 +112,8 @@ const Navbar = () => {
           
           </> :
           <>
-                 <li><Link to='/login'>Login</Link></li>
-                <li><Link to='/register'>Register</Link></li>
+               <li><Link to='/signIn'>Login</Link></li>
+                <li><Link to='/signUp'>Register</Link></li>
           </>
           
 
