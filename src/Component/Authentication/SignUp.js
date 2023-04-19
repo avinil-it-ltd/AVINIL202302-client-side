@@ -49,7 +49,9 @@ const SignUp = () => {
         .then(result=>{
 
             const user=result.user;
+            databaseInsert(info)
             navigate(from,{replace: true})
+            
 
             
 
@@ -58,6 +60,19 @@ const SignUp = () => {
         .catch(error=>console.error(error))
 
 
+
+    }
+    const databaseInsert = async (info)=>{
+      let respose = await axios.post(
+            "http://localhost:5000/api/v1/create-user",
+            info
+          );
+          if (respose.status === 2000) {
+            console.log(respose);
+            
+          } else {
+            console.log(respose);
+          }
 
     }
 

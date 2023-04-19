@@ -43,7 +43,7 @@ function App() {
         { path: "/dashboard/scienceStudent", element: <ScienceStudent></ScienceStudent> },
         { path: "/dashboard/commerceStudent", element: <CommerceStudent></CommerceStudent> },
         { path: "/dashboard/humanitiesStudent", element: <HumanitiesStudent></HumanitiesStudent> },
-        { path: "/dashboard/allStudent", element: <AllStudent></AllStudent> },
+        // { path: "/dashboard/allStudent", element:  <ScienceStudent></ScienceStudent> },
         { path: "/dashboard/attendance", element: <Attendance></Attendance> },
 
 
