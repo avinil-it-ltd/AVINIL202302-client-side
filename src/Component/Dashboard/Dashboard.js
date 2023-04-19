@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Navbar from '../Shared/Navbar';
 import Footer from '../Shared/Footer';
 import { Link, Outlet } from 'react-router-dom';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const Dashboard = () => {
+    const { logOut, user } = useContext(AuthContext);
     return (
         <div className='bg-slate-900'>
             <Navbar></Navbar>

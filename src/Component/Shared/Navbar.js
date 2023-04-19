@@ -5,14 +5,14 @@ import 'react-modern-drawer/dist/index.css'
 import logo from '../../image/logo1.png'
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 const Navbar = () => {
-    const {logOut,user} = useContext(AuthContext);
+    const { logOut, user } = useContext(AuthContext);
 
     const [isOpen, setIsOpen] = React.useState(false)
     const toggleDrawer = () => {
         setIsOpen((prevState) => !prevState)
     }
 
-    console.log("bbv",user)
+    console.log("bbv", user)
     return (
         <header class="text-gray-600 body-font bg-slate-900">
             <div class="container mx-auto ">
@@ -57,20 +57,20 @@ const Navbar = () => {
                                 <li ><Link to="/contact">Contact</Link></li>
 
                                 {
-          user && user.uid? <>
-           <li><Link to='/dashboard'> DashBoard </Link></li>
-      
-         
-          <button onClick={logOut}>LogOut</button>
-          
-          </> :
-          <>
-                 <li><Link to='/signIn'>Login</Link></li>
-                <li><Link to='/signUp'>Register</Link></li>
-          </>
-          
+                                    user && user.uid ? <>
+                                        <li><Link to='/dashboard'> DashBoard </Link></li>
 
-        }
+
+                                        <button onClick={logOut}>LogOut</button>
+
+                                    </> :
+                                        <>
+                                            <li><Link to='/signIn'>Login</Link></li>
+                                            <li><Link to='/signUp'>Register</Link></li>
+                                        </>
+
+
+                                }
 
                                 {/* <li><Link to='/signIn'>SignIn</Link></li> */}
                             </ul>
@@ -92,7 +92,7 @@ const Navbar = () => {
                                 <li><Link to="/home">Home</Link></li>
                                 {/* <li><Link to="/about">About Us</Link></li> */}
 
-                                <li tabindex="0">
+                                {/* <li tabindex="0"> */}
                                     {/* <Link to="/dashboard">Dashboard</Link> */}
                                     {/* <ul class=" bg-slate-900">
                                         <li className='py-0 my-0  text-sm'><Link className='py-0 my-0 ' to="">Android Development</Link></li>
@@ -100,24 +100,24 @@ const Navbar = () => {
                                         <li className='py-0 my-0  text-sm'><Link className='py-0 my-0 ' to="">Web Development</Link></li>
                                         <li className='py-0 my-0  text-sm'><Link className='py-0 my-0 ' to="">Artificial intelligence</Link></li>
                                     </ul> */}
-                                </li>
+                                {/* </li> */}
 
                                 <li ><Link to="/contact">Contact</Link></li>
                                 {
-          user && user.uid? <>
-           <li><Link to='/dashboard'> DeshBoard </Link></li>
-      
-         
-          <button onClick={logOut}>LogOut</button>
-          
-          </> :
-          <>
-               <li><Link to='/signIn'>Login</Link></li>
-                <li><Link to='/signUp'>Register</Link></li>
-          </>
-          
+                                    user && user.uid ? <>
+                                        <li><Link to='/dashboard'> Dashboard </Link></li>
 
-        }
+
+                                        <button onClick={logOut}>LogOut</button>
+
+                                    </> :
+                                        <>
+                                            <li><Link to='/signIn'>Login</Link></li>
+                                            <li><Link to='/signUp'>Register</Link></li>
+                                        </>
+
+
+                                }
                             </ul>
                         </div>
 

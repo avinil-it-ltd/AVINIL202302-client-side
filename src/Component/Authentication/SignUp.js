@@ -24,9 +24,9 @@ const SignUp = () => {
         const userPass = e.target.password.value;
         const userType = e.target.type.value; //student or teacher
         const imageUrl = e.image;
-        const roll = e.target.roll.value;
+        // const roll = e.target.roll.value || 0;
         const group = e.target.subject.value;
-        const session = e.target.session.value;
+        // const session = e.target.session.value;
         const phone = e.target.phone.value;
         const address = e.target.address.value;
         // const qualification = e.target.qualification.value;
@@ -35,10 +35,10 @@ const SignUp = () => {
             userName: userName,
             userPass: userPass,
             userType: userType,
-            roll: roll,
+            // roll: roll,
             phone: phone,
             group: group,
-            session: session,
+            // session: session,
             address: address,
             // qualification: qualification,
         };
@@ -180,7 +180,7 @@ const SignUp = () => {
 
                             <div class="p-2 w-full md:w-1/2  lg:w-72 ">
                                 <div class="relative">
-                                    <label for="type" class="leading-7 text-sm pe-2 ">
+                                    <label for="" class="leading-7 text-sm pe-2 ">
                                         Select the position
                                     </label>
                                     <select name="type" class="select p-2 w-full select-sm bg-white text-black rounded border    text-base outline-none   py-1  transition-colors duration-200 ease-in-out">
