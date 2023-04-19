@@ -1,19 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Drawer from 'react-modern-drawer'
 import 'react-modern-drawer/dist/index.css'
 import logo from '../../image/logo1.png'
+import { AuthContext } from '../../AuthProvider/AuthProvider';
 const Navbar = () => {
-
+    const {logOut,user} = useContext(AuthContext);
 
     const [isOpen, setIsOpen] = React.useState(false)
     const toggleDrawer = () => {
         setIsOpen((prevState) => !prevState)
     }
 
-
-
-
+    console.log("bbv",user)
     return (
         <header class="text-gray-600 body-font bg-slate-900">
             <div class="container mx-auto ">
@@ -34,9 +33,9 @@ const Navbar = () => {
 
                                 <div class="collapse">
                                     <input type="checkbox" class="peer" />
-                                    <div class="flex collapse-title  ">
+                                    {/* <div class="flex collapse-title  ">
                                         <Link to="/dashboard">Dashboard</Link>
-                                    </div>
+                                    </div> */}
                                     <div class="collapse-content ">
                                         <li className='py-0 my-0  text-sm'><Link className='py-0 my-1 ' to="/dashboard/studentProfile">My Profile</Link></li>
                                         <li className='py-0 my-0  text-sm'><Link className='py-0 my-1 ' to="/dashboard/studentAttendance">My Attendance</Link></li>
@@ -50,12 +49,30 @@ const Navbar = () => {
                                         <li className='py-0 my-0  text-sm'><Link className='py-0 my-1 ' to="/dashboard/commerceStudent">Commerce Student</Link></li>
                                         <li className='py-0 my-0  text-sm'><Link className='py-0 my-1 ' to="/dashboard/humanitiesStudent">Humanities Student</Link></li>
                                         <li className='py-0 my-0  text-sm'><Link className='py-0 my-1 ' to="/dashboard/attendance">Attendance</Link></li>
+
                                         {/* <li className='py-0 my-0  text-sm'><Link className='py-0 my-0 ' to="dashboard/allStudent">All Student</Link></li> */}
                                     </div>
                                 </div>
 
                                 <li ><Link to="/contact">Contact</Link></li>
-                                <li><Link to='/signIn'>SignIn</Link></li>
+
+                                {
+          user && user.uid? <>
+           <li><Link to='/dashboard'> DashBoard </Link></li>
+      
+         
+          <button onClick={logOut}>LogOut</button>
+          
+          </> :
+          <>
+                 <li><Link to='/signIn'>Login</Link></li>
+                <li><Link to='/signUp'>Register</Link></li>
+          </>
+          
+
+        }
+
+                                {/* <li><Link to='/signIn'>SignIn</Link></li> */}
                             </ul>
                         </Drawer>
                     </>
@@ -76,7 +93,7 @@ const Navbar = () => {
                                 {/* <li><Link to="/about">About Us</Link></li> */}
 
                                 <li tabindex="0">
-                                    <Link to="/dashboard">Dashboard</Link>
+                                    {/* <Link to="/dashboard">Dashboard</Link> */}
                                     {/* <ul class=" bg-slate-900">
                                         <li className='py-0 my-0  text-sm'><Link className='py-0 my-0 ' to="">Android Development</Link></li>
                                         <li className='py-0 my-0  text-sm'><Link className='py-0 my-0 ' to="">Web Design</Link></li>
@@ -86,7 +103,21 @@ const Navbar = () => {
                                 </li>
 
                                 <li ><Link to="/contact">Contact</Link></li>
-                                <li><Link to='/signIn'>SignIn</Link></li>
+                                {
+          user && user.uid? <>
+           <li><Link to='/dashboard'> DeshBoard </Link></li>
+      
+         
+          <button onClick={logOut}>LogOut</button>
+          
+          </> :
+          <>
+                 <li><Link to='/login'>Login</Link></li>
+                <li><Link to='/register'>Register</Link></li>
+          </>
+          
+
+        }
                             </ul>
                         </div>
 
