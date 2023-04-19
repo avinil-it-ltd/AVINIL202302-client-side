@@ -41,7 +41,7 @@ const SignUp = () => {
     };
     console.log(info);
     createUser(email,userPass);
-    console.log(user)
+    console.log(user);
     let respose = await axios.post(
       "http://localhost:5000/api/v1/create-user",
       info

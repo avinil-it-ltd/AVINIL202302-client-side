@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Drawer from 'react-modern-drawer'
 import 'react-modern-drawer/dist/index.css'
 import logo from '../../image/logo1.png'
+import { AuthContext } from '../../AuthProvider/AuthProvider';
 const Navbar = () => {
 
 
@@ -11,9 +12,9 @@ const Navbar = () => {
         setIsOpen((prevState) => !prevState)
     }
 
+    const { user } = useContext(AuthContext);
 
-
-
+    const
     return (
         <header class="text-gray-600 body-font bg-slate-900">
             <div class="container mx-auto ">
@@ -50,11 +51,15 @@ const Navbar = () => {
                                         <li className='py-0 my-0  text-sm'><Link className='py-0 my-1 ' to="/dashboard/commerceStudent">Commerce Student</Link></li>
                                         <li className='py-0 my-0  text-sm'><Link className='py-0 my-1 ' to="/dashboard/humanitiesStudent">Humanities Student</Link></li>
                                         <li className='py-0 my-0  text-sm'><Link className='py-0 my-1 ' to="/dashboard/attendance">Attendance</Link></li>
+
                                         {/* <li className='py-0 my-0  text-sm'><Link className='py-0 my-0 ' to="dashboard/allStudent">All Student</Link></li> */}
                                     </div>
                                 </div>
 
                                 <li ><Link to="/contact">Contact</Link></li>
+
+                                {user ? <li className='hover-bordered'> <Link onClick={logout} to="/">Sign Out</Link></li> : <li className='hover-bordered'> <Link to="/signIn">Sign In</Link></li>}
+
                                 <li><Link to='/signIn'>SignIn</Link></li>
                             </ul>
                         </Drawer>
