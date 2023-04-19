@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import Navbar from "../Shared/Navbar";
 import Footer from "../Shared/Footer";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import Select from "react-select";
 import { useForm } from "react-hook-form";
@@ -10,49 +10,75 @@ import SweetAlert from "react-swal";
 
 const SignUp = () => {
   
-  const { createUser, user } = useContext(AuthContext);
+  const {createUser}= useContext(AuthContext)
+   
+    const navigate=useNavigate()
+    const location=useLocation();
+    const from=location.state?.from?.pathname || '/';
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    console.log(e);
-    const email = e.target.email.value;
-    const userName = e.target.name.value;
-    console.log(email);
-    const userPass = e.target.password.value;
-    const userType = e.target.type.value; //student or teacher
-    const imageUrl = e.image;
-    const roll = e.target.roll.value;
-    const group = e.target.subject.value;
-     const session = e.target.session.value;
-    const phone = e.target.phone.value;
-    const address = e.target.address.value;
-    // const qualification = e.target.qualification.value;
-    const info = {
-      email: email,
-      userName: userName,
-      userPass: userPass,
-      userType: userType,
-      roll: roll,
-      phone:phone,
-      group: group,
-      session:session,
-      address: address,
-      // qualification: qualification,
-    };
-    console.log(info);
-    createUser(email,userPass);
-    console.log(user);
-    let respose = await axios.post(
-      "http://localhost:5000/api/v1/create-user",
-      info
-    );
-    if (respose.status === 2000) {
-      console.log(respose);
-      
-    } else {
-      console.log(respose);
+    const handleSubmit = (e) =>
+    {
+        e.preventDefault()
+        const email = e.target.email.value;
+        const userName = e.target.name.value;
+        console.log(email);
+        const userPass = e.target.password.value;
+        const userType = e.target.type.value; //student or teacher
+        const imageUrl = e.image;
+        const roll = e.target.roll.value;
+        const group = e.target.subject.value;
+         const session = e.target.session.value;
+        const phone = e.target.phone.value;
+        const address = e.target.address.value;
+        // const qualification = e.target.qualification.value;
+        const info = {
+          email: email,
+          userName: userName,
+          userPass: userPass,
+          userType: userType,
+          roll: roll,
+          phone:phone,
+          group: group,
+          session:session,
+          address: address,
+          // qualification: qualification,
+        };
+        console.log(info);
+       // console.log(name,email,password)
+       createUser(email,userPass)
+        .then(result=>{
+
+            const user=result.user;
+            navigate(from,{replace: true})
+
+            
+
+
+        })
+        .catch(error=>console.error(error))
+
+
+
     }
-  };
+
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   console.log(e);
+   
+  //   createUser(email,userPass);
+  //   console.log(user);
+  //   let respose = await axios.post(
+  //     "http://localhost:5000/api/v1/create-user",
+  //     info
+  //   );
+  //   if (respose.status === 2000) {
+  //     console.log(respose);
+      
+  //   } else {
+  //     console.log(respose);
+  //   }
+  // };
 
   return (
     <div className="bg-slate-900 ">
