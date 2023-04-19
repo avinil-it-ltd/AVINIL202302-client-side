@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Navbar from "../Shared/Navbar";
 import Footer from "../Shared/Footer";
 import { Link } from "react-router-dom";
@@ -9,161 +9,54 @@ import axios from "axios";
 import SweetAlert from "react-swal";
 
 const SignUp = () => {
-  const { register, handleSubmit } = useForm();
-  // const onSubmit = data => console.log(data);
+  
+  const { createUser, user } = useContext(AuthContext);
 
-  const { createUser } = useContext(AuthContext);
-  const [type, setType] = useState("null")
-  const handleType = e => {
-
-    const roll_type = e.target.value;
-
-    setType(roll_type);
-    console.log(type);
-  }
-  const onSubmit = (e) => {
-    // e.preventDefault();
-    // const [name,email, group, image, roll, session, address] = e[0];
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     console.log(e);
-    // console.log(name);
-
-    const userObject = {
-      "email": e.email,
-      "userName": e.name,
-      "userPass": e.password,
-      "userType": e.type,  //student or teacher
-      "imageUrl": e.image,
-      "roll": e.roll || 0,
-      "group": e.group,
-      "session": e.session,
-      "phone": e.phone,
-      "address": e.address,
-      "subjectName": "null",             
-      "fatherName":"null",
-      "motherName": "null", 
-      "qualification": e.qualification,
+    const email = e.target.email.value;
+    const userName = e.target.name.value;
+    console.log(email);
+    const userPass = e.target.password.value;
+    const userType = e.target.type.value; //student or teacher
+    const imageUrl = e.image;
+    const roll = e.target.roll.value;
+    const group = e.target.subject.value;
+     const session = e.target.session.value;
+    const phone = e.target.phone.value;
+    const address = e.target.address.value;
+    // const qualification = e.target.qualification.value;
+    const info = {
+      email: email,
+      userName: userName,
+      userPass: userPass,
+      userType: userType,
+      roll: roll,
+      phone:phone,
+      group: group,
+      session:session,
+      address: address,
+      // qualification: qualification,
+    };
+    console.log(info);
+    createUser(email,userPass);
+    console.log(user)
+    let respose = await axios.post(
+      "http://localhost:5000/api/v1/create-user",
+      info
+    );
+    if (respose.status === 2000) {
+      console.log(respose);
       
-
+    } else {
+      console.log(respose);
     }
-
-
-      //   {
-      //     "email":"bijon1@gmail.com",
-      //         "userName":"bijon",
-      //         "userPass":"bijojoj",
-      //         "userType":"student", //student or teacher
-      //         "imageUrl":"url",
-
-      //         "address":"chandanaish",
-      //         "fatherName":"bijon",
-      //         "motherName":"bijon",
-      //         "subjectName":"bangla",
-      //         "qualification":"developer"
-
-      // }
-    // }
-    // const userObject = {
-    //   email: "avishadek@gmail.com",
-      // userName: "bijon",
-      // userPass: "bijojoj",
-      // userType: "student", //student or teacher
-      // imageUrl: "url",
-
-      // address: "chandanaish",
-      // fatherName: "bijon",
-      // motherName: "bijon",
-      // subjectName: "bangla",
-      // qualification: "developer",
-      
-    // };
-    console.log(userObject);
-
-    axios({
-      method: "post",
-      url: "http://localhost:5000/api/v1/create-user",
-      userObject,
-    })
-      // axios.post("/api/wishlists", { 
-      //   product_title: product_title,
-      //   product_price: product_price,
-      //   user_rating: user_rating,
-      //   product_stock: product_stock,
-      //   product_imageUrl: product_imageUrl.thumbnail,
-
-      //  })
-      .then((response) => {
-
-        if (response.data.insertedId) {
-          // setControl(!control);
-          // SweetAlert("WOW!!!  product add successfully");
-          console.log(response.data.insertedId,true)
-        } else {
-          console.log(false)
-          // setControl(false);
-          // SweetAlert("Failed");
-        }
-      });
-    // console.log(userObject); 
-    // fetch('http://localhost:5000/api/v1/create-user', {
-    //   method: 'POST',
-    //   headers: {
-    //     'content-type': 'application/json'
-    //   },
-    //   body: JSON.stringify(userObject)
-    // })
-    // // {console.log(userObject); }
-
-    //   .then(res => res.json())
-    //   .then(data => {
-    //     if (data.insertedId) {
-    //       console.log(userObject); 
-    //       console.log("form submitted successfully")
-    //     }
-    //     else{
-    //       console.log("Error")
-    //     }
-    //   })
-
-
-
-    // console.log(e);
-    // const form = e.target;
-    // const name = form.name.value;
-    // const email = form.email.value;
-    // const password = form.password.value;
-
-    // createUser(email, password)
-    //   .then((result) => {
-    //     const user = result.user;
-    //     console.log(user);
-    //     //navigate(from,{replace: true})
-    //   })
-    //   .catch((error) => console.error(error));
-    // console.log(name, email, password);
   };
-
-  // const options = [
-  //     {value:"2023",label:"2023"},
-  //     {value:"2024",label:"2024"},
-  //     {value:"2025",label:"2025"},
-  //     {value:"2026",label:"2026"},
-  //     {value:"2027",label:"2027"},
-  //     {value:"2028",label:"2028"}
-  // ]
-  // const [session, setSession]  = useState(null);
-  // const handle_Session_Change = e =>{
-  //     e.preventDefault();
-  //     setSession(e);
-  //     console.log(e);
-  //     console.log(session);
-  // }
-
-
 
   return (
     <div className="bg-slate-900 ">
       <Navbar></Navbar>
-
       <section class="text-white body-font relative">
         <div class="container px-5 py-24 mx-auto">
           <div class="flex flex-col text-center w-full ">
@@ -177,7 +70,7 @@ const SignUp = () => {
             <form
               //   onSubmit={handleRegister}
               // onSubmit={handleRegister}
-              onSubmit={handleSubmit(onSubmit)}
+              onSubmit={handleSubmit}
               class=" flex w-full flex-col md:flex-row lg:flex-row flex-wrap -m-2"
             >
               {/* <input {...register("radio")} type="radio" value="A" />
@@ -189,7 +82,7 @@ const SignUp = () => {
                   <label for="name" class="leading-7 text-sm ">
                     Name
                   </label>
-                  <input {...register("name")}
+                  <input
                     type="text"
                     id="name"
                     name="name"
@@ -204,8 +97,6 @@ const SignUp = () => {
                     Email
                   </label>
                   <input
-                    {...register("email")}
-
                     type="email"
                     id="email"
                     name="email"
@@ -218,10 +109,10 @@ const SignUp = () => {
                   <label for="name" class="leading-7 text-sm ">
                     Phone
                   </label>
-                  <input {...register("phone")}
+                  <input
                     type="text"
                     id="name"
-                    name="name"
+                    name="phone"
                     class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700  px-3 leading-8 transition-colors duration-200 ease-in-out "
                   />
                 </div>
@@ -232,7 +123,10 @@ const SignUp = () => {
                     Group
                   </label>
 
-                  <select {...register("group")} class="select w-full select-sm bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none  text-gray-700  px-3  py-1 transition-colors duration-200 ease-in-out">
+                  <select
+                    name="subject"
+                    class="select w-full select-sm bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none  text-gray-700  px-3  py-1 transition-colors duration-200 ease-in-out"
+                  >
                     <option disabled selected>
                       Pick your Group
                     </option>
@@ -250,8 +144,6 @@ const SignUp = () => {
                     Address
                   </label>
                   <input
-                    {...register("address")}
-
                     type="text"
                     id="address"
                     name="address"
@@ -265,7 +157,6 @@ const SignUp = () => {
                     password
                   </label>
                   <input
-                    {...register("password")}
                     type="password"
                     id="password"
                     name="password"
@@ -273,13 +164,16 @@ const SignUp = () => {
                   />
                 </div>
               </div>
-              <select {...register("type")} class="select w-full select-sm bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none  text-gray-700  px-3  py-1 transition-colors duration-200 ease-in-out">
+              <select name="type" class="select w-full select-sm bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none  text-gray-700  px-3  py-1 transition-colors duration-200 ease-in-out">
                 <option disabled selected>
                   Select the position
                 </option>
-                <option className="" value="teacher">Teacher</option>
-                <option className="" value="student">Student</option>
-
+                <option className="" value="teacher">
+                  Teacher
+                </option>
+                <option className="" value="student">
+                  Student
+                </option>
               </select>
               <fieldset className="px-2 my-4">
                 <span className="mr-10 md:mr-0 md:pr-10 lg:pr-10">
@@ -287,18 +181,15 @@ const SignUp = () => {
                 </span>
 
                 <input
-                  {...register('radio')}
                   value="teacher"
                   id="teacher"
                   class="mr-2 peer/teacher cursor-pointer"
                   type="radio"
                   name="status"
-                // onChange={handleType}
-
+                  // onChange={handleType}
                 />
 
                 <label
-
                   for="teacher"
                   class="mr-2 md:mr-5 lg:mr-16 cursor-pointer peer-checked/teacher:text-sky-500"
                 >
@@ -307,7 +198,7 @@ const SignUp = () => {
 
                 <input
                   // {...register({"student":true})}
-                  {...register("radio")}
+
                   id="student"
                   value="student"
                   // onChange={handleType}
@@ -350,7 +241,7 @@ const SignUp = () => {
                           Qualification
                         </label>
                         <input
-                          {...register("qualification")}
+                          // {...register("qualification")}
 
                           type="text"
                           id="qualification"
@@ -385,7 +276,6 @@ const SignUp = () => {
                           Roll
                         </label>
                         <input
-                          {...register("roll")}
                           type="number"
                           id="roll"
                           name="roll"
@@ -393,40 +283,7 @@ const SignUp = () => {
                         />
                       </div>
                     </div>
-                    {/* Group field start here */}
-                    {/* <div class="p-2 w-full md:w-1/2  lg:w-72">
-                      <div class="relative">
-                        <label for="email" class="leading-7 text-sm ">
-                          Group
-                        </label>
-                        
-                        <select {...register("group_s")} class="select w-full select-sm bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none  text-gray-700  px-3  py-1 transition-colors duration-200 ease-in-out">
-                          <option disabled selected>
-                            Pick your Group
-                          </option>
-                          <option className=" ">Commerce</option>
-                          <option className="">Science</option>
-                          <option className=" ">Humanities</option>
-                        </select>
-                      </div>
-                    </div> */}
-                    {/* Mobile number field start here */}
-                    {/* <div class="p-2 w-full md:w-1/2  lg:w-72">
-                      <div class="relative">
-                        <label for="number" class="leading-7 text-sm ">
-                          Mobile
-                        </label>
-                        <input
-                          {...register("mobile_s")}
-                          type="number"
-                          id="number"
-                          name="number"
-                          class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700  px-3 leading-8 transition-colors duration-200 ease-in-out"
-                        />
-                      </div>
-                    </div> */}
-
-                    {/* Session field start here */}
+                  
                     <div class="p-2 w-full md:w-1/2  lg:w-72">
                       <div class="relative">
                         <label for="email" class="leading-7 text-sm ">
@@ -434,8 +291,8 @@ const SignUp = () => {
                         </label>
 
                         {/* target 1 */}
-                        <select  {...register("session")} class="select w-full select-sm bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none  text-gray-700  px-3  py-1 transition-colors duration-200 ease-in-out">
-                          <option value="none" disabled selected>
+                        <select name="session" class="select w-full select-sm bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none  text-gray-700  px-3  py-1 transition-colors duration-200 ease-in-out">
+                          <option value="none"  disabled selected>
                             Pick your session year
                           </option>
                           <option value="2023">2023</option>
@@ -479,15 +336,12 @@ const SignUp = () => {
                     Upload Your Image
                   </label>
                   <input
-                    {...register("image")}
                     type="file"
                     class="file-input file-input-bordered file-input-sm w-full max-w-xs bg-gray-100 bg-opacity-50 rounded border border-gray-300"
                   />
                 </div>
               </div>
-              <div class="p-2 w-full md:w-1/2  lg:w-72">
-
-              </div>
+              <div class="p-2 w-full md:w-1/2  lg:w-72"></div>
 
               <div class="p-2 w-full">
                 <button
