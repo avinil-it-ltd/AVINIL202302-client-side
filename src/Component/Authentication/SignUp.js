@@ -1,17 +1,9 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Navbar from '../Shared/Navbar';
 import Footer from '../Shared/Footer';
 import { Link } from 'react-router-dom';
-import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const SignUp = () => {
-    const {createUser} = useContext(AuthContext)
-   const handleRegister = event =>{
-    event.preventDefault();
-    const form = event.target;
-    const name = form.name.value; 
-    const email = form.email.value;
-   }
     return (
         <div className='bg-slate-900 '>
             <Navbar></Navbar>
