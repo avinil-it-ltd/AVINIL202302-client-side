@@ -9,14 +9,14 @@ import axios from "axios";
 import SweetAlert from "react-swal";
 
 const SignUp = () => {
-  const { createUser } = useContext(AuthContext)
+  const { createUser } = useContext(AuthContext);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const location = useLocation();
-  const from = location.state?.from?.pathname || '/';
+  const from = location.state?.from?.pathname || "/";
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     const email = e.target.email.value;
     const userName = e.target.Username.value;
 
@@ -46,39 +46,26 @@ const SignUp = () => {
     console.log(info);
     // console.log(name,email,password)
     createUser(email, userPass)
-      .then(result => {
-
+      .then((result) => {
         const user = result.user;
-        databaseInsert(info)
-        navigate(from, { replace: true })
-
-
-
-
-
+        databaseInsert(info);
+        navigate(from, { replace: true });
       })
-      .catch(error => console.error(error))
-
-
-
-  }
+      .catch((error) => console.error(error));
+  };
   const databaseInsert = async (info) => {
     let respose = await axios.post(
       "http://localhost:5000/api/v1/create-user",
       info
     );
-    if (respose.status === 2000) {
-      console.log(respose);
-
+ 
+    if (respose.status == 200) {
+      console.log(respose.data);
+      // localStorage.setItem("users", JSON.stringify(respose.data));
     } else {
       console.log(respose);
     }
-
-  }
-
-
-
-
+  };
 
   return (
     <div className="bg-slate-900 ">
@@ -198,7 +185,10 @@ const SignUp = () => {
                   <label for="" class="leading-7 text-sm pe-2 ">
                     Select the position
                   </label>
-                  <select name="type" class="select p-2 w-full select-sm bg-white text-black rounded border    text-base outline-none   py-1  transition-colors duration-200 ease-in-out">
+                  <select
+                    name="type"
+                    class="select p-2 w-full select-sm bg-white text-black rounded border    text-base outline-none   py-1  transition-colors duration-200 ease-in-out"
+                  >
                     <option disabled selected>
                       Select the position
                     </option>
@@ -233,7 +223,7 @@ const SignUp = () => {
                   class="mr-2 peer/teacher cursor-pointer"
                   type="radio"
                   name="status"
-                // onChange={handleType}
+                  // onChange={handleType}
                 />
 
                 <label
@@ -337,7 +327,10 @@ const SignUp = () => {
                         </label>
 
                         {/* target 1 */}
-                        <select name="session" class="select w-full select-sm bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none  text-gray-700  px-3  py-1 transition-colors duration-200 ease-in-out">
+                        <select
+                          name="session"
+                          class="select w-full select-sm bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none  text-gray-700  px-3  py-1 transition-colors duration-200 ease-in-out"
+                        >
                           <option value="none" disabled selected>
                             Pick your session year
                           </option>
@@ -413,7 +406,6 @@ const SignUp = () => {
       <Footer></Footer>
     </div>
   );
-
 };
 
 export default SignUp;

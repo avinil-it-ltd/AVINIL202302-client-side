@@ -7,32 +7,29 @@ import axios from "axios";
 import { async } from "q";
 
 const Dashboard = () => {
-    const [datas,setDatas] = useState([]);
+  const [datas, setDatas] = useState([]);
   const { user } = useContext(AuthContext);
   console.log(user?.email);
-  useEffect(()=>{
-    const data = async()=>{
-        let respose =await axios.get(
-            `http://localhost:5000/api/v1/get-single-user/${user?.email}`
-          );
-          console.log(respose);
-          if (respose.status == 200) {
-            console.log(respose.data.data);
-            setDatas(respose.data.data)
-            return respose
-            
-          } else {
-            console.log(respose);
-          }
-        
-    
-      }
-      data()
-      .then(respose => console.log(respose))
-      
+  useEffect(() => {
+    const data = async () => {
+      let respose = await axios.get(
+        `http://localhost:5000/api/v1/get-single-user/${user?.email}`
+      );
+      console.log(respose);
+      if (respose.status == 200) {
+        console.log(respose.data.data);
+        setDatas(respose.data.data);
 
-  },[user?.email])
- console.log(datas[0]?.userType)
+        localStorage.setItem("users", JSON.stringify(respose.data.data));
+
+        return respose;
+      } else {
+        console.log(respose);
+      }
+    };
+    data().then((respose) => console.log(respose));
+  }, [user?.email]);
+  console.log(datas[0]?.userType);
   return (
     <div className="bg-slate-900">
       <Navbar></Navbar>
@@ -60,70 +57,60 @@ const Dashboard = () => {
               </div>
 
               {/* <!-- student access content here --> */}
-              
-{
-    datas[0]?.userType==="teacher"?
-    <>
-    {
-        console.log(datas)
-    }
-   <li>
-   
-                <Link to="/dashboard/teacherProfile">My Profile</Link>
-              </li>
-              {
-            datas[0]?.group==="Science"?<>
-            <li>
-                <Link to="/dashboard/scienceStudent">Science Student</Link>
-              </li>
-            
 
-            </>:null
-            
+              {datas[0]?.userType === "teacher" ? (
+                <>
+                  {console.log(datas)}
+                  <li>
+                    <Link to="/dashboard/teacherProfile">My Profile</Link>
+                  </li>
+                  {datas[0]?.group === "Science" ? (
+                    <>
+                      <li>
+                        <Link to="/dashboard/scienceStudent">
+                          Science Student
+                        </Link>
+                      </li>
+                    </>
+                  ) : null}
+                  {datas[0]?.group === "Commerce" ? (
+                    <>
+                      <li>
+                        <Link to="/dashboard/commerceStudent">
+                          Commerce Student
+                        </Link>
+                      </li>
+                    </>
+                  ) : null}
+                  {datas[0]?.group === "Arts" ? (
+                    <>
+                      <li>
+                        <Link to="/dashboard/humanitiesStudent">
+                          Arts Student
+                        </Link>
+                      </li>
+                    </>
+                  ) : null}
 
-    }
-     {
-            datas[0]?.group==="Commerce"?<>
-            <li>
-                <Link to="/dashboard/commerceStudent">Commerce Student</Link>
-              </li>
-            
-
-            </>:null
-            
-
-    }
-    {
-            datas[0]?.group==="Arts"?<>
-            <li>
-                <Link to="/dashboard/humanitiesStudent">Arts Student</Link>
-              </li>
-            
-
-            </>:null
-            
-
-    }
-             
-              <li>
-                <Link to="/dashboard/attendance">Attendance</Link>
-              </li>
-    </>:
-    <>
-    <li>
-                <Link to="/dashboard/studentProfile">My Profile</Link>
-              </li>
-              <li>
-                <Link to="/dashboard/studentAttendance">My Attendance</Link>
-              </li>
-              <li>
-                <Link to="/dashboard/studentResult">My Result</Link>
-              </li>
-    </>
-}
+                  <li>
+                    <Link to="/dashboard/attendance">Attendance</Link>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li>
+                    <Link to="/dashboard/studentProfile">My Profile</Link>
+                  </li>
+                  <li>
+                    <Link to="/dashboard/studentAttendance">My Attendance</Link>
+                  </li>
+                  <li>
+                    <Link to="/dashboard/studentResult">My Result</Link>
+                  </li>
+                </>
+              )}
               {/* <!-- teacher access content here --> */}
-              
-              
+
               {/* <li><Link to="/dashboard/allStudent">All Student</Link></li> */}
             </ul>
           </div>
