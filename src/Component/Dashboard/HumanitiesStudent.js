@@ -25,17 +25,17 @@ const HumanitiesStudent = () => {
                     <form action="" className='mx-2  '>
                         <div className='flex justify-between'>
                             <input type="text" id="bengali" placeholder='Enter Bengali number' name="bengali" class="w-full mx-2 my-2   rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
-                            <input type="text" id="text" placeholder='Enter English number' name="text" class="w-full mx-2 my-2  rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                            <input type="text" id="english" placeholder='Enter English number' name="english" class="w-full mx-2 my-2  rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                         </div>
 
                         <div className='flex justify-between'>
-                            <input type="text" id="full-name" placeholder='Enter Math number' name="full-name" class="w-full mx-2 my-2   rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
-                            <input type="text" id="email" placeholder='Enter Economics number' name="email" class="w-full mx-2 my-2  rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                            <input type="text" id="math" placeholder='Enter Math number' name="math" class="w-full mx-2 my-2   rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                            <input type="text" id="economics" placeholder='Enter Economics number' name="economics" class="w-full mx-2 my-2  rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                         </div>
 
                         <div className='flex justify-between'>
-                            <input type="text" id="full-name" placeholder='Enter History number' name="full-name" class="w-full mx-2 my-2   rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
-                            <input type="text" id="email" placeholder='Enter Political Science number' name="email" class="w-full mx-2 my-2  rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                            <input type="text" id="history" placeholder='Enter History number' name="history" class="w-full mx-2 my-2   rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                            <input type="text" id="politicalScience" placeholder='Enter Political Science number' name="politicalScience" class="w-full mx-2 my-2  rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                         </div>
                         <button className='btn btn-outline bg-cyan-500 text-white w-full my-4'>Update Mid Result</button>
                     </form>
@@ -56,17 +56,17 @@ const HumanitiesStudent = () => {
                     <form action="" className='mx-2  '>
                         <div className='flex justify-between'>
                             <input type="text" id="bengali" placeholder='Enter Bengali number' name="bengali" class="w-full mx-2 my-2   rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
-                            <input type="text" id="text" placeholder='Enter English number' name="text" class="w-full mx-2 my-2  rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                            <input type="text" id="english" placeholder='Enter English number' name="english" class="w-full mx-2 my-2  rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                         </div>
 
                         <div className='flex justify-between'>
-                            <input type="text" id="full-name" placeholder='Enter Math number' name="full-name" class="w-full mx-2 my-2   rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
-                            <input type="text" id="email" placeholder='Enter Economics number' name="email" class="w-full mx-2 my-2  rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                            <input type="text" id="math" placeholder='Enter Math number' name="math" class="w-full mx-2 my-2   rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                            <input type="text" id="economics" placeholder='Enter Economics number' name="economics" class="w-full mx-2 my-2  rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                         </div>
 
                         <div className='flex justify-between'>
-                            <input type="text" id="full-name" placeholder='Enter History number' name="full-name" class="w-full mx-2 my-2   rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
-                            <input type="text" id="email" placeholder='Enter Political Science number' name="email" class="w-full mx-2 my-2  rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                            <input type="text" id="history" placeholder='Enter History number' name="history" class="w-full mx-2 my-2   rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                            <input type="text" id="politicalScience" placeholder='Enter Political Science number' name="politicalScience" class="w-full mx-2 my-2  rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                         </div>
                         <button className='btn btn-outline bg-cyan-500 text-white w-full my-4'>Update Final Result</button>
                     </form>

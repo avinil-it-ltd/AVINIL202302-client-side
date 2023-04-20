@@ -9,93 +9,76 @@ import axios from "axios";
 import SweetAlert from "react-swal";
 
 const SignUp = () => {
-  
-  const {createUser}= useContext(AuthContext)
-   
-    const navigate=useNavigate()
-    const location=useLocation();
-    const from=location.state?.from?.pathname || '/';
+  const { createUser } = useContext(AuthContext)
 
-    const handleSubmit = (e) =>
-    {
-        e.preventDefault()
-        const email = e.target.email.value;
-        const userName = e.target.Username.value;
-    
-        const userPass = e.target.password.value;
-        const userType = e.target.type.value; //student or teacher
-        const imageUrl = e.image;
-        const roll = e.target.roll.value;
-        const group = e.target.subject.value;
-         const session = e.target.session.value;
-        const phone = e.target.phone.value;
-        console.log(phone);
-        const address = e.target.address.value;
-        // const qualification = e.target.qualification.value;
-        
-        const info = {
-          email: email,
-          userName: userName,
-          userPass: userPass,
-          userType: userType,
-          roll: roll,
-          mobile:phone,
-          group: group,
-          session:session,
-          address: address,
-          // qualification: qualification,
-        };
-        console.log(info);
-       // console.log(name,email,password)
-       createUser(email,userPass)
-        .then(result=>{
+  const navigate = useNavigate()
+  const location = useLocation();
+  const from = location.state?.from?.pathname || '/';
 
-            const user=result.user;
-            databaseInsert(info)
-            navigate(from,{replace: true})
-            
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const email = e.target.email.value;
+    const userName = e.target.Username.value;
 
-            
+    const userPass = e.target.password.value;
+    const userType = e.target.type.value; //student or teacher
+    const imageUrl = e.image;
+    const roll = e.target.roll.value;
+    const group = e.target.subject.value;
+    const session = e.target.session.value;
+    const phone = e.target.phone.value;
+    console.log(phone);
+    const address = e.target.address.value;
+    // const qualification = e.target.qualification.value;
 
+    const info = {
+      email: email,
+      userName: userName,
+      userPass: userPass,
+      userType: userType,
+      roll: roll,
+      mobile: phone,
+      group: group,
+      session: session,
+      address: address,
+      // qualification: qualification,
+    };
+    console.log(info);
+    // console.log(name,email,password)
+    createUser(email, userPass)
+      .then(result => {
 
-        })
-        .catch(error=>console.error(error))
+        const user = result.user;
+        databaseInsert(info)
+        navigate(from, { replace: true })
 
 
 
-    }
-    const databaseInsert = async (info)=>{
-      let respose = await axios.post(
-            "http://localhost:5000/api/v1/create-user",
-            info
-          );
-          if (respose.status === 2000) {
-            console.log(respose);
-            
-          } else {
-            console.log(respose);
-          }
 
+
+      })
+      .catch(error => console.error(error))
+
+
+
+  }
+  const databaseInsert = async (info) => {
+    let respose = await axios.post(
+      "http://localhost:5000/api/v1/create-user",
+      info
+    );
+    if (respose.status === 2000) {
+      console.log(respose);
+
+    } else {
+      console.log(respose);
     }
 
+  }
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   console.log(e);
-   
-  //   createUser(email,userPass);
-  //   console.log(user);
-  //   let respose = await axios.post(
-  //     "http://localhost:5000/api/v1/create-user",
-  //     info
-  //   );
-  //   if (respose.status === 2000) {
-  //     console.log(respose);
-      
-  //   } else {
-  //     console.log(respose);
-  //   }
-  // };
+
+
+
 
   return (
     <div className="bg-slate-900 ">
@@ -117,8 +100,8 @@ const SignUp = () => {
               class=" flex w-full flex-col md:flex-row lg:flex-row flex-wrap -m-2"
             >
               {/* <input {...register("radio")} type="radio" value="A" />
-              <input {...register("radio")} type="radio" value="B" />
-              <input {...register("radio")} type="radio" value="C" /> */}
+            <input {...register("radio")} type="radio" value="B" />
+            <input {...register("radio")} type="radio" value="C" /> */}
               {/* name field start here */}
               <div class="p-2 w-full md:w-1/2  lg:w-72 ">
                 <div class="relative">
@@ -181,25 +164,28 @@ const SignUp = () => {
               </div>
 
               {/* name field start here */}
-              <div class="py-2 pr-2 w-full md:w-1/2  lg:w-72 ">
+              <div class="p-2  w-full md:w-1/2  lg:w-72 ">
                 <div class="relative">
                   <label for="address" class="leading-7 text-sm ">
                     Address
                   </label>
                   <input
+                    placeholder="Enter Address"
                     type="text"
                     id="address"
                     name="address"
-                    class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700  px-3 leading-8 transition-colors duration-200 ease-in-out "
+                    class="w-full text-black  bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none  px-3 leading-8 transition-colors duration-200 ease-in-out "
                   />
                 </div>
               </div>
-              <div class="py-2 pr-2 w-full md:w-1/2  lg:w-72 ">
+
+              <div class="p-2 w-full md:w-1/2  lg:w-72 ">
                 <div class="relative">
                   <label for="password" class="leading-7 text-sm ">
                     password
                   </label>
                   <input
+                    placeholder="Enter Password"
                     type="password"
                     id="password"
                     name="password"
@@ -207,17 +193,35 @@ const SignUp = () => {
                   />
                 </div>
               </div>
-              <select name="type" class="select w-full select-sm bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none  text-gray-700  px-3  py-1 transition-colors duration-200 ease-in-out">
-                <option disabled selected>
-                  Select the position
-                </option>
-                <option className="" value="teacher">
-                  Teacher
-                </option>
-                <option className="" value="student">
-                  Student
-                </option>
-              </select>
+              <div class="p-2 w-full md:w-1/2  lg:w-72 ">
+                <div class="relative">
+                  <label for="" class="leading-7 text-sm pe-2 ">
+                    Select the position
+                  </label>
+                  <select name="type" class="select p-2 w-full select-sm bg-white text-black rounded border    text-base outline-none   py-1  transition-colors duration-200 ease-in-out">
+                    <option disabled selected>
+                      Select the position
+                    </option>
+                    <option className="text-black" value="teacher">
+                      Teacher
+                    </option>
+                    <option className="" value="student">
+                      Student
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="p-2 w-full md:w-1/2  lg:w-72 ">
+                <div class="relative">
+                  <label for="file" class="leading-7 text-sm pe-2 ">
+                    Upload Your Image
+                  </label>
+                  <input
+                    type="file"
+                    class="file-input file-input-bordered file-input-sm w-full max-w-xs bg-white "
+                  />
+                </div>
+              </div>
               <fieldset className="px-2 my-4">
                 <span className="mr-10 md:mr-0 md:pr-10 lg:pr-10">
                   Select the position
@@ -229,7 +233,7 @@ const SignUp = () => {
                   class="mr-2 peer/teacher cursor-pointer"
                   type="radio"
                   name="status"
-                  // onChange={handleType}
+                // onChange={handleType}
                 />
 
                 <label
@@ -261,23 +265,22 @@ const SignUp = () => {
                   <div className="flex w-full flex-col md:flex-row lg:flex-row flex-wrap">
                     {/* Group field start here */}
                     {/* <div class="py-2 pr-2 w-full md:w-1/2  lg:w-72 ">
-                      <div class="relative">
-                        <label for="" class="leading-7 text-sm ">
-                          Expertise Group
-                        </label>
-                  
-                        <select {...register("group_t")} class="select w-full select-sm bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none  text-gray-700  px-3  py-1 transition-colors duration-200 ease-in-out">
-                          <option disabled selected>
-                            Pick your Group
-                          </option>
-                          <option className=" ">Commerce</option>
-                          <option className="">Science</option>
-                          <option className=" ">Humanities</option>
-                        </select>
-                      </div>
+                    <div class="relative">
+                      <label for="" class="leading-7 text-sm ">
+                        Expertise Group
+                      </label>
+                
+                      <select {...register("group_t")} class="select w-full select-sm bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none  text-gray-700  px-3  py-1 transition-colors duration-200 ease-in-out">
+                        <option disabled selected>
+                          Pick your Group
+                        </option>
+                        <option className=" ">Commerce</option>
+                        <option className="">Science</option>
+                        <option className=" ">Humanities</option>
+                      </select>
                     </div>
-
-                    {/* name field start here */}
+                  </div>
+                  {/* name field start here */}
                     <div class="py-2 pr-2 w-full md:w-1/2  lg:w-72 ">
                       <div class="relative">
                         <label for="address" class="leading-7 text-sm ">
@@ -295,17 +298,17 @@ const SignUp = () => {
                     </div>
 
                     {/* <div class=" w-full ">
-                      <div class="relative">
-                        <label for="image" class="leading-7 text-sm ">
-                          Upload Your Image
-                        </label>
-                        <input
-                          {...register("image_t")}
-                          type="file"
-                          class="file-input file-input-bordered file-input-sm w-full max-w-xs bg-gray-100 bg-opacity-50 rounded border border-gray-300"
-                        />
-                      </div>
-                    </div> */}
+                    <div class="relative">
+                      <label for="image" class="leading-7 text-sm ">
+                        Upload Your Image
+                      </label>
+                      <input
+                        {...register("image_t")}
+                        type="file"
+                        class="file-input file-input-bordered file-input-sm w-full max-w-xs bg-gray-100 bg-opacity-50 rounded border border-gray-300"
+                      />
+                    </div>
+                  </div> */}
                   </div>
                 </div>
 
@@ -326,7 +329,7 @@ const SignUp = () => {
                         />
                       </div>
                     </div>
-                  
+
                     <div class="p-2 w-full md:w-1/2  lg:w-72">
                       <div class="relative">
                         <label for="email" class="leading-7 text-sm ">
@@ -335,7 +338,7 @@ const SignUp = () => {
 
                         {/* target 1 */}
                         <select name="session" class="select w-full select-sm bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none  text-gray-700  px-3  py-1 transition-colors duration-200 ease-in-out">
-                          <option value="none"  disabled selected>
+                          <option value="none" disabled selected>
                             Pick your session year
                           </option>
                           <option value="2023">2023</option>
@@ -347,33 +350,31 @@ const SignUp = () => {
                           <option value="2029">2029</option>
                           <option value="2030">2030</option>
                           {/* {
-
-                          options.map((option,key) =>{ 
-                            return <option key={key}>{option}</option>
-
-                          })
-                          } */}
+                        options.map((option,key) =>{ 
+                          return <option key={key}>{option}</option>
+                        })
+                        } */}
                         </select>
                         {/* <Select options={options}  autoFocus={true}  onChange={handle_Session_Change} class="text-black bg-white" ></Select> */}
                       </div>
                     </div>
 
                     {/* <div class="p-2 w-full ">
-                      <div class="relative">
-                        <label for="email" class="leading-7 text-sm ">
-                          Upload Your Image
-                        </label>
-                        <input
-                          {...register("image")}
-                          type="file"
-                          class="file-input file-input-bordered file-input-sm w-full max-w-xs bg-gray-100 bg-opacity-50 rounded border border-gray-300"
-                        />
-                      </div>
-                    </div> */}
+                    <div class="relative">
+                      <label for="email" class="leading-7 text-sm ">
+                        Upload Your Image
+                      </label>
+                      <input
+                        {...register("image")}
+                        type="file"
+                        class="file-input file-input-bordered file-input-sm w-full max-w-xs bg-gray-100 bg-opacity-50 rounded border border-gray-300"
+                      />
+                    </div>
+                  </div> */}
                   </div>
                 </div>
               </fieldset>
-              <div class="p-2 w-full ">
+              {/* <div class="p-2 w-full ">
                 <div class="relative">
                   <label for="email" class="leading-7 text-sm pe-2 ">
                     Upload Your Image
@@ -383,7 +384,7 @@ const SignUp = () => {
                     class="file-input file-input-bordered file-input-sm w-full max-w-xs bg-gray-100 bg-opacity-50 rounded border border-gray-300"
                   />
                 </div>
-              </div>
+              </div> */}
               <div class="p-2 w-full md:w-1/2  lg:w-72"></div>
 
               <div class="p-2 w-full">
@@ -412,6 +413,7 @@ const SignUp = () => {
       <Footer></Footer>
     </div>
   );
+
 };
 
 export default SignUp;
