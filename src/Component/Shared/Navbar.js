@@ -12,9 +12,19 @@ const Navbar = () => {
         setIsOpen((prevState) => !prevState)
     }
 
-    const { user } = useContext(AuthContext);
+    const { user, logout } = useContext(AuthContext);
 
-    const
+    // var templateParams = {
+    //     name: 'James',
+    //     notes: 'Check this out!'
+    // };
+     
+    // emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+    //     .then(function(response) {
+    //        console.log('SUCCESS!', response.status, response.text);
+    //     }, function(error) {
+    //        console.log('FAILED...', error);
+    //     });
     return (
         <header class="text-gray-600 body-font bg-slate-900">
             <div class="container mx-auto ">
