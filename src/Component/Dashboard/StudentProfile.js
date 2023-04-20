@@ -40,18 +40,32 @@ const Profile = () => {
                         </div>
                     </div>
                     <div class="lg:flex-grow  md:w-1/2 lg:pl-24 md:pl-16 flex flex-col  md:items-start md:text-left text-start ">
-                        <p>Name:{datas[0]?.userName}</p>
-                        <p>Roll: {datas[0]?.roll}</p>
-                        <p>Fathers Name: {datas[0]?.fatherName}</p>
+                    <p>Name:{datas[0]?.userName}</p>
+                    
+                      {
+                        datas[0]?.userType==='teacher'?
+                        <> 
+                        
+                        </>
+                        :<>
+                         <p>Roll: {datas[0]?.roll}</p>
+                         <p>Fathers Name: {datas[0]?.fatherName}</p>
                         <p>Mothers name: {datas[0]?.motherName}</p>
-                        <p>Contact number: {datas[0]?.mobile}</p>
-                        <p>{datas[0]?.userName}</p> <div class="flex justify-center">
-    
-                        </div>
+                        </>
+
+                      }
+                      <p>group: {datas[0]?.group}</p>
+                      
+                     <p>Address: {datas[0]?.address}</p>   
+                    <p>Contact number: {datas[0]?.mobile}</p>
+                        
+
+                        
                     </div>
                 </div>
             </section>
         </div>
+        
     );
 };
 
