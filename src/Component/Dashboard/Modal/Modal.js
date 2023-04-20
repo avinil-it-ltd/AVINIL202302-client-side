@@ -1,31 +1,70 @@
 import axios from "axios";
-import React from "react";
+import React, { useState } from "react";
 
 const Modal = ({ userData }) => {
+  const [test,setTest] = useState({})
   const { _id, group } = userData;
   console.log(_id, group);
   const handleMidResult = async(e) => {
     e.preventDefault();
     const form = e.target;
-    const data = {
+    if(group=="Science")
+    {
+      const data = {
         student:_id,
       Midterm: [
         {
           bangla: form.bangla.value,
           english: form.english.value,
           math: form.math.value,
-        //   physics: form.physics.value,
-        //   chemistry: form.chemistry.value,
-        //   biology: form.biology.value,
+          physics: form.physics.value,
+          chemistry: form.chemistry.value,
+          biology: form.biology.value
+        },
+      ],
+    }
+    setTest(data)
+    }
+    else if(group=="Commerce")
+    {
+      const data = {
+        student:_id,
+      Midterm: [
+        {
+          bangla: form.bangla.value,
+          english: form.english.value,
+          math: form.math.value,
           business: form.business.value,
           finance: form.finance.value,
         },
+      ]
+    }
+    setTest(data)
+    }
+    
+    else if(group=="Humanities")
+    {
+      const data = {
+        student:_id,
+      Midterm: [
+        {
+          bangla: form.bangla.value,
+          english: form.english.value,
+          math: form.math.value,
+          phychology:form.phychology.value,
+          sociology:form.sociology.value
+        },
       ],
-    };
+    }
+    setTest(data)
+
+    }
+
+   
     let respose = await axios.post(
         'http://localhost:5000/api/v1/create-mark',
-        data
-      );
+        test
+      )
       if (respose.status === 200) {
         console.log(respose);
   
@@ -103,6 +142,23 @@ const Modal = ({ userData }) => {
                 />
               </>
             ) : null}
+             {group == "Humanities" ? (
+              <>
+                <input
+                  type="number"
+                  name="phychology"
+                  placeholder="phychology number"
+                  className="input input-bordered w-full max-w-xs"
+                />
+                <input
+                  type="number"
+                  name="sociology"
+                  placeholder="sociology number"
+                  className="input input-bordered w-full max-w-xs"
+                />
+              </>
+            ) : null}
+            
             <button
               className="input input-bordered w-full max-w-sm"
               type="submit"
@@ -114,6 +170,5 @@ const Modal = ({ userData }) => {
       </div>
     </div>
   );
-};
-
+  };
 export default Modal;

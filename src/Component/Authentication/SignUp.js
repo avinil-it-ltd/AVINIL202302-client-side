@@ -30,6 +30,21 @@ const SignUp = () => {
     console.log(phone);
     const address = e.target.address.value;
     // const qualification = e.target.qualification.value;
+    const image = e.target.img.files[0];
+    const formData = new FormData()
+    formData.append('image', image)
+    const url = `https://api.imgbb.com/1/upload?expiration=600&key=${imageHostKey}`
+    fetch(url, {
+        method: 'POST',
+        body: formData
+    })
+        .then(res => res.json())
+        .then(imageData => {
+            console.log(imageData)
+            if (imageData.success) {
+                console.log(imageData.data.url)
+            
+            }})
 
     const info = {
       email: email,
@@ -206,10 +221,8 @@ const SignUp = () => {
                   <label for="file" class="leading-7 text-sm pe-2 ">
                     Upload Your Image
                   </label>
-                  <input
-                    type="file"
-                    class="file-input file-input-bordered file-input-sm w-full max-w-xs bg-white "
-                  />
+                  <input type="file" name='img' className="file-input file-input-bordered file-input-primary w-full max-w-xs" />
+
                 </div>
               </div>
               <fieldset className="px-2 my-4">

@@ -6,6 +6,8 @@ import axios from "axios";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Attendance = () => {
+  const [disabled, setDisabled] = useState('');
+  const [disableds, setDisableds] = useState('');
   const [datas, setDatas] = useState('');
   const [scienceStudent, setScienceStudent] = useState([]);
   const [commerceStudent, setcommerceStudent] = useState([]);
@@ -90,6 +92,7 @@ const Attendance = () => {
         isPresent: true
     }
     databaseInsert(info)
+    setDisabled(id);
 
  }
  const databaseInsert = async (info) => {
@@ -121,6 +124,8 @@ const Attendance = () => {
       } else {
         console.log(respose);
       }
+      setDisableds(id);
+
 
 
   }
@@ -172,13 +177,13 @@ const Attendance = () => {
                         <td>Science</td>
         
                         <td>
-                          <button onClick={()=>handlePresent(i?._id)} className="btn btn-sm text-xs bg-lime-500 outline-none border-none ">
+                          <button                  disabled={disabled==i._id}    onClick={()=>handlePresent(i?._id)} className="btn btn-sm text-xs bg-lime-500 outline-none border-none ">
                             Present
                           </button>
                         </td>
         
                         <td>
-                          <button onClick={()=>handleAbsent(i?._id)} className="btn btn-sm text-xs bg-green-500 outline-none border-none ">
+                          <button disabled={disableds==i._id}  onClick={()=>handleAbsent(i?._id)} className="btn btn-sm text-xs bg-green-500 outline-none border-none ">
                             Absent
                           </button>
                         </td>
@@ -203,13 +208,14 @@ const Attendance = () => {
                         <td>Commerce</td>
         
                         <td>
-                        <button onClick={()=>handlePresent(i?._id)} className="btn btn-sm text-xs bg-lime-500 outline-none border-none ">
+                        <button disabled={disabled==i._id} 
+                         onClick={()=>handlePresent(i?._id)} className="btn btn-sm text-xs bg-lime-500 outline-none border-none ">
                             Present
                           </button>
                         </td>
         
                         <td>
-                          <button onClick={()=>handleAbsent(i?._id)} className="btn btn-sm text-xs bg-green-500 outline-none border-none ">
+                          <button disabled={disableds==i._id}  onClick={()=>handleAbsent(i?._id)} className="btn btn-sm text-xs bg-green-500 outline-none border-none ">
                             Absent
                           </button>
                         </td>
@@ -234,13 +240,13 @@ const Attendance = () => {
                         <td>Humanities</td>
         
                         <td>
-                        <button onClick={()=>handlePresent(i?._id)} className="btn btn-sm text-xs bg-lime-500 outline-none border-none ">
+                        <button disabled={disabled==i._id}  onClick={()=>handlePresent(i?._id)} className="btn btn-sm text-xs bg-lime-500 outline-none border-none ">
                             Present
                           </button>
                         </td>
         
                         <td>
-                          <button onClick={()=>handleAbsent(i?._id)} className="btn btn-sm text-xs bg-green-500 outline-none border-none ">
+                          <button disabled={disableds==i._id}  onClick={()=>handleAbsent(i?._id)} className="btn btn-sm text-xs bg-green-500 outline-none border-none ">
                             Absent
                           </button>
                         </td>
