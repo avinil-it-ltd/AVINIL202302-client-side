@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import Navbar from "../Shared/Navbar";
 import Footer from "../Shared/Footer";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import Select from "react-select";
 import { useForm } from "react-hook-form";
@@ -10,49 +10,91 @@ import SweetAlert from "react-swal";
 
 const SignUp = () => {
   
-  const { createUser, user } = useContext(AuthContext);
+  const {createUser}= useContext(AuthContext)
+   
+    const navigate=useNavigate()
+    const location=useLocation();
+    const from=location.state?.from?.pathname || '/';
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    console.log(e);
-    const email = e.target.email.value;
-    const userName = e.target.name.value;
-    console.log(email);
-    const userPass = e.target.password.value;
-    const userType = e.target.type.value; //student or teacher
-    const imageUrl = e.image;
-    const roll = e.target.roll.value;
-    const group = e.target.subject.value;
-     const session = e.target.session.value;
-    const phone = e.target.phone.value;
-    const address = e.target.address.value;
-    // const qualification = e.target.qualification.value;
-    const info = {
-      email: email,
-      userName: userName,
-      userPass: userPass,
-      userType: userType,
-      roll: roll,
-      phone:phone,
-      group: group,
-      session:session,
-      address: address,
-      // qualification: qualification,
-    };
-    console.log(info);
-    createUser(email,userPass);
-    console.log(user);
-    let respose = await axios.post(
-      "http://localhost:5000/api/v1/create-user",
-      info
-    );
-    if (respose.status === 2000) {
-      console.log(respose);
-      
-    } else {
-      console.log(respose);
+    const handleSubmit = (e) =>
+    {
+        e.preventDefault()
+        const email = e.target.email.value;
+        const userName = e.target.Username.value;
+    
+        const userPass = e.target.password.value;
+        const userType = e.target.type.value; //student or teacher
+        const imageUrl = e.image;
+        const roll = e.target.roll.value;
+        const group = e.target.subject.value;
+         const session = e.target.session.value;
+        const phone = e.target.phone.value;
+        console.log(phone);
+        const address = e.target.address.value;
+        // const qualification = e.target.qualification.value;
+        const info = {
+          email: email,
+          userName: userName,
+          userPass: userPass,
+          userType: userType,
+          roll: roll,
+          phone:phone,
+          group: group,
+          session:session,
+          address: address,
+          // qualification: qualification,
+        };
+        console.log(info);
+       // console.log(name,email,password)
+       createUser(email,userPass)
+        .then(result=>{
+
+            const user=result.user;
+            databaseInsert(info)
+            navigate(from,{replace: true})
+            
+
+            
+
+
+        })
+        .catch(error=>console.error(error))
+
+
+
     }
-  };
+    const databaseInsert = async (info)=>{
+      let respose = await axios.post(
+            "http://localhost:5000/api/v1/create-user",
+            info
+          );
+          if (respose.status === 2000) {
+            console.log(respose);
+            
+          } else {
+            console.log(respose);
+          }
+
+    }
+
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   console.log(e);
+   
+  //   createUser(email,userPass);
+  //   console.log(user);
+  //   let respose = await axios.post(
+  //     "http://localhost:5000/api/v1/create-user",
+  //     info
+  //   );
+  //   if (respose.status === 2000) {
+  //     console.log(respose);
+      
+  //   } else {
+  //     console.log(respose);
+  //   }
+  // };
 
   return (
     <div className="bg-slate-900 ">
@@ -85,7 +127,7 @@ const SignUp = () => {
                   <input
                     type="text"
                     id="name"
-                    name="name"
+                    name="Username"
                     class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700  px-3 leading-8 transition-colors duration-200 ease-in-out "
                   />
                 </div>
@@ -106,12 +148,12 @@ const SignUp = () => {
               </div>
               <div class="p-2 w-full md:w-1/2  lg:w-72 ">
                 <div class="relative">
-                  <label for="name" class="leading-7 text-sm ">
+                  <label for="phone" class="leading-7 text-sm ">
                     Phone
                   </label>
                   <input
                     type="text"
-                    id="name"
+                    id="phone"
                     name="phone"
                     class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700  px-3 leading-8 transition-colors duration-200 ease-in-out "
                   />
