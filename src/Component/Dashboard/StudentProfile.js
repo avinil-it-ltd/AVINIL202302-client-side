@@ -1,6 +1,33 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
+import axios from 'axios';
 
 const Profile = () => {
+    const [datas,setDatas] = useState([]);
+    const { user } = useContext(AuthContext);
+    console.log(user?.email);
+    useEffect(()=>{
+      const data = async()=>{
+          let respose =await axios.get(
+              `http://localhost:5000/api/v1/get-single-user/${user?.email}`
+            );
+            console.log(respose);
+            if (respose.status == 200) {
+              console.log(respose.data.data);
+              setDatas(respose.data.data)
+              return respose
+              
+            } else {
+              console.log(respose);
+            }
+          
+      
+        }
+        data()
+        .then(respose => console.log(respose))
+        
+  
+    },[user?.email])
     return (
         <div>
             <section class="text-white bg-slate-800 mx-5  body-font">
@@ -13,12 +40,12 @@ const Profile = () => {
                         </div>
                     </div>
                     <div class="lg:flex-grow  md:w-1/2 lg:pl-24 md:pl-16 flex flex-col  md:items-start md:text-left text-start ">
-                        <p>Name: Nilima </p>
-                        <p>Roll: 52145</p>
-                        <p>Fathers Name: nayan</p>
-                        <p>Mothers name: nayantara</p>
-                        <p>Contact number: 32165498463</p>
-                        <p>GPA: 5.00</p> <div class="flex justify-center">
+                        <p>Name:{datas[0]?.userName}</p>
+                        <p>Roll: {datas[0]?.roll}</p>
+                        <p>Fathers Name: {datas[0]?.fatherName}</p>
+                        <p>Mothers name: {datas[0]?.motherName}</p>
+                        <p>Contact number: {datas[0]?.mobile}</p>
+                        <p>{datas[0]?.userName}</p> <div class="flex justify-center">
     
                         </div>
                     </div>

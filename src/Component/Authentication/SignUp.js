@@ -20,8 +20,8 @@ const SignUp = () => {
     {
         e.preventDefault()
         const email = e.target.email.value;
-        const userName = e.target.name.value;
-        console.log(email);
+        const userName = e.target.Username.value;
+    
         const userPass = e.target.password.value;
         const userType = e.target.type.value; //student or teacher
         const imageUrl = e.image;
@@ -29,6 +29,7 @@ const SignUp = () => {
         const group = e.target.subject.value;
          const session = e.target.session.value;
         const phone = e.target.phone.value;
+        console.log(phone);
         const address = e.target.address.value;
         // const qualification = e.target.qualification.value;
         const info = {
@@ -126,7 +127,7 @@ const SignUp = () => {
                   <input
                     type="text"
                     id="name"
-                    name="name"
+                    name="Username"
                     class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700  px-3 leading-8 transition-colors duration-200 ease-in-out "
                   />
                 </div>
@@ -147,12 +148,12 @@ const SignUp = () => {
               </div>
               <div class="p-2 w-full md:w-1/2  lg:w-72 ">
                 <div class="relative">
-                  <label for="name" class="leading-7 text-sm ">
+                  <label for="phone" class="leading-7 text-sm ">
                     Phone
                   </label>
                   <input
                     type="text"
-                    id="name"
+                    id="phone"
                     name="phone"
                     class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700  px-3 leading-8 transition-colors duration-200 ease-in-out "
                   />
