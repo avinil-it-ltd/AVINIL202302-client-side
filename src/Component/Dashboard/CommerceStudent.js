@@ -1,21 +1,26 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 
 const CommerceStudent = () => {
+    const [student, setStudent] = useState([]);
+    useEffect(() => {
+      const data = async () => {
+        let respose = await axios.get(
+          "http://localhost:5000/api/v1/get-user-by-group/Commerce"
+        );
+        console.log(respose);
+        if (respose.status == 200) {
+          console.log(respose.data.data);
+          setStudent(respose.data.data);
+          return respose;
+        } else {
+          console.log(respose);
+        }
+      };
+      data().then((respose) => console.log(respose));
+    }, []);
     return (
         <div>
-
-
-            {/* attendance modal */}
-            {/* <input type="checkbox" id="attendance-modal" class="modal-toggle" />
-            <div class="modal">
-                <div class="modal-box relative">
-                    <label for="attendance-modal" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-                    <h3 class="text-lg font-bold">Congratulations It is attendance modal</h3>
-                    <p class="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
-                </div>
-            </div> */}
-
-
             {/* update mid result modal */}
             <input type="checkbox" id="mid-result-modal" class="modal-toggle" />
             <div class="modal bg">
@@ -101,27 +106,50 @@ const CommerceStudent = () => {
 
 
                     <tbody>
-                        <tr>
-                            <td>
-                                <div class="avatar">
-                                    <div class="mask mask-squircle w-12 h-12">
-                                        <img alt='' src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" />
-                                    </div>
-                                </div>
-                            </td>
+                    {student?.map((i,index) => (
+              <tr>
+                <td>
+                  <div class="avatar">
+                    <div class="mask mask-squircle w-12 h-12">
+                      <img
+                        alt=""
+                        src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+                      />
+                    </div>
+                  </div>
+                </td>
 
-                            <td>Avishek Debnath  </td>
-                            <td>2034129</td>
-                            <td>Commerce</td>
-                            <td>2023</td>
-                            {/* <td><label for="attendance-modal" className='btn btn-sm text-xs bg-cyan-500 outline-none border-none ' >Update Attendance</label></td> */}
+                <td>{i?.userName} </td>
+                <td>{index+1}</td>
+                <td>{i?.group}</td>
+                <td>2023</td>
+                {/* <td><label for="attendance-modal" className='btn btn-sm text-xs bg-cyan-500 outline-none border-none ' >Update Attendance</label></td> */}
 
-                            <td><label for="mid-result-modal" className='btn btn-sm text-xs bg-lime-500 outline-none border-none '>Update Mid Result</label></td>
+                <td>
+                  <label
+                    for="mid-result-modal"
+                    className="btn btn-sm text-xs bg-lime-500 outline-none border-none "
+                  >
+                    Update Mid Result
+                  </label>
+                </td>
 
-                            <td><label for="final-result-modal" className='btn btn-sm text-xs bg-green-500 outline-none border-none '>Update Final Result</label></td>
+                <td>
+                  <label
+                    for="final-result-modal"
+                    className="btn btn-sm text-xs bg-green-500 outline-none border-none "
+                  >
+                    Update Final Result
+                  </label>
+                </td>
 
-                            <td><button className='btn btn-sm text-xs bg-rose-500 outline-none border-none '>Delete</button></td>
-                        </tr>
+                <td>
+                  <button className="btn btn-sm text-xs bg-rose-500 outline-none border-none ">
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
                     </tbody>
 
                 </table>

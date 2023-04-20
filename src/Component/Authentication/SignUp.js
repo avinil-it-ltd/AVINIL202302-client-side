@@ -32,13 +32,14 @@ const SignUp = () => {
         console.log(phone);
         const address = e.target.address.value;
         // const qualification = e.target.qualification.value;
+        
         const info = {
           email: email,
           userName: userName,
           userPass: userPass,
           userType: userType,
           roll: roll,
-          phone:phone,
+          mobile:phone,
           group: group,
           session:session,
           address: address,
