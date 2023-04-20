@@ -1,7 +1,7 @@
 import axios from "axios";
 import React from "react";
 
-const Modal = ({ userData }) => {
+const Modalone = ({ userData }) => {
   const { _id, group } = userData;
   console.log(_id, group);
   const handleMidResult = async(e) => {
@@ -9,7 +9,7 @@ const Modal = ({ userData }) => {
     const form = e.target;
     const data = {
         student:_id,
-      Midterm: [
+        FinalTerm: [
         {
           bangla: form.bangla.value,
           english: form.english.value,
@@ -35,11 +35,11 @@ const Modal = ({ userData }) => {
   };
   return (
     <div>
-      <input type="checkbox" id="my-modal-3" className="modal-toggle" />
+      <input type="checkbox" id="my-modal-4" className="modal-toggle" />
       <div className="modal">
         <div className="modal-box relative">
           <label
-            htmlFor="my-modal-3"
+            htmlFor="my-modal-4"
             className="btn btn-sm btn-circle absolute right-2 top-2"
           >
             ✕
@@ -116,4 +116,4 @@ const Modal = ({ userData }) => {
   );
 };
 
-export default Modal;
+export default Modalone;
