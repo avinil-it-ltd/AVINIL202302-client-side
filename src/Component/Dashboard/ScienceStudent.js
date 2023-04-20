@@ -145,7 +145,7 @@ const ScienceStudent = () => {
                 {/* <td><label for="attendance-modal" className='btn btn-sm text-xs bg-cyan-500 outline-none border-none ' >Update Attendance</label></td> */}
 
                 <td>
-                  <button onClick={handleMid(i)}>fsajhfadsf</button>
+                  <button onClick={handleMid}>Update</button>
                   {/* <label
                     for="mid-result-modal"
                     className="btn btn-sm text-xs bg-lime-500 outline-none border-none "

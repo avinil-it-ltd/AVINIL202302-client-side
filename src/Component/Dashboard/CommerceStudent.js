@@ -19,8 +19,11 @@ const CommerceStudent = () => {
     };
     data().then((respose) => console.log(respose));
   }, []);
-  const handleScience =data=>{
+  const handleScience = data => {
     console.log(data);
+  }
+  const handleCommerce = e =>{
+    console.log(e);
   }
   return (
     <div>
@@ -216,6 +219,8 @@ const CommerceStudent = () => {
 
                 <td>
                   <label
+                    onClick={()=>handleCommerce(i)}
+                    // value={i}
                     for="mid-result-modal"
                     className="btn btn-sm text-xs bg-lime-500 outline-none border-none "
                   >
@@ -226,6 +231,7 @@ const CommerceStudent = () => {
                 <td>
                   <label
                     onClick={() => handleScience(i)}
+                    value={i}
                     for="final-result-modal"
                     className="btn btn-sm text-xs bg-green-500 outline-none border-none "
                   >
