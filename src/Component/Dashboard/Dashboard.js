@@ -51,7 +51,7 @@ const Dashboard = () => {
                 <div class="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                   <img
                     alt=""
-                    src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+                    src={datas[0]?.imageUrl}
                   />
                 </div>
               </div>

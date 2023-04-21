@@ -9,6 +9,7 @@ import axios from "axios";
 import SweetAlert from "react-swal";
 
 const SignUp = () => {
+  const [imageurls,setUrl] = useState('')
   const { createUser } = useContext(AuthContext);
 
   const navigate = useNavigate();
@@ -22,7 +23,7 @@ const SignUp = () => {
 
     const userPass = e.target.password.value;
     const userType = e.target.type.value; //student or teacher
-    const imageUrl = e.image;
+   /// const imageUrl = e.image;
     const roll = e.target.roll.value;
     const group = e.target.subject.value;
     const session = e.target.session.value;
@@ -30,6 +31,8 @@ const SignUp = () => {
     console.log(phone);
     const address = e.target.address.value;
     // const qualification = e.target.qualification.value;
+    const imageHostKey = 'dc93277713c4fada975cf1d234c5d0a0'
+console.log(imageHostKey);
     const image = e.target.img.files[0];
     const formData = new FormData()
     formData.append('image', image)
@@ -43,31 +46,40 @@ const SignUp = () => {
             console.log(imageData)
             if (imageData.success) {
                 console.log(imageData.data.url)
-            
-            }})
-
-    const info = {
+                setUrl(imageData.data.url)
+                  const info = {
       email: email,
       userName: userName,
       userPass: userPass,
       userType: userType,
       roll: roll,
       mobile: phone,
+      imageUrl:imageData.data.url,
       group: group,
       session: session,
       address: address,
       // qualification: qualification,
     };
-    console.log(info);
-    // console.log(name,email,password)
     createUser(email, userPass)
-      .then((result) => {
-        const user = result.user;
-        databaseInsert(info);
-        navigate(from, { replace: true });
-      })
-      .catch((error) => console.error(error));
-  };
+    .then((result) => {
+      const user = result.user;
+      databaseInsert(info);
+      navigate(from, { replace: true });
+    })
+    .catch((error) => console.error(error));  
+            }})
+
+  
+    // console.log(info);
+    // // console.log(name,email,password)
+    // createUser(email, userPass)
+    //   .then((result) => {
+    //     const user = result.user;
+    //     databaseInsert(info);
+    //     navigate(from, { replace: true });
+    //   })
+    //   .catch((error) => console.error(error));
+  }
   const databaseInsert = async (info) => {
     let respose = await axios.post(
       "http://localhost:5000/api/v1/create-user",
