@@ -13,6 +13,7 @@ const ScienceStudent = () => {
 
     const data = async () => {
       let respose = await axios.get(
+
         "https://cms2023.onrender.com/api/v1/get-user-by-group/Science"
       );
       console.log(respose);
@@ -98,6 +99,7 @@ const ScienceStudent = () => {
                     htmlFor="my-modal-4"
                     className="btn btn-sm text-xs bg-lime-500 outline-none border-none "
                   >
+
                     Update Final Result
                   </label>
                 </td>

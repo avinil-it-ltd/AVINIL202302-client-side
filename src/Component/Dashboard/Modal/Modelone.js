@@ -24,17 +24,17 @@ const Modalone = ({ userData }) => {
         ],
       };
       console.log(data)
-   
-        let respose = await axios.post(
-          "https://cms2023.onrender.com/api/v1/create-mark",
-          data
-        );
-        if (respose.status === 200) {
-          console.log(respose);
-        } else {
-          console.log(respose);
-        }
-      
+
+      let respose = await axios.post(
+        "https://cms2023.onrender.com/api/v1/create-mark",
+        data
+      );
+      if (respose.status === 200) {
+        console.log(respose);
+      } else {
+        console.log(respose);
+      }
+
       // setTest(data);
     } else if (group == "Commerce") {
       const data = {
@@ -72,7 +72,7 @@ const Modalone = ({ userData }) => {
           },
         ],
       };
-console.log(data)
+      console.log(data)
       let respose = await axios.post(
         "https://cms2023.onrender.com/api/v1/create-mark",
         data
@@ -83,20 +83,9 @@ console.log(data)
         console.log(respose);
       }
     }
-    // if (test.FinalTerm[0]) {
-    //   console.log(test.FinalTerm[0]);
 
-    
-    //   let respose = await axios.post(
-    //     "https://cms2023.onrender.com/api/v1/create-mark",
-    //     test
-    //   );
-    //   if (respose.status === 200) {
-    //     console.log(respose);
-    //   } else {
-    //     console.log(respose);
-    //   }
-    // }
+
+
 
   };
   return (
@@ -170,7 +159,7 @@ console.log(data)
                 />
               </>
             ) : null}
-             {group == "Humanities" ? (
+            {group == "Humanities" ? (
               <>
                 <input
                   type="number"
