@@ -2,75 +2,92 @@ import axios from "axios";
 import React, { useState } from "react";
 
 const Modal = ({ userData }) => {
-  const [test,setTest] = useState({})
+  const [test, setTest] = useState({})
   const { _id, group } = userData;
   console.log(_id, group);
-  const handleMidResult = async(e) => {
+  const handleMidResult = async (e) => {
     e.preventDefault();
     const form = e.target;
-    if(group=="Science")
-    {
-      const data = {
-        student:_id,
-      Midterm: [
-        {
-          bangla: form.bangla.value,
-          english: form.english.value,
-          math: form.math.value,
-          physics: form.physics.value,
-          chemistry: form.chemistry.value,
-          biology: form.biology.value
-        },
-      ],
-    }
-    setTest(data)
-    }
-    else if(group=="Commerce")
-    {
-      const data = {
-        student:_id,
-      Midterm: [
-        {
-          bangla: form.bangla.value,
-          english: form.english.value,
-          math: form.math.value,
-          business: form.business.value,
-          finance: form.finance.value,
-        },
-      ]
-    }
-    setTest(data)
-    }
     
-    else if(group=="Humanities")
-    {
+    if (group == "Science") {
       const data = {
-        student:_id,
-      Midterm: [
-        {
-          bangla: form.bangla.value,
-          english: form.english.value,
-          math: form.math.value,
-          phychology:form.phychology.value,
-          sociology:form.sociology.value
-        },
-      ],
-    }
-    setTest(data)
-
-    }
-
-   
-    let respose = await axios.post(
+        student: _id,
+        Midterm: [
+          {
+            bangla: form.bangla.value,
+            english: form.english.value,
+            math: form.math.value,
+            physics: form.physics.value,
+            chemistry: form.chemistry.value,
+            biology: form.biology.value
+          },
+        ],
+      }
+      let respose = await axios.post(
         'https://cms2023.onrender.com/api/v1/create-mark',
-        test
+        data
       )
       if (respose.status === 200) {
         console.log(respose);
-  
+
       } else {
         console.log(respose);
       }
+    }
+    else if (group == "Commerce") {
+      const data = {
+        student: _id,
+        Midterm: [
+          {
+            bangla: form.bangla.value,
+            english: form.english.value,
+            math: form.math.value,
+            business: form.business.value,
+            finance: form.finance.value,
+          },
+        ]
+      }
+      let respose = await axios.post(
+        'https://cms2023.onrender.com/api/v1/create-mark',
+        data
+      )
+      if (respose.status === 200) {
+        console.log(respose);
+
+      } else {
+        console.log(respose);
+      }
+
+    }
+
+    else if (group == "Humanities") {
+      const data = {
+        student: _id,
+        Midterm: [
+          {
+            bangla: form.bangla.value,
+            english: form.english.value,
+            math: form.math.value,
+            phychology: form.phychology.value,
+            sociology: form.sociology.value
+          },
+        ],
+      }
+      let respose = await axios.post(
+        'https://cms2023.onrender.com/api/v1/create-mark',
+        data
+      )
+      if (respose.status === 200) {
+        console.log(respose);
+
+      } else {
+        console.log(respose);
+      }
+
+    }
+
+
+
   };
   return (
     <div>
@@ -142,7 +159,7 @@ const Modal = ({ userData }) => {
                 />
               </>
             ) : null}
-             {group == "Humanities" ? (
+            {group == "Humanities" ? (
               <>
                 <input
                   type="number"
@@ -158,7 +175,7 @@ const Modal = ({ userData }) => {
                 />
               </>
             ) : null}
-            
+
             <button
               className="input input-bordered w-full max-w-sm"
               type="submit"
@@ -170,5 +187,5 @@ const Modal = ({ userData }) => {
       </div>
     </div>
   );
-  };
+};
 export default Modal;

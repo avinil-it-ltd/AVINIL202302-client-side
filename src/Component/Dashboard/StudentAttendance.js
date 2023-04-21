@@ -27,7 +27,7 @@ const StudentAttendance = () => {
       };
       data().then((respose) => console.log(respose));
     }
-  }, []);
+  }, [items?._id]);
 //   console.log(s[0]?.userName);
   return (
     <div>

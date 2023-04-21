@@ -2,10 +2,15 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Modal from "./Modal/Modal";
 import Modalone from "./Modal/Modelone";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { useContext } from "react";
 
 const CommerceStudent = () => {
   const [student, setStudent] = useState([]);
+  const {user } = useContext(AuthContext);  
   const [userData, setUserData] = useState({});
+  const [finalData, setfinalData] = useState({});
+
   useEffect(() => {
     const data = async () => {
       let respose = await axios.get(
@@ -22,16 +27,20 @@ const CommerceStudent = () => {
     };
     data().then((respose) => console.log(respose));
   }, []);
-  const handleMidScience = (data) => {
+  const handleMidCommerce = (data) => {
     console.log(userData);
     setUserData(data);
   };
-
+  const handleFinalCommerce = (data) => {
+    console.log(userData);
+    setfinalData(data);
+  };
+  
   return (
     <div>
       {/* update mid result modal */}
       <Modal userData={userData} />
-      <Modalone userData={userData} />
+      <Modalone userData={finalData} />
 
       <div class="overflow-x-auto w-full">
         <p className="text-white text-3xl text-center py-2">
@@ -75,7 +84,7 @@ const CommerceStudent = () => {
 
                 <td>
                   <label
-                    onClick={() => handleMidScience(i)}
+                    onClick={() => handleMidCommerce(i)}
                     htmlFor="my-modal-3"
                     className="btn btn-sm text-xs bg-lime-500 outline-none border-none "
                   >
@@ -86,7 +95,7 @@ const CommerceStudent = () => {
                 <td>
           
                 <label
-                    onClick={() => handleMidScience(i)}
+                    onClick={() => handleFinalCommerce(i)}
                     htmlFor="my-modal-4"
                     className="btn btn-sm text-xs bg-lime-500 outline-none border-none "
                   >

@@ -24,8 +24,7 @@ const Modalone = ({ userData }) => {
         ],
       };
       console.log(data)
-      if(data.bangla>"1")
-      {
+   
         let respose = await axios.post(
           "https://cms2023.onrender.com/api/v1/create-mark",
           data
@@ -35,8 +34,8 @@ const Modalone = ({ userData }) => {
         } else {
           console.log(respose);
         }
-      }
-      setTest(data);
+      
+      // setTest(data);
     } else if (group == "Commerce") {
       const data = {
         student: _id,
@@ -49,20 +48,17 @@ const Modalone = ({ userData }) => {
             finance: form.finance.value,
           },
         ],
+
       };
-      if(data)
-      {
-        let respose = await axios.post(
-          "https://cms2023.onrender.com/api/v1/create-mark",
-          test
-        );
-        if (respose.status === 200) {
-          console.log(respose);
-        } else {
-          console.log(respose);
-        }
+      let respose = await axios.post(
+        "https://cms2023.onrender.com/api/v1/create-mark",
+        data
+      );
+      if (respose.status === 200) {
+        console.log(respose);
+      } else {
+        console.log(respose);
       }
-      setTest(data);
     } else if (group == "Humanities") {
       const data = {
         student: _id,
@@ -76,19 +72,16 @@ const Modalone = ({ userData }) => {
           },
         ],
       };
-      if(data.bangla)
-      {
-        let respose = await axios.post(
-          "https://cms2023.onrender.com/api/v1/create-mark",
-          test
-        );
-        if (respose.status === 200) {
-          console.log(respose);
-        } else {
-          console.log(respose);
-        }
+console.log(data)
+      let respose = await axios.post(
+        "https://cms2023.onrender.com/api/v1/create-mark",
+        data
+      );
+      if (respose.status === 200) {
+        console.log(respose);
+      } else {
+        console.log(respose);
       }
-      setTest(data);
     }
     // if (test.FinalTerm[0]) {
     //   console.log(test.FinalTerm[0]);
@@ -173,6 +166,22 @@ const Modalone = ({ userData }) => {
                   type="number"
                   name="business"
                   placeholder="business number"
+                  className="input input-bordered w-full max-w-xs"
+                />
+              </>
+            ) : null}
+             {group == "Humanities" ? (
+              <>
+                <input
+                  type="number"
+                  name="phychology"
+                  placeholder="phychology number"
+                  className="input input-bordered w-full max-w-xs"
+                />
+                <input
+                  type="number"
+                  name="sociology"
+                  placeholder="sociology number"
                   className="input input-bordered w-full max-w-xs"
                 />
               </>

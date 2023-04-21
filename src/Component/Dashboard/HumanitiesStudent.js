@@ -6,6 +6,7 @@ import Modalone from "./Modal/Modelone";
 const HumanitiesStudent = () => {
   const [student, setStudent] = useState([]);
   const [userData, setUserData] = useState({});
+  const [finalData, setfinalData] = useState({});
   useEffect(() => {
     const data = async () => {
       let respose = await axios.get(
@@ -22,20 +23,57 @@ const HumanitiesStudent = () => {
     };
     data().then((respose) => console.log(respose));
   }, []);
-  const handleMidScience = (data) => {
+  const handleMidHumanities = (data) => {
     console.log(userData);
     setUserData(data);
   };
+  const handleFinalHumanities = (data) => {
+    console.log(userData);
+    setfinalData(data);
+  };
+
+  // const [student, setStudent] = useState([]);
+  // const [userData, setUserData] = useState({});
+  // const [finalData, setfinalData] = useState({});
+  // // const [userData, setUserData] = useState({});
+  
+  // useEffect(() => {
+
+  //   const data = async () => {
+  //     let respose = await axios.get(
+  //       "https://cms2023.onrender.com/api/v1/get-user-by-group/Science"
+  //     );
+  //     console.log(respose);
+  //     if (respose.status == 200) {
+  //       console.log(respose.data.data);
+  //       setStudent(respose.data.data);
+  //       return respose;
+  //     } else {
+  //       console.log(respose);
+  //     }
+  //   };
+  //   data().then((respose) => console.log(respose));
+  // }, []);
+  // const handleMidHumanities = (data) => {
+  //   console.log(userData);
+  //   setUserData(data);
+  // };
+  // const handleFinalScience = (data) => {
+  //   console.log(finalData);
+  //   setfinalData(data);
+  // };
+
+
 
   return (
     <div>
       {/* update mid result modal */}
       <Modal userData={userData} />
-      <Modalone userData={userData} />
+      <Modalone userData={finalData} />
 
       <div class="overflow-x-auto w-full">
         <p className="text-white text-3xl text-center py-2">
-          All Commerce Student Here
+          All Humanities Student Here
         </p>
         <table class="table w-full bg-slate-800 ">
           {/* <!-- head --> */}
@@ -75,7 +113,7 @@ const HumanitiesStudent = () => {
 
                 <td>
                   <label
-                    onClick={() => handleMidScience(i)}
+                    onClick={() => handleMidHumanities(i)}
                     htmlFor="my-modal-3"
                     className="btn btn-sm text-xs bg-lime-500 outline-none border-none "
                   >
@@ -86,7 +124,7 @@ const HumanitiesStudent = () => {
                 <td>
           
                 <label
-                    onClick={() => handleMidScience(i)}
+                    onClick={() => handleFinalHumanities(i)}
                     htmlFor="my-modal-4"
                     className="btn btn-sm text-xs bg-lime-500 outline-none border-none "
                   >

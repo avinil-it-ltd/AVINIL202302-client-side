@@ -8,7 +8,9 @@ const ScienceStudent = () => {
   const [userData, setUserData] = useState({});
   const [finalData, setfinalData] = useState({});
   // const [userData, setUserData] = useState({});
+  
   useEffect(() => {
+
     const data = async () => {
       let respose = await axios.get(
         "https://cms2023.onrender.com/api/v1/get-user-by-group/Science"
@@ -41,7 +43,7 @@ const ScienceStudent = () => {
 
       <div class="overflow-x-auto w-full">
         <p className="text-white text-3xl text-center py-2">
-          All Commerce Student Here
+          All Science Student Here
         </p>
         <table class="table w-full bg-slate-800 ">
           {/* <!-- head --> */}
