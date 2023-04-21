@@ -23,7 +23,7 @@ const Modalone = ({ userData }) => {
       ],
     };
     let respose = await axios.post(
-        'https://cms2023.onrender.com//api/v1/create-mark',
+        'https://cms2023.onrender.com/api/v1/create-mark',
         data
       );
       if (respose.status === 200) {

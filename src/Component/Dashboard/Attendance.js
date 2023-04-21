@@ -24,7 +24,7 @@ const Attendance = () => {
   useEffect(() => {
     const data = async () => {
       let respose = await axios.get(
-        `https://cms2023.onrender.com//api/v1/get-single-user/${user?.email}`
+        `https://cms2023.onrender.com/api/v1/get-single-user/${user?.email}`
       );
       console.log(respose);
       if (respose.status == 200) {
@@ -39,7 +39,7 @@ const Attendance = () => {
 
     const Commerce = async () => {
       let respose = await axios.get(
-        "https://cms2023.onrender.com//api/v1/get-user-by-group/Commerce"
+        "https://cms2023.onrender.com/api/v1/get-user-by-group/Commerce"
       );
       console.log(respose);
       if (respose.status == 200) {
@@ -53,7 +53,7 @@ const Attendance = () => {
     Commerce().then((respose) => console.log(respose));
     const Science = async () => {
       let respose = await axios.get(
-        "https://cms2023.onrender.com//api/v1/get-user-by-group/Science"
+        "https://cms2023.onrender.com/api/v1/get-user-by-group/Science"
       );
       console.log(respose);
       if (respose.status == 200) {
@@ -68,7 +68,7 @@ const Attendance = () => {
 
     const Humanities = async () => {
       let respose = await axios.get(
-        "https://cms2023.onrender.com//api/v1/get-user-by-group/Humanities"
+        "https://cms2023.onrender.com/api/v1/get-user-by-group/Humanities"
       );
       console.log(respose);
       if (respose.status == 200) {
@@ -97,7 +97,7 @@ const Attendance = () => {
  }
  const databaseInsert = async (info) => {
     let respose = await axios.post(
-      "https://cms2023.onrender.com//api/v1/create-attendance",
+      "https://cms2023.onrender.com/api/v1/create-attendance",
       info
     );
     if (respose.status === 200) {
@@ -115,7 +115,7 @@ const Attendance = () => {
         isPresent: false
     }
     let respose = await axios.post(
-        'https://cms2023.onrender.com//api/v1/create-attendance',
+        'https://cms2023.onrender.com/api/v1/create-attendance',
        info
       );
       if (respose.status === 200) {

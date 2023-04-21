@@ -8,7 +8,7 @@ const HumanitiesStudent = () => {
     useEffect(() => {
       const data = async () => {
         let respose = await axios.get(
-          "https://cms2023.onrender.com//api/v1/get-user-by-group/Humanities"
+          "https://cms2023.onrender.com/api/v1/get-user-by-group/Humanities"
         );
         console.log(respose);
         if (respose.status == 200) {

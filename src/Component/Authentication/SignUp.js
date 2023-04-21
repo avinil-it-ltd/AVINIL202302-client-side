@@ -82,7 +82,7 @@ console.log(imageHostKey);
   }
   const databaseInsert = async (info) => {
     let respose = await axios.post(
-      "https://cms2023.onrender.com//api/v1/create-user",
+      "https://cms2023.onrender.com/api/v1/create-user",
       info
     );
  

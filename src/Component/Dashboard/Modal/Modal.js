@@ -62,7 +62,7 @@ const Modal = ({ userData }) => {
 
    
     let respose = await axios.post(
-        'https://cms2023.onrender.com//api/v1/create-mark',
+        'https://cms2023.onrender.com/api/v1/create-mark',
         test
       )
       if (respose.status === 200) {

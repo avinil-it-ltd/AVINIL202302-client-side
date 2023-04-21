@@ -13,7 +13,7 @@ const StudentAttendance = () => {
       console.log("dsfd", item[0]._id);
       const data = async () => {
         let respose = await axios.get(
-          `https://cms2023.onrender.com//api/v1/get-attendance-id/${item[0]._id}`
+          `https://cms2023.onrender.com/api/v1/get-attendance-id/${item[0]._id}`
         );
 
         if (respose.status == 200) {
