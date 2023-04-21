@@ -76,7 +76,7 @@ const StudentResult = () => {
                 <p class="leading-relaxed text-cyan-500 text-base">
                Total GPA  : 
                {
-number/5
+                 number/5
                }
                 </p>
                 <a class="mt-3 text-cyan-500 inline-flex items-center">

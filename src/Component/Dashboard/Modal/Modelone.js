@@ -33,7 +33,7 @@ console.log(data);
       } else {
         console.log(respose);
       }
-    
+      form.reset()
       setTest(data);
     } else if (group == "Commerce") {
       const data = {
@@ -57,6 +57,7 @@ console.log(data);
       } else {
         console.log(respose);
       }
+      form.reset()
    
       setTest(data);
     } else if (group == "Humanities") {
@@ -82,8 +83,11 @@ console.log(data);
         console.log(respose);
       }
       setTest(data);
+      form.reset()
     }
    
+
+    
 
   };
   return (

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Modal from "./Modal/Modal";
 import Modalone from "./Modal/Modelone";
 
-const CommerceStudent = () => {
+const ScienceStudent = () => {
   const [student, setStudent] = useState([]);
   const [userData, setUserData] = useState({});
   const [finalData, setfinalData] = useState({});
@@ -116,4 +116,4 @@ const CommerceStudent = () => {
   );
 };
 
-export default CommerceStudent;
+export default ScienceStudent;
