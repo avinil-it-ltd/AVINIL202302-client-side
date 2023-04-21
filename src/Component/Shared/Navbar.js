@@ -13,6 +13,8 @@ const Navbar = () => {
     }
 
     console.log("bbv", user)
+    const item = JSON.parse(localStorage.getItem("users"))[0];
+    console.log(item);
     return (
         <header class="text-gray-600 body-font bg-slate-900">
             <div class="container mx-auto ">
@@ -57,7 +59,7 @@ const Navbar = () => {
                                 <li ><Link to="/contact">Contact</Link></li>
 
                                 {
-                                    user && user.uid ? <>
+                                    user && user?.uid ? <>
                                         <li><Link to='/dashboard'> DashBoard </Link></li>
 
 
@@ -66,7 +68,7 @@ const Navbar = () => {
                                     </> :
                                         <>
                                             <li><Link to='/signIn'>Login</Link></li>
-                                            <li><Link to='/signUp'>Register</Link></li>
+                                            {/* <li><Link to='/signUp'>Register</Link></li> */}
                                         </>
 
 
@@ -93,8 +95,8 @@ const Navbar = () => {
                                 {/* <li><Link to="/about">About Us</Link></li> */}
 
                                 {/* <li tabindex="0"> */}
-                                    {/* <Link to="/dashboard">Dashboard</Link> */}
-                                    {/* <ul class=" bg-slate-900">
+                                {/* <Link to="/dashboard">Dashboard</Link> */}
+                                {/* <ul class=" bg-slate-900">
                                         <li className='py-0 my-0  text-sm'><Link className='py-0 my-0 ' to="">Android Development</Link></li>
                                         <li className='py-0 my-0  text-sm'><Link className='py-0 my-0 ' to="">Web Design</Link></li>
                                         <li className='py-0 my-0  text-sm'><Link className='py-0 my-0 ' to="">Web Development</Link></li>
@@ -104,7 +106,7 @@ const Navbar = () => {
 
                                 <li ><Link to="/contact">Contact</Link></li>
                                 {
-                                    user && user.uid ? <>
+                                    user && user?.uid ? <>
                                         <li><Link to='/dashboard'> Dashboard </Link></li>
 
 
@@ -113,8 +115,23 @@ const Navbar = () => {
                                     </> :
                                         <>
                                             <li><Link to='/signIn'>Login</Link></li>
-                                            <li><Link to='/signUp'>Register</Link></li>
+                                            {/* <li><Link to='/signUp'>Register</Link></li> */}
                                         </>
+
+
+                                }
+
+                                {
+                                    item?.userType == "admin" && user?.uid ? <>
+                                        <li><Link to='/dashboard'> DashBoard </Link></li>
+
+
+                                        <button onClick={logOut}>LogOut</button>
+
+
+                                        <li><Link to='/signIn'>Login</Link></li>
+                                        {/* <li><Link to='/signUp'>Register</Link></li> */}
+                                    </> : null
 
 
                                 }

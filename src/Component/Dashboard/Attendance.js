@@ -85,21 +85,21 @@ const Attendance = () => {
     };
     Humanities().then((respose) => console.log(respose));
   }, [user?.email]);
-  console.log('sdfd',datas, scienceStudent, commerceStudent, humanitiesStudent);
+  console.log('sdfd', datas, scienceStudent, commerceStudent, humanitiesStudent);
   // useEffect(() => {
 
   // }, []);
- const handlePresent=(id) =>{
-    const info ={
-        student: id,
-        date: selected,
-        isPresent: true
+  const handlePresent = (id) => {
+    const info = {
+      student: id,
+      date: selected,
+      isPresent: true
     }
     databaseInsert(info)
     setDisabled(id);
 
- }
- const databaseInsert = async (info) => {
+  }
+  const databaseInsert = async (info) => {
     let respose = await axios.post(
 
       "https://cms2023.onrender.com/api/v1/create-attendance",
@@ -113,24 +113,24 @@ const Attendance = () => {
     }
 
   }
-  const handleAbsent =async (id)=>{
-    const info ={
-        student: id,
-        date: selected,
-        isPresent: false
+  const handleAbsent = async (id) => {
+    const info = {
+      student: id,
+      date: selected,
+      isPresent: false
     }
     let respose = await axios.post(
 
-        'https://cms2023.onrender.com/api/v1/create-attendance',
-       info
-      );
-      if (respose.status === 200) {
-        console.log(respose);
-  
-      } else {
-        console.log(respose);
-      }
-      setDisableds(id);
+      'https://cms2023.onrender.com/api/v1/create-attendance',
+      info
+    );
+    if (respose.status === 200) {
+      console.log(respose);
+
+    } else {
+      console.log(respose);
+    }
+    setDisableds(id);
 
 
 
@@ -165,101 +165,210 @@ const Attendance = () => {
             </thead>
 
             <tbody>
-                {
-                    datas==="Science"?scienceStudent.map(i=><tr>
-                        <td>
-                          <div class="avatar">
-                            <div class="mask mask-squircle w-12 h-12">
-                              <img
-                                alt=""
-                                src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
-                              />
-                            </div>
-                          </div>
-                        </td>
-                        <td>02/01/2023</td>
-                        <td>{i.userName} </td>
-                        <td>2034129</td>
-                        <td>Science</td>
-        
-                        <td>
-                          <button                  disabled={disabled==i._id}    onClick={()=>handlePresent(i?._id)} className="btn btn-sm text-xs bg-lime-500 outline-none border-none ">
-                            Present
-                          </button>
-                        </td>
-        
-                        <td>
-                          <button disabled={disableds==i._id}  onClick={()=>handleAbsent(i?._id)} className="btn btn-sm text-xs bg-green-500 outline-none border-none ">
-                            Absent
-                          </button>
-                        </td>
-                      </tr>)
-                      : null
-                }
-                 {
-                    datas==="Commerce"?commerceStudent.map(i=><tr>
-                        <td>
-                          <div class="avatar">
-                            <div class="mask mask-squircle w-12 h-12">
-                              <img
-                                alt=""
-                                src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
-                              />
-                            </div>
-                          </div>
-                        </td>
-                        <td>02/01/2023</td>
-                        <td>{i.userName} </td>
-                        <td>2034129</td>
-                        <td>Commerce</td>
-        
-                        <td>
-                        <button disabled={disabled==i._id} 
-                         onClick={()=>handlePresent(i?._id)} className="btn btn-sm text-xs bg-lime-500 outline-none border-none ">
-                            Present
-                          </button>
-                        </td>
-        
-                        <td>
-                          <button disabled={disableds==i._id}  onClick={()=>handleAbsent(i?._id)} className="btn btn-sm text-xs bg-green-500 outline-none border-none ">
-                            Absent
-                          </button>
-                        </td>
-                      </tr>)
-                      : null
-                }
-                {
-                    datas==="Humanities"?humanitiesStudent.map(i=><tr>
-                        <td>
-                          <div class="avatar">
-                            <div class="mask mask-squircle w-12 h-12">
-                              <img
-                                alt=""
-                                src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
-                              />
-                            </div>
-                          </div>
-                        </td>
-                        <td>02/01/2023</td>
-                        <td>{i.userName} </td>
-                        <td>2034129</td>
-                        <td>Humanities</td>
-        
-                        <td>
-                        <button disabled={disabled==i._id}  onClick={()=>handlePresent(i?._id)} className="btn btn-sm text-xs bg-lime-500 outline-none border-none ">
-                            Present
-                          </button>
-                        </td>
-        
-                        <td>
-                          <button disabled={disableds==i._id}  onClick={()=>handleAbsent(i?._id)} className="btn btn-sm text-xs bg-green-500 outline-none border-none ">
-                            Absent
-                          </button>
-                        </td>
-                      </tr>)
-                      : null
-                }
-             
+              {
+                datas === "Science" ? scienceStudent.map(i => <tr>
+                  <td>
+                    <div class="avatar">
+                      <div class="mask mask-squircle w-12 h-12">
+                        <img
+                          alt=""
+                          src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+                        />
+                      </div>
+                    </div>
+                  </td>
+                  <td>02/01/2023</td>
+                  <td>{i.userName} </td>
+                  <td>2034129</td>
+                  <td>Science</td>
+
+                  <td>
+                    <button disabled={disabled == i._id} onClick={() => handlePresent(i?._id)} className="btn btn-sm text-xs bg-lime-500 outline-none border-none ">
+                      Present
+                    </button>
+                  </td>
+
+                  <td>
+                    <button disabled={disableds == i._id} onClick={() => handleAbsent(i?._id)} className="btn btn-sm text-xs bg-green-500 outline-none border-none ">
+                      Absent
+                    </button>
+                  </td>
+                </tr>)
+                  : null
+              }
+              {
+                datas === "Commerce" ? commerceStudent.map(i => <tr>
+                  <td>
+                    <div class="avatar">
+                      <div class="mask mask-squircle w-12 h-12">
+                        <img
+                          alt=""
+                          src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+                        />
+                      </div>
+                    </div>
+                  </td>
+                  <td>02/01/2023</td>
+                  <td>{i.userName} </td>
+                  <td>2034129</td>
+                  <td>Commerce</td>
+
+                  <td>
+                    <button disabled={disabled == i._id}
+                      onClick={() => handlePresent(i?._id)} className="btn btn-sm text-xs bg-lime-500 outline-none border-none ">
+                      Present
+                    </button>
+                  </td>
+
+                  <td>
+                    <button disabled={disableds == i._id} onClick={() => handleAbsent(i?._id)} className="btn btn-sm text-xs bg-green-500 outline-none border-none ">
+                      Absent
+                    </button>
+                  </td>
+                </tr>)
+                  : null
+              }
+              {
+                datas === "Humanities" ? humanitiesStudent.map(i => <tr>
+                  <td>
+                    <div class="avatar">
+                      <div class="mask mask-squircle w-12 h-12">
+                        <img
+                          alt=""
+                          src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+                        />
+                      </div>
+                    </div>
+                  </td>
+                  <td>02/01/2023</td>
+                  <td>{i.userName} </td>
+                  <td>2034129</td>
+                  <td>Humanities</td>
+
+                  <td>
+                    <button disabled={disabled == i._id} onClick={() => handlePresent(i?._id)} className="btn btn-sm text-xs bg-lime-500 outline-none border-none ">
+                      Present
+                    </button>
+                  </td>
+
+                  <td>
+                    <button disabled={disableds == i._id} onClick={() => handleAbsent(i?._id)} className="btn btn-sm text-xs bg-green-500 outline-none border-none ">
+                      Absent
+                    </button>
+                  </td>
+                </tr>)
+                  : null
+              }
+              {datas == "admin" ?
+                scienceStudent.map(i => <tr>
+                  <td>
+                    <div class="avatar">
+                      <div class="mask mask-squircle w-12 h-12">
+                        <img
+                          alt=""
+                          src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+                        />
+                      </div>
+                    </div>
+                  </td>
+                  <td>02/01/2023</td>
+                  <td>{i.userName} </td>
+                  <td>2034129</td>
+                  <td>Science</td>
+
+                  <td>
+                    <button disabled={disabled == i._id} onClick={() => handlePresent(i?._id)} className="btn btn-sm text-xs bg-lime-500 outline-none border-none ">
+                      Present
+                    </button>
+                  </td>
+
+                  <td>
+                    <button disabled={disableds == i._id} onClick={() => handleAbsent(i?._id)} className="btn btn-sm text-xs bg-green-500 outline-none border-none ">
+                      Absent
+                    </button>
+                  </td>
+                </tr>)
+
+
+
+                : null
+
+              }
+
+              {datas == "admin" ?
+                commerceStudent.map(i => <tr>
+                  <td>
+                    <div class="avatar">
+                      <div class="mask mask-squircle w-12 h-12">
+                        <img
+                          alt=""
+                          src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+                        />
+                      </div>
+                    </div>
+                  </td>
+                  <td>02/01/2023</td>
+                  <td>{i.userName} </td>
+                  <td>2034129</td>
+                  <td>Commerce</td>
+
+                  <td>
+                    <button disabled={disabled == i._id}
+                      onClick={() => handlePresent(i?._id)} className="btn btn-sm text-xs bg-lime-500 outline-none border-none ">
+                      Present
+                    </button>
+                  </td>
+
+                  <td>
+                    <button disabled={disableds == i._id} onClick={() => handleAbsent(i?._id)} className="btn btn-sm text-xs bg-green-500 outline-none border-none ">
+                      Absent
+                    </button>
+                  </td>
+                </tr>)
+
+
+
+                : null
+
+              }
+
+              {datas == "admin" ?
+                commerceStudent.map(i => <tr>
+                  <td>
+                    <div class="avatar">
+                      <div class="mask mask-squircle w-12 h-12">
+                        <img
+                          alt=""
+                          src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+                        />
+                      </div>
+                    </div>
+                  </td>
+                  <td>02/01/2023</td>
+                  <td>{i.userName} </td>
+                  <td>2034129</td>
+                  <td>Commerce</td>
+
+                  <td>
+                    <button disabled={disabled == i._id}
+                      onClick={() => handlePresent(i?._id)} className="btn btn-sm text-xs bg-lime-500 outline-none border-none ">
+                      Present
+                    </button>
+                  </td>
+
+                  <td>
+                    <button disabled={disableds == i._id} onClick={() => handleAbsent(i?._id)} className="btn btn-sm text-xs bg-green-500 outline-none border-none ">
+                      Absent
+                    </button>
+                  </td>
+                </tr>)
+
+
+
+                : null
+
+              }
+
             </tbody>
           </table>
         </div>

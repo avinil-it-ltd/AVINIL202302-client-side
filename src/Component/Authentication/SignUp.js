@@ -24,9 +24,9 @@ const SignUp = () => {
     const userPass = e.target.password.value;
     const userType = e.target.type.value; //student or teacher
    /// const imageUrl = e.image;
-    const roll = e.target.roll.value;
+    // const roll = e.target.roll.value;
     const group = e.target.subject.value;
-    const session = e.target.session.value;
+    // const session = e.target.session.value;
     const phone = e.target.phone.value;
     console.log(phone);
     const address = e.target.address.value;
@@ -52,11 +52,11 @@ console.log(imageHostKey);
       userName: userName,
       userPass: userPass,
       userType: userType,
-      roll: roll,
+      // roll: roll,
       mobile: phone,
       imageUrl:imageData.data.url,
       group: group,
-      session: session,
+      // session: session,
       address: address,
       // qualification: qualification,
     };
@@ -238,172 +238,7 @@ console.log(imageHostKey);
 
                 </div>
               </div>
-              <fieldset className="px-2 my-4">
-                <span className="mr-10 md:mr-0 md:pr-10 lg:pr-10">
-                  Select the position
-                </span>
-
-                <input
-                  value="teacher"
-                  id="teacher"
-                  class="mr-2 peer/teacher cursor-pointer"
-                  type="radio"
-                  name="status"
-                  // onChange={handleType}
-                />
-
-                <label
-                  for="teacher"
-                  class="mr-2 md:mr-5 lg:mr-16 cursor-pointer peer-checked/teacher:text-sky-500"
-                >
-                  teacher
-                </label>
-
-                <input
-                  // {...register({"student":true})}
-
-                  id="student"
-                  value="student"
-                  // onChange={handleType}
-                  class="mr-2 peer/student cursor-pointer"
-                  type="radio"
-                  name="status"
-                />
-                <label
-                  for="student"
-                  class="cursor-pointer peer-checked/student:text-sky-500"
-                >
-                  student
-                </label>
-
-                {/* teacher block */}
-                <div class="hidden peer-checked/teacher:block w-full">
-                  <div className="flex w-full flex-col md:flex-row lg:flex-row flex-wrap">
-                    {/* Group field start here */}
-                    {/* <div class="py-2 pr-2 w-full md:w-1/2  lg:w-72 ">
-                    <div class="relative">
-                      <label for="" class="leading-7 text-sm ">
-                        Expertise Group
-                      </label>
-                
-                      <select {...register("group_t")} class="select w-full select-sm bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none  text-gray-700  px-3  py-1 transition-colors duration-200 ease-in-out">
-                        <option disabled selected>
-                          Pick your Group
-                        </option>
-                        <option className=" ">Commerce</option>
-                        <option className="">Science</option>
-                        <option className=" ">Humanities</option>
-                      </select>
-                    </div>
-                  </div>
-                  {/* name field start here */}
-                    <div class="py-2 pr-2 w-full md:w-1/2  lg:w-72 ">
-                      <div class="relative">
-                        <label for="address" class="leading-7 text-sm ">
-                          Qualification
-                        </label>
-                        <input
-                          // {...register("qualification")}
-
-                          type="text"
-                          id="qualification"
-                          name="qualification"
-                          class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700  px-3 leading-8 transition-colors duration-200 ease-in-out "
-                        />
-                      </div>
-                    </div>
-
-                    {/* <div class=" w-full ">
-                    <div class="relative">
-                      <label for="image" class="leading-7 text-sm ">
-                        Upload Your Image
-                      </label>
-                      <input
-                        {...register("image_t")}
-                        type="file"
-                        class="file-input file-input-bordered file-input-sm w-full max-w-xs bg-gray-100 bg-opacity-50 rounded border border-gray-300"
-                      />
-                    </div>
-                  </div> */}
-                  </div>
-                </div>
-
-                {/* student block */}
-                <div class="hidden peer-checked/student:block ">
-                  <div className="flex w-full flex-col md:flex-row lg:flex-row flex-wrap ">
-                    {/* Roll field start here */}
-                    <div class="p-2 w-full md:w-1/2  lg:w-72">
-                      <div class="relative">
-                        <label for="roll" class="leading-7 text-sm ">
-                          Roll
-                        </label>
-                        <input
-                          type="number"
-                          id="roll"
-                          name="roll"
-                          class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700  px-3 leading-8 transition-colors duration-200 ease-in-out"
-                        />
-                      </div>
-                    </div>
-
-                    <div class="p-2 w-full md:w-1/2  lg:w-72">
-                      <div class="relative">
-                        <label for="email" class="leading-7 text-sm ">
-                          Session
-                        </label>
-
-                        {/* target 1 */}
-                        <select
-                          name="session"
-                          class="select w-full select-sm bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none  text-gray-700  px-3  py-1 transition-colors duration-200 ease-in-out"
-                        >
-                          <option value="none" disabled selected>
-                            Pick your session year
-                          </option>
-                          <option value="2023">2023</option>
-                          <option value="2024">2024</option>
-                          <option value="2025">2025</option>
-                          <option value="2026">2026</option>
-                          <option value="2027">2027</option>
-                          <option value="2028">2028</option>
-                          <option value="2029">2029</option>
-                          <option value="2030">2030</option>
-                          {/* {
-                        options.map((option,key) =>{ 
-                          return <option key={key}>{option}</option>
-                        })
-                        } */}
-                        </select>
-                        {/* <Select options={options}  autoFocus={true}  onChange={handle_Session_Change} class="text-black bg-white" ></Select> */}
-                      </div>
-                    </div>
-
-                    {/* <div class="p-2 w-full ">
-                    <div class="relative">
-                      <label for="email" class="leading-7 text-sm ">
-                        Upload Your Image
-                      </label>
-                      <input
-                        {...register("image")}
-                        type="file"
-                        class="file-input file-input-bordered file-input-sm w-full max-w-xs bg-gray-100 bg-opacity-50 rounded border border-gray-300"
-                      />
-                    </div>
-                  </div> */}
-                  </div>
-                </div>
-              </fieldset>
-              {/* <div class="p-2 w-full ">
-                <div class="relative">
-                  <label for="email" class="leading-7 text-sm pe-2 ">
-                    Upload Your Image
-                  </label>
-                  <input
-                    type="file"
-                    class="file-input file-input-bordered file-input-sm w-full max-w-xs bg-gray-100 bg-opacity-50 rounded border border-gray-300"
-                  />
-                </div>
-              </div> */}
+            
               <div class="p-2 w-full md:w-1/2  lg:w-72"></div>
 
               <div class="p-2 w-full">

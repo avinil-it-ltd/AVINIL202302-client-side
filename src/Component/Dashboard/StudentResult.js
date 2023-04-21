@@ -87,22 +87,22 @@ const StudentResult = () => {
     setUserData(item[0])
     //GPA For Mid
     if (item[0]?.group == 'Commerce') {
-      const midmarks = items[0].Midterm[0]
+      const midmarks = items[0]?.Midterm[0]
       let sum = 0
       // let mid = sum + parseInt(items[0]?.Midterm[0].bangla) * 5 / 10 + parseInt(items[0]?.Midterm[0].finance) * 5 / 10 + parseInt(items[0]?.Midterm[0].math) * 5 / 10 + parseInt(items[0]?.Midterm[0].business) * 5 / 10 + parseInt(items[0]?.Midterm[0].english) * 5 / 10
-      let mid = getGpa((sum + parseInt(marksMid.bangla) + parseInt(marksMid.finance) + parseInt(marksMid.math) + parseInt(marksMid.business) + parseInt(marksMid.english)) / 5)
+      let mid = getGpa((sum + parseInt(marksMid?.bangla) + parseInt(marksMid?.finance) + parseInt(marksMid?.math) + parseInt(marksMid?.business) + parseInt(marksMid?.english)) / 5)
       console.log(mid);
       setMidGpa(mid)
     }
     else if (item[0]?.group == 'Science') {
       let sum = 0
-      let mid = getGpa((sum + parseInt(marksMid.bangla) + parseInt(marksMid.chemistry) + parseInt(marksMid.math) + parseInt(marksMid.physics) + parseInt(marksMid.english) + parseInt(marksMid.biology)) / 6)
+      let mid = getGpa((sum + parseInt(marksMid?.bangla) + parseInt(marksMid?.chemistry) + parseInt(marksMid?.math) + parseInt(marksMid?.physics) + parseInt(marksMid?.english) + parseInt(marksMid?.biology)) / 6)
       console.log(mid);
       setMidGpa(mid)
     }
     else if (item[0]?.group == 'Humanities') {
       let sum = 0
-      let mid = getGpa(sum + (parseInt(marksMid.bangla) + parseInt(marksMid.sociology) + parseInt(marksMid.math) + parseInt(marksMid.phychology) + parseInt(marksMid.english)) / 5)
+      let mid = getGpa(sum + (parseInt(marksMid?.bangla) + parseInt(marksMid?.sociology) + parseInt(marksMid?.math) + parseInt(marksMid?.phychology) + parseInt(marksMid?.english)) / 5)
 
       setMidGpa(mid)
       // setNumber(mid)
@@ -111,22 +111,22 @@ const StudentResult = () => {
 
     //GPA For Final
     if (item[0]?.group == 'Commerce') {
-      const midmarks = items[0].Midterm[0]
+      const midmarks = items[0]?.FinalTerm[0]
       let sum = 0
       // let mid = sum + parseInt(items[0]?.Midterm[0].bangla) * 5 / 10 + parseInt(items[0]?.Midterm[0].finance) * 5 / 10 + parseInt(items[0]?.Midterm[0].math) * 5 / 10 + parseInt(items[0]?.Midterm[0].business) * 5 / 10 + parseInt(items[0]?.Midterm[0].english) * 5 / 10
-      let final = getGpa((sum + parseInt(marksFinal.bangla) + parseInt(marksFinal.finance) + parseInt(marksFinal.math) + parseInt(marksFinal.business) + parseInt(marksFinal.english)) / 5)
+      let final = getGpa((sum + parseInt(marksFinal?.bangla) + parseInt(marksFinal?.finance) + parseInt(marksFinal?.math) + parseInt(marksFinal?.business) + parseInt(marksFinal?.english)) / 5)
       console.log(final);
       setFinalGpa(final)
     }
     else if (item[0]?.group == 'Science') {
       let sum = 0
-      let final = getGpa((sum + parseInt(marksFinal.bangla) + parseInt(marksFinal.chemistry) + parseInt(marksFinal.math) + parseInt(marksFinal.physics) + parseInt(marksFinal.english) + parseInt(marksFinal.biology)) / 6)
+      let final = getGpa((sum + parseInt(marksFinal?.bangla) + parseInt(marksFinal?.chemistry) + parseInt(marksFinal?.math) + parseInt(marksFinal?.physics) + parseInt(marksFinal?.english) + parseInt(marksFinal?.biology)) / 6)
       console.log(final);
       setFinalGpa(final)
     }
     else if (item[0]?.group == 'Humanities') {
       let sum = 0
-      let final = getGpa(sum + (parseInt(marksFinal.bangla) + parseInt(marksFinal.sociology) + parseInt(marksFinal.math) + parseInt(marksFinal.phychology) + parseInt(marksFinal.english)) / 5)
+      let final = getGpa(sum + (parseInt(marksFinal?.bangla) + parseInt(marksFinal?.sociology) + parseInt(marksFinal?.math) + parseInt(marksFinal?.phychology) + parseInt(marksFinal?.english)) / 5)
 
       setFinalGpa(final)
       // setNumber(mid)
@@ -162,11 +162,11 @@ const StudentResult = () => {
                   {" \n"}
                   {
                     userData?.group == 'Commerce' ? <>
-                      <p class="text-white text-md title-font font-medium mb-3">bangla : {" "} {marksMid.bangla}</p>
-                      <p class="text-white text-md title-font font-medium mb-3">english : {" "} {marksMid.english}</p>
-                      <p class="text-white text-md title-font font-medium mb-3">math : {" "} {marksMid.math}</p>
-                      <p class="text-white text-md title-font font-medium mb-3">business : {" "} {marksMid.business}</p>
-                      <p class="text-white text-md title-font font-medium mb-3">finance : {" "} {marksMid.finance}</p>
+                      <p class="text-white text-md title-font font-medium mb-3">bangla : {" "} {marksMid?.bangla}</p>
+                      <p class="text-white text-md title-font font-medium mb-3">english : {" "} {marksMid?.english}</p>
+                      <p class="text-white text-md title-font font-medium mb-3">math : {" "} {marksMid?.math}</p>
+                      <p class="text-white text-md title-font font-medium mb-3">business : {" "} {marksMid?.business}</p>
+                      <p class="text-white text-md title-font font-medium mb-3">finance : {" "} {marksMid?.finance}</p>
 
                     </> : null
 
@@ -175,11 +175,11 @@ const StudentResult = () => {
 
                   {
                     userData?.group == 'Humanities' ? <>
-                      <p class="text-white text-md title-font font-medium mb-3">bangla : {" "} {marksMid.bangla}</p>
-                      <p class="text-white text-md title-font font-medium mb-3">english : {" "} {marksMid.english}</p>
-                      <p class="text-white text-md title-font font-medium mb-3">math : {" "} {marksMid.math}</p>
-                      <p class="text-white text-md title-font font-medium mb-3">sociology : {" "} {marksMid.sociology}</p>
-                      <p class="text-white text-md title-font font-medium mb-3">phychology : {" "} {marksMid.phychology}</p>
+                      <p class="text-white text-md title-font font-medium mb-3">bangla : {" "} {marksMid?.bangla}</p>
+                      <p class="text-white text-md title-font font-medium mb-3">english : {" "} {marksMid?.english}</p>
+                      <p class="text-white text-md title-font font-medium mb-3">math : {" "} {marksMid?.math}</p>
+                      <p class="text-white text-md title-font font-medium mb-3">sociology : {" "} {marksMid?.sociology}</p>
+                      <p class="text-white text-md title-font font-medium mb-3">phychology : {" "} {marksMid?.phychology}</p>
 
                     </> : null
 
@@ -187,12 +187,12 @@ const StudentResult = () => {
 
                   {
                     userData?.group == 'Science' ? <>
-                      <p class="text-white text-md title-font font-medium mb-3">bangla : {" "} {marksMid.bangla}</p>
-                      <p class="text-white text-md title-font font-medium mb-3">english : {" "} {marksMid.english}</p>
-                      <p class="text-white text-md title-font font-medium mb-3">math : {" "} {marksMid.math}</p>
-                      <p class="text-white text-md title-font font-medium mb-3">physics : {" "} {marksMid.physics}</p>
-                      <p class="text-white text-md title-font font-medium mb-3">chemistry : {" "} {marksMid.chemistry}</p>
-                      <p class="text-white text-md title-font font-medium mb-3">biology : {" "} {marksMid.biology}</p>
+                      <p class="text-white text-md title-font font-medium mb-3">bangla : {" "} {marksMid?.bangla}</p>
+                      <p class="text-white text-md title-font font-medium mb-3">english : {" "} {marksMid?.english}</p>
+                      <p class="text-white text-md title-font font-medium mb-3">math : {" "} {marksMid?.math}</p>
+                      <p class="text-white text-md title-font font-medium mb-3">physics : {" "} {marksMid?.physics}</p>
+                      <p class="text-white text-md title-font font-medium mb-3">chemistry : {" "} {marksMid?.chemistry}</p>
+                      <p class="text-white text-md title-font font-medium mb-3">biology : {" "} {marksMid?.biology}</p>
 
                     </> : null
 
@@ -259,11 +259,11 @@ const StudentResult = () => {
                       {" \n"}
                       {
                         userData?.group == 'Commerce' ? <>
-                          <p class="text-white text-md title-font font-medium mb-3">bangla : {" "} {marksFinal.bangla}</p>
-                          <p class="text-white text-md title-font font-medium mb-3">english : {" "} {marksFinal.english}</p>
-                          <p class="text-white text-md title-font font-medium mb-3">math : {" "} {marksFinal.math}</p>
-                          <p class="text-white text-md title-font font-medium mb-3">business : {" "} {marksFinal.business}</p>
-                          <p class="text-white text-md title-font font-medium mb-3">finance : {" "} {marksFinal.finance}</p>
+                          <p class="text-white text-md title-font font-medium mb-3">bangla : {" "} {marksFinal?.bangla}</p>
+                          <p class="text-white text-md title-font font-medium mb-3">english : {" "} {marksFinal?.english}</p>
+                          <p class="text-white text-md title-font font-medium mb-3">math : {" "} {marksFinal?.math}</p>
+                          <p class="text-white text-md title-font font-medium mb-3">business : {" "} {marksFinal?.business}</p>
+                          <p class="text-white text-md title-font font-medium mb-3">finance : {" "} {marksFinal?.finance}</p>
 
                         </> : null
 
@@ -272,11 +272,11 @@ const StudentResult = () => {
 
                       {
                         userData?.group == 'Humanities' ? <>
-                          <p class="text-white text-md title-font font-medium mb-3">bangla : {" "} {marksFinal.bangla}</p>
-                          <p class="text-white text-md title-font font-medium mb-3">english : {" "} {marksFinal.english}</p>
-                          <p class="text-white text-md title-font font-medium mb-3">math : {" "} {marksFinal.math}</p>
-                          <p class="text-white text-md title-font font-medium mb-3">sociology : {" "} {marksFinal.sociology}</p>
-                          <p class="text-white text-md title-font font-medium mb-3">phychology : {" "} {marksFinal.phychology}</p>
+                          <p class="text-white text-md title-font font-medium mb-3">bangla : {" "} {marksFinal?.bangla}</p>
+                          <p class="text-white text-md title-font font-medium mb-3">english : {" "} {marksFinal?.english}</p>
+                          <p class="text-white text-md title-font font-medium mb-3">math : {" "} {marksFinal?.math}</p>
+                          <p class="text-white text-md title-font font-medium mb-3">sociology : {" "} {marksFinal?.sociology}</p>
+                          <p class="text-white text-md title-font font-medium mb-3">phychology : {" "} {marksFinal?.phychology}</p>
 
                         </> : null
 
@@ -284,12 +284,12 @@ const StudentResult = () => {
 
                       {
                         userData?.group == 'Science' ? <>
-                          <p class="text-white text-md title-font font-medium mb-3">bangla : {" "} {marksFinal.bangla}</p>
-                          <p class="text-white text-md title-font font-medium mb-3">english : {" "} {marksFinal.english}</p>
-                          <p class="text-white text-md title-font font-medium mb-3">math : {" "} {marksFinal.math}</p>
-                          <p class="text-white text-md title-font font-medium mb-3">physics : {" "} {marksFinal.physics}</p>
-                          <p class="text-white text-md title-font font-medium mb-3">chemistry : {" "} {marksFinal.chemistry}</p>
-                          <p class="text-white text-md title-font font-medium mb-3">biology : {" "} {marksFinal.biology}</p>
+                          <p class="text-white text-md title-font font-medium mb-3">bangla : {" "} {marksFinal?.bangla}</p>
+                          <p class="text-white text-md title-font font-medium mb-3">english : {" "} {marksFinal?.english}</p>
+                          <p class="text-white text-md title-font font-medium mb-3">math : {" "} {marksFinal?.math}</p>
+                          <p class="text-white text-md title-font font-medium mb-3">physics : {" "} {marksFinal?.physics}</p>
+                          <p class="text-white text-md title-font font-medium mb-3">chemistry : {" "} {marksFinal?.chemistry}</p>
+                          <p class="text-white text-md title-font font-medium mb-3">biology : {" "} {marksFinal?.biology}</p>
 
                         </> : null
 
