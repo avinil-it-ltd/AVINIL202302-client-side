@@ -24,7 +24,11 @@ const Attendance = () => {
   useEffect(() => {
     const data = async () => {
       let respose = await axios.get(
+<<<<<<< HEAD
         `https://cms2023.onrender.com//api/v1/get-single-user/${user?.email}`
+=======
+        `http://localhost:5000/api/v1/get-single-user/${user?.email}`
+>>>>>>> 06e9ed40ceb361f2af81a05fdf1942571de5a245
       );
       console.log(respose);
       if (respose.status == 200) {
@@ -39,7 +43,11 @@ const Attendance = () => {
 
     const Commerce = async () => {
       let respose = await axios.get(
+<<<<<<< HEAD
         "https://cms2023.onrender.com//api/v1/get-user-by-group/Commerce"
+=======
+        "http://localhost:5000/api/v1/get-user-by-group/Commerce"
+>>>>>>> 06e9ed40ceb361f2af81a05fdf1942571de5a245
       );
       console.log(respose);
       if (respose.status == 200) {
@@ -53,7 +61,11 @@ const Attendance = () => {
     Commerce().then((respose) => console.log(respose));
     const Science = async () => {
       let respose = await axios.get(
+<<<<<<< HEAD
         "https://cms2023.onrender.com//api/v1/get-user-by-group/Science"
+=======
+        "http://localhost:5000/api/v1/get-user-by-group/Science"
+>>>>>>> 06e9ed40ceb361f2af81a05fdf1942571de5a245
       );
       console.log(respose);
       if (respose.status == 200) {
@@ -68,7 +80,11 @@ const Attendance = () => {
 
     const Humanities = async () => {
       let respose = await axios.get(
+<<<<<<< HEAD
         "https://cms2023.onrender.com//api/v1/get-user-by-group/Humanities"
+=======
+        "http://localhost:5000/api/v1/get-user-by-group/Humanities"
+>>>>>>> 06e9ed40ceb361f2af81a05fdf1942571de5a245
       );
       console.log(respose);
       if (respose.status == 200) {
@@ -97,7 +113,11 @@ const Attendance = () => {
  }
  const databaseInsert = async (info) => {
     let respose = await axios.post(
+<<<<<<< HEAD
       "https://cms2023.onrender.com//api/v1/create-attendance",
+=======
+      "http://localhost:5000/api/v1/create-attendance",
+>>>>>>> 06e9ed40ceb361f2af81a05fdf1942571de5a245
       info
     );
     if (respose.status === 200) {
@@ -115,7 +135,11 @@ const Attendance = () => {
         isPresent: false
     }
     let respose = await axios.post(
+<<<<<<< HEAD
         'https://cms2023.onrender.com//api/v1/create-attendance',
+=======
+        'http://localhost:5000/api/v1/create-attendance',
+>>>>>>> 06e9ed40ceb361f2af81a05fdf1942571de5a245
        info
       );
       if (respose.status === 200) {

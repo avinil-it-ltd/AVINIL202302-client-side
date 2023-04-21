@@ -9,7 +9,11 @@ const TeacherProfile = () => {
     useEffect(()=>{
       const data = async()=>{
           let respose =await axios.get(
+<<<<<<< HEAD
               `https://cms2023.onrender.com//api/v1/get-single-user/${user?.email}`
+=======
+              `http://localhost:5000/api/v1/get-single-user/${user?.email}`
+>>>>>>> 06e9ed40ceb361f2af81a05fdf1942571de5a245
             );
             console.log(respose);
             if (respose.status == 200) {

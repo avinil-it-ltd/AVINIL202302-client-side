@@ -9,7 +9,11 @@ const CommerceStudent = () => {
   useEffect(() => {
     const data = async () => {
       let respose = await axios.get(
+<<<<<<< HEAD
         "https://cms2023.onrender.com//api/v1/get-user-by-group/Commerce"
+=======
+        "http://localhost:5000/api/v1/get-user-by-group/Commerce"
+>>>>>>> 06e9ed40ceb361f2af81a05fdf1942571de5a245
       );
       console.log(respose);
       if (respose.status == 200) {
@@ -90,7 +94,11 @@ const CommerceStudent = () => {
                     htmlFor="my-modal-4"
                     className="btn btn-sm text-xs bg-lime-500 outline-none border-none "
                   >
+<<<<<<< HEAD
                     Update Mid Result
+=======
+                    Update Final Result
+>>>>>>> 06e9ed40ceb361f2af81a05fdf1942571de5a245
                   </label>
                 </td>
 

@@ -1,4 +1,5 @@
 import axios from "axios";
+<<<<<<< HEAD
 import React from "react";
 
 const Modalone = ({ userData }) => {
@@ -32,6 +33,72 @@ const Modalone = ({ userData }) => {
       } else {
         console.log(respose);
       }
+=======
+import React, { useState } from "react";
+
+const Modalone = ({ userData }) => {
+  const [test, setTest] = useState({});
+  const { _id, group } = userData;
+  console.log(_id, group);
+  const handleFinalResult = async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    if (group == "Science") {
+      const data = {
+        student: _id,
+        FinalTerm: [
+          {
+            bangla: form.bangla.value,
+            english: form.english.value,
+            math: form.math.value,
+            physics: form.physics.value,
+            chemistry: form.chemistry.value,
+            biology: form.biology.value,
+          },
+        ],
+      };
+      setTest(data);
+    } else if (group == "Commerce") {
+      const data = {
+        student: _id,
+        FinalTerm: [
+          {
+            bangla: form.bangla.value,
+            english: form.english.value,
+            math: form.math.value,
+            business: form.business.value,
+            finance: form.finance.value,
+          },
+        ],
+      };
+      setTest(data);
+    } else if (group == "Humanities") {
+      const data = {
+        student: _id,
+        FinalTerm: [
+          {
+            bangla: form.bangla.value,
+            english: form.english.value,
+            math: form.math.value,
+            phychology: form.phychology.value,
+            sociology: form.sociology.value,
+          },
+        ],
+      };
+      setTest(data);
+    }
+
+    console.log(test);
+    let respose = await axios.post(
+      "http://localhost:5000/api/v1/create-mark",
+      test
+    );
+    if (respose.status === 200) {
+      console.log(respose);
+    } else {
+      console.log(respose);
+    }
+>>>>>>> 06e9ed40ceb361f2af81a05fdf1942571de5a245
   };
   return (
     <div>
@@ -45,7 +112,11 @@ const Modalone = ({ userData }) => {
             ✕
           </label>
 
+<<<<<<< HEAD
           <form onSubmit={handleMidResult} className="grid grid-cols-1 gap-3">
+=======
+          <form onSubmit={handleFinalResult} className="grid grid-cols-1 gap-3">
+>>>>>>> 06e9ed40ceb361f2af81a05fdf1942571de5a245
             <input
               type="number"
               placeholder="bangla number"
