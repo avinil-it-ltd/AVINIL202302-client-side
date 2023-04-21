@@ -30,6 +30,24 @@ const SignUp = () => {
     console.log(phone);
     const address = e.target.address.value;
     // const qualification = e.target.qualification.value;
+    const image = e.target.img.files[0];
+    const formData = new FormData();
+    formData.append('image', image)
+    // imageHostKey = "dc93277713c4fada975cf1d234c5d0a0"
+    // const url = `https://api.imgbb.com/1/upload?expiration=600&key=${imageHostKey}`
+    const url = "https://api.imgbb.com/1/upload?expiration=600&key=dc93277713c4fada975cf1d234c5d0a0"
+    fetch(url, {
+      method: 'POST',
+      body: formData
+    })
+      .then(res => res.json())
+      .then(imageData => {
+        console.log(imageData)
+        if (imageData.success) {
+          console.log(imageData.data.url)
+
+        }
+      })
 
     const info = {
       email: email,
@@ -206,10 +224,8 @@ const SignUp = () => {
                   <label for="file" class="leading-7 text-sm pe-2 ">
                     Upload Your Image
                   </label>
-                  <input
-                    type="file"
-                    class="file-input file-input-bordered file-input-sm w-full max-w-xs bg-white "
-                  />
+                  <input type="file" name='img' className="file-input file-input-bordered file-input-primary w-full max-w-xs" />
+
                 </div>
               </div>
               {/* <fieldset className="px-2 my-4">
@@ -299,14 +315,14 @@ const SignUp = () => {
                       />
                     </div>
                   </div> */}
-          {/* </div>
+              {/* </div>
         </div> */}
 
-        {/* student block */}
-        {/* <div class="hidden peer-checked/student:block ">
+              {/* student block */}
+              {/* <div class="hidden peer-checked/student:block ">
                   <div className="flex w-full flex-col md:flex-row lg:flex-row flex-wrap "> */}
-        {/* Roll field start here */}
-        {/* <div class="p-2 w-full md:w-1/2  lg:w-72">
+              {/* Roll field start here */}
+              {/* <div class="p-2 w-full md:w-1/2  lg:w-72">
                       <div class="relative">
                         <label for="roll" class="leading-7 text-sm ">
                           Roll
@@ -320,14 +336,14 @@ const SignUp = () => {
                       </div>
                     </div> */}
 
-        {/* <div class="p-2 w-full md:w-1/2  lg:w-72">
+              {/* <div class="p-2 w-full md:w-1/2  lg:w-72">
                       <div class="relative">
                         <label for="email" class="leading-7 text-sm ">
                           Session
                         </label> */}
 
-        {/* target 1 */}
-        {/* <select
+              {/* target 1 */}
+              {/* <select
                           name="session"
                           class="select w-full select-sm bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none  text-gray-700  px-3  py-1 transition-colors duration-200 ease-in-out"
                         >
@@ -342,17 +358,17 @@ const SignUp = () => {
                           <option value="2028">2028</option>
                           <option value="2029">2029</option>
                           <option value="2030">2030</option> */}
-        {/* {
+              {/* {
                         options.map((option,key) =>{ 
                           return <option key={key}>{option}</option>
                         })
                         } */}
-        {/* </select> */}
-        {/* <Select options={options}  autoFocus={true}  onChange={handle_Session_Change} class="text-black bg-white" ></Select> */}
-        {/* </div>
+              {/* </select> */}
+              {/* <Select options={options}  autoFocus={true}  onChange={handle_Session_Change} class="text-black bg-white" ></Select> */}
+              {/* </div>
                     </div> */}
 
-        {/* <div class="p-2 w-full ">
+              {/* <div class="p-2 w-full ">
                     <div class="relative">
                       <label for="email" class="leading-7 text-sm ">
                         Upload Your Image
@@ -364,10 +380,10 @@ const SignUp = () => {
                       />
                     </div>
                   </div> */}
-        {/* </div>
+              {/* </div>
                 </div>
               </fieldset> */}
-        {/* <div class="p-2 w-full ">
+              {/* <div class="p-2 w-full ">
                 <div class="relative">
                   <label for="email" class="leading-7 text-sm pe-2 ">
                     Upload Your Image
@@ -378,9 +394,9 @@ const SignUp = () => {
                   />
                 </div>
               </div> */}
-        <div class="p-2 w-full md:w-1/2  lg:w-72"></div>
+              <div class="p-2 w-full md:w-1/2  lg:w-72"></div>
 
-        {/* <div class="p-2 w-full">
+              {/* <div class="p-2 w-full">
           <button
             type="submit"
             class="  w-full  text-center  text-white bg-cyan-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
@@ -389,28 +405,28 @@ const SignUp = () => {
           </button>
         </div> */}
 
-        <button
-                                    type="submit"
-                                    class="  w-full   text-center  text-white bg-cyan-500 border-0 py-2 ml-2 s  lg:mr-14  focus:outline-none hover:bg-indigo-600 rounded text-lg"
-                                >
-                                    Sign Up
-                                </button>
-      </form>
+              <button
+                type="submit"
+                class="  w-full   text-center  text-white bg-cyan-500 border-0 py-2 ml-2 s  lg:mr-14  focus:outline-none hover:bg-indigo-600 rounded text-lg"
+              >
+                Sign Up
+              </button>
+            </form>
 
-      <p className="text-2xl text-center  text-white mt-3">
-        <small>
-          If you have an account? please{" "}
-          <Link className="text-cyan-500 text-bolder mx-2" to="/signIn">
-            {" "}
-            Sign In{" "}
-          </Link>
-        </small>
-      </p>
-    </div>
+            <p className="text-2xl text-center  text-white mt-3">
+              <small>
+                If you have an account? please{" "}
+                <Link className="text-cyan-500 text-bolder mx-2" to="/signIn">
+                  {" "}
+                  Sign In{" "}
+                </Link>
+              </small>
+            </p>
+          </div>
         </div >
       </section >
 
-  <Footer></Footer>
+      <Footer></Footer>
     </div >
   );
 };

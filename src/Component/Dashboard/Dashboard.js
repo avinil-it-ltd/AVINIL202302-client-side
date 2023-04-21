@@ -60,7 +60,6 @@ const Dashboard = () => {
 
               {datas[0]?.userType === "teacher" ? (
                 <>
-                  {console.log(datas)}
                   <li>
                     <Link to="/dashboard/teacherProfile">My Profile</Link>
                   </li>
@@ -82,7 +81,7 @@ const Dashboard = () => {
                       </li>
                     </>
                   ) : null}
-                  {datas[0]?.group === "Arts" ? (
+                  {datas[0]?.group === "Humanities" ? (
                     <>
                       <li>
                         <Link to="/dashboard/humanitiesStudent">
