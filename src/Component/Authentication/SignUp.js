@@ -4,7 +4,7 @@ import Footer from "../Shared/Footer";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import Select from "react-select";
-import { useForm } from "react-hook-form";
+// import { useForm } from "react-hook-form";
 import axios from "axios";
 import SweetAlert from "react-swal";
 
@@ -70,15 +70,7 @@ console.log(imageHostKey);
             }})
 
   
-    // console.log(info);
-    // // console.log(name,email,password)
-    // createUser(email, userPass)
-    //   .then((result) => {
-    //     const user = result.user;
-    //     databaseInsert(info);
-    //     navigate(from, { replace: true });
-    //   })
-    //   .catch((error) => console.error(error));
+    
   }
   const databaseInsert = async (info) => {
     let respose = await axios.post(
@@ -234,7 +226,7 @@ console.log(imageHostKey);
                   <label for="file" class="leading-7 text-sm pe-2 ">
                     Upload Your Image
                   </label>
-                  <input type="file" name='img' className="file-input file-input-bordered file-input-primary w-full max-w-xs" />
+                  <input type="file" name='img' className="file-input file-input-sm file-input-bordered  w-full max-w-xs" />
 
                 </div>
               </div>

@@ -136,8 +136,8 @@ const Attendance = () => {
 
   }
   return (
-    <div>
-      <div className="mx-auto w-96">
+    <div className="">
+      <div className="mx-auto w-96 ">
         <DayPicker
           className="bg-white mx-auto w-full p-10 flex justify-center items-center"
           mode="single"
@@ -157,6 +157,7 @@ const Attendance = () => {
                 <th>Image</th>
                 <th>Date</th>
                 <th>Name</th>
+                <th>Email</th>
                 <th>Roll</th>
                 <th>Group</th>
                 <th>Present</th>
@@ -179,6 +180,7 @@ const Attendance = () => {
                   </td>
                   <td>02/01/2023</td>
                   <td>{i.userName} </td>
+                  <td>{i.email} </td>
                   <td>2034129</td>
                   <td>Science</td>
 
@@ -210,6 +212,7 @@ const Attendance = () => {
                   </td>
                   <td>02/01/2023</td>
                   <td>{i.userName} </td>
+                  <td>{i.email} </td>
                   <td>2034129</td>
                   <td>Commerce</td>
 
@@ -242,6 +245,7 @@ const Attendance = () => {
                   </td>
                   <td>02/01/2023</td>
                   <td>{i.userName} </td>
+                  <td>{i.email} </td>
                   <td>2034129</td>
                   <td>Humanities</td>
 

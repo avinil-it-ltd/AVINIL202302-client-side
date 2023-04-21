@@ -16,11 +16,11 @@ const Dashboard = () => {
         `https://cms2023.onrender.com/api/v1/get-single-user/${user?.email}`
       );
       console.log(respose);
-      if (respose.status == 200) {
-        console.log(respose.data.data);
-        setDatas(respose.data.data);
+      if (respose?.status == 200) {
+        console.log(respose?.data?.data);
+        setDatas(respose?.data?.data);
 
-        localStorage.setItem("users", JSON.stringify(respose.data.data));
+        localStorage.setItem("users", JSON.stringify(respose?.data?.data));
 
         return respose;
       } else {
@@ -29,10 +29,11 @@ const Dashboard = () => {
     };
     data().then((respose) => console.log(respose));
   }, [user?.email]);
+  console.log(datas[0]);
   console.log(datas[0]?.userType);
 
 
-  const item = JSON.parse(localStorage.getItem("users"))[0];
+  // const item = JSON.parse(localStorage.getItem("users"))[0];
 
   return (
     <div className="bg-slate-900">

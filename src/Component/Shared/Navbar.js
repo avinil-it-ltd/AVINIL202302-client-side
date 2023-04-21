@@ -13,7 +13,7 @@ const Navbar = () => {
     }
 
     console.log("bbv", user)
-    const item = JSON.parse(localStorage.getItem("users"))[0];
+    const item = JSON.parse(localStorage.getItem("users")) || {};
     console.log(item);
     return (
         <header class="text-gray-600 body-font bg-slate-900">
@@ -31,13 +31,17 @@ const Navbar = () => {
                             <Link to="/home" className='text-center  font-bold text-xl  flex'> <img className='w-16 mr-2' src={logo} alt="" />Online College</Link>
                             <ul class="menu  px-1">
                                 <li><Link to="/home">Home</Link></li>
-                                {/* <li><Link to="/about">About Us</Link></li> */}
+                                <li><Link to="/about">About Us</Link></li>
 
-                                <div class="collapse">
+
+                                {
+                                    user && user?.uid ? <>
+                                        
+                                        <div class="collapse">
                                     <input type="checkbox" class="peer" />
-                                    {/* <div class="flex collapse-title  ">
+                                    <div class="flex collapse-title  ">
                                         <Link to="/dashboard">Dashboard</Link>
-                                    </div> */}
+                                    </div>
                                     <div class="collapse-content ">
                                         <li className='py-0 my-0  text-sm'><Link className='py-0 my-1 ' to="/dashboard/studentProfile">My Profile</Link></li>
                                         <li className='py-0 my-0  text-sm'><Link className='py-0 my-1 ' to="/dashboard/studentAttendance">My Attendance</Link></li>
@@ -56,6 +60,14 @@ const Navbar = () => {
                                     </div>
                                 </div>
 
+                                    </> :
+                                        <>
+                                            
+                                        </>
+                                }
+
+                                
+
                                 <li ><Link to="/contact">Contact</Link></li>
 
                                 {
@@ -63,18 +75,16 @@ const Navbar = () => {
                                         <li><Link to='/dashboard'> DashBoard </Link></li>
 
 
-                                        <button onClick={logOut}>LogOut</button>
+                                        <li><button onClick={logOut}>LogOut</button></li>
 
                                     </> :
                                         <>
                                             <li><Link to='/signIn'>Login</Link></li>
-                                            {/* <li><Link to='/signUp'>Register</Link></li> */}
                                         </>
 
 
                                 }
 
-                                {/* <li><Link to='/signIn'>SignIn</Link></li> */}
                             </ul>
                         </Drawer>
                     </>
@@ -92,7 +102,7 @@ const Navbar = () => {
                         <div class="navbar-end hidden lg:flex">
                             <ul class="menu menu-horizontal px-1">
                                 <li><Link to="/home">Home</Link></li>
-                                {/* <li><Link to="/about">About Us</Link></li> */}
+                                <li><Link to="/about">About Us</Link></li>
 
                                 {/* <li tabindex="0"> */}
                                 {/* <Link to="/dashboard">Dashboard</Link> */}

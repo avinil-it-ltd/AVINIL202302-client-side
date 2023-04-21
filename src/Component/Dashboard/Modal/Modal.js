@@ -8,7 +8,7 @@ const Modal = ({ userData }) => {
   const handleMidResult = async (e) => {
     e.preventDefault();
     const form = e.target;
-    
+
     if (group == "Science") {
       const data = {
         student: _id,
@@ -92,8 +92,8 @@ const Modal = ({ userData }) => {
   return (
     <div>
       <input type="checkbox" id="my-modal-3" className="modal-toggle" />
-      <div className="modal">
-        <div className="modal-box relative">
+      <div className="modal ">
+        <div className="modal-box relative" >
           <label
             htmlFor="my-modal-3"
             className="btn btn-sm btn-circle absolute right-2 top-2"
@@ -106,20 +106,20 @@ const Modal = ({ userData }) => {
               type="number"
               placeholder="bangla number"
               name="bangla"
-              className="input input-bordered w-full max-w-xs"
+              className="input input-bordered w-full "
             />
 
             <input
               name="english"
               type="number"
               placeholder="english number"
-              className="input input-bordered w-full max-w-xs"
+              className="input input-bordered w-full "
             />
             <input
               type="number"
               name="math"
               placeholder="math number"
-              className="input input-bordered w-full max-w-xs"
+              className="input input-bordered w-full "
             />
             {group == "Science" ? (
               <>
@@ -127,19 +127,19 @@ const Modal = ({ userData }) => {
                   type="number"
                   name="physics"
                   placeholder="physics number"
-                  className="input input-bordered w-full max-w-xs"
+                  className="input input-bordered w-full "
                 />
                 <input
                   type="number"
                   name="chemistry"
                   placeholder="chemistry number"
-                  className="input input-bordered w-full max-w-xs"
+                  className="input input-bordered w-full "
                 />
                 <input
                   type="number"
                   name="biology"
                   placeholder="biology number"
-                  className="input input-bordered w-full max-w-xs"
+                  className="input input-bordered w-full "
                 />
               </>
             ) : null}
@@ -149,13 +149,13 @@ const Modal = ({ userData }) => {
                   type="number"
                   name="finance"
                   placeholder="finance number"
-                  className="input input-bordered w-full max-w-xs"
+                  className="input input-bordered w-full "
                 />
                 <input
                   type="number"
                   name="business"
                   placeholder="business number"
-                  className="input input-bordered w-full max-w-xs"
+                  className="input input-bordered w-full "
                 />
               </>
             ) : null}
@@ -165,19 +165,19 @@ const Modal = ({ userData }) => {
                   type="number"
                   name="phychology"
                   placeholder="phychology number"
-                  className="input input-bordered w-full max-w-xs"
+                  className="input input-bordered w-full "
                 />
                 <input
                   type="number"
                   name="sociology"
                   placeholder="sociology number"
-                  className="input input-bordered w-full max-w-xs"
+                  className="input input-bordered w-full "
                 />
               </>
             ) : null}
 
             <button
-              className="input input-bordered w-full max-w-sm"
+              className="input input-bordered w-full btn bg-cyan-500"
               type="submit"
             >
               Submit
