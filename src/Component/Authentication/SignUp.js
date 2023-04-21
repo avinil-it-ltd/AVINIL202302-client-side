@@ -82,15 +82,8 @@ console.log(imageHostKey);
   }
   const databaseInsert = async (info) => {
     let respose = await axios.post(
-<<<<<<< HEAD
-<<<<<<< HEAD
-      "https://cms2023.onrender.com//api/v1/create-user",
-=======
-      "http://localhost:5000/api/v1/create-user",
->>>>>>> 06e9ed40ceb361f2af81a05fdf1942571de5a245
-=======
+
       "https://cms2023.onrender.com/api/v1/create-user",
->>>>>>> 79627e6fb9b159cab1b8457995f0833f44f9b287
       info
     );
  
@@ -441,12 +434,5 @@ console.log(imageHostKey);
   );
 };
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 export default SignUp;
-=======
-export default SignUp;
->>>>>>> 06e9ed40ceb361f2af81a05fdf1942571de5a245
-=======
-export default SignUp;
->>>>>>> 79627e6fb9b159cab1b8457995f0833f44f9b287
+

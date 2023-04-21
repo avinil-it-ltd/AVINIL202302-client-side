@@ -12,15 +12,8 @@ const StudentResult = () => {
       // console.log("dsfd", item[0]._id);
       const data = async () => {
         let respose = await axios.get(
-<<<<<<< HEAD
-<<<<<<< HEAD
-          `https://cms2023.onrender.com//api/v1/get-mark-student/${item[0]._id}`
-=======
-          `http://localhost:5000/api/v1/get-mark-student/${item[0]._id}`
->>>>>>> 06e9ed40ceb361f2af81a05fdf1942571de5a245
-=======
+
           `https://cms2023.onrender.com/api/v1/get-mark-student/${item[0]._id}`
->>>>>>> 79627e6fb9b159cab1b8457995f0833f44f9b287
         );
 
         if (respose.status == 200) {

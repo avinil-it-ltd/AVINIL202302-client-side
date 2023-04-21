@@ -32,7 +32,7 @@ const CommerceStudent = () => {
     <div>
       {/* update mid result modal */}
       <Modal userData={userData} />
-      <Modalone userData={userData} />
+      {/* <Modalone userData={userData} /> */}
 
       <div class="overflow-x-auto w-full">
         <p className="text-white text-3xl text-center py-2">
