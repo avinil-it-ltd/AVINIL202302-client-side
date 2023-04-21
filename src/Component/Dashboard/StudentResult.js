@@ -31,19 +31,19 @@ const StudentResult = () => {
     if(item[0]?.group=='Commerce')
     {
       let sum =0
-      let mid= sum + parseInt(items[0]?.Midterm[0].bangla) +parseInt(items[0]?.Midterm[0].finance)+parseInt(items[0]?.Midterm[0].math)+parseInt(items[0]?.Midterm[0].business)+parseInt(items[0]?.Midterm[0].english)
+      let mid= sum + parseInt(items[0]?.Midterm[0].bangla)*5/10 +parseInt(items[0]?.Midterm[0].finance)*5/10+parseInt(items[0]?.Midterm[0].math)*5/10+parseInt(items[0]?.Midterm[0].business)*5/10+parseInt(items[0]?.Midterm[0].english)*5/10
       setNumber(mid)
     }
     if(item[0]?.group=='Science')
     {
       let sum =0
-      let mid= sum + parseInt(items[0]?.Midterm[0].bangla) +parseInt(items[0]?.Midterm[0].chemistry)+parseInt(items[0]?.Midterm[0].math)+parseInt(items[0]?.Midterm[0].physics)+parseInt(items[0]?.Midterm[0].english)+parseInt(items[0]?.Midterm[0].biology)
+      let mid= sum + parseInt(items[0]?.Midterm[0].bangla)*5/100 +parseInt(items[0]?.Midterm[0].chemistry)*5/100+parseInt(items[0]?.Midterm[0].math)+parseInt(items[0]?.Midterm[0].physics)*5/100+parseInt(items[0]?.Midterm[0].english)*5/100+parseInt(items[0]?.Midterm[0].biology)*5/100
       setNumber(mid)
     }
     if(item[0]?.group=='Humanities')
     {
       let sum =0
-      let mid= sum + parseInt(items[0]?.Midterm[0].bangla) +parseInt(items[0]?.Midterm[0].sociology)+parseInt(items[0]?.Midterm[0].math)+parseInt(items[0]?.Midterm[0].phychology)+parseInt(items[0]?.Midterm[0].english)
+      let mid= sum + parseInt(items[0]?.Midterm[0].bangla)*5/10 +parseInt(items[0]?.Midterm[0].sociology)*5/10+parseInt(items[0]?.Midterm[0].math)*5/10+parseInt(items[0]?.Midterm[0].phychology)*5/10+parseInt(items[0]?.Midterm[0].english)*5/10
       setNumber(mid)
     }
   }, []);

@@ -35,8 +35,10 @@ const TeacherProfile = () => {
                     <div class=" lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
                         <div class="avatar mx-5 md:mx-20 lg:mx-40   my-5 ">
                             <div class="w-52 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                                <img alt='' src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" />
-                            </div>
+                            <img
+                    alt=""
+                    src={datas[0]?.imageUrl}
+                  />                            </div>
                         </div>
                     </div>
 
