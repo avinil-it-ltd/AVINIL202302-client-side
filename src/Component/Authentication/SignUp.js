@@ -58,7 +58,7 @@ const SignUp = () => {
       "http://localhost:5000/api/v1/create-user",
       info
     );
- 
+
     if (respose.status == 200) {
       console.log(respose.data);
       // localStorage.setItem("users", JSON.stringify(respose.data));
@@ -212,7 +212,7 @@ const SignUp = () => {
                   />
                 </div>
               </div>
-              <fieldset className="px-2 my-4">
+              {/* <fieldset className="px-2 my-4">
                 <span className="mr-10 md:mr-0 md:pr-10 lg:pr-10">
                   Select the position
                 </span>
@@ -222,23 +222,23 @@ const SignUp = () => {
                   id="teacher"
                   class="mr-2 peer/teacher cursor-pointer"
                   type="radio"
-                  name="status"
-                  // onChange={handleType}
-                />
+                  name="status" */}
+              {/* // onChange={handleType} */}
+              {/* /> */}
 
-                <label
+              {/* <label
                   for="teacher"
                   class="mr-2 md:mr-5 lg:mr-16 cursor-pointer peer-checked/teacher:text-sky-500"
                 >
                   teacher
-                </label>
+                </label> */}
 
-                <input
-                  // {...register({"student":true})}
+              {/* <input
+                  
 
                   id="student"
                   value="student"
-                  // onChange={handleType}
+                  
                   class="mr-2 peer/student cursor-pointer"
                   type="radio"
                   name="status"
@@ -248,13 +248,13 @@ const SignUp = () => {
                   class="cursor-pointer peer-checked/student:text-sky-500"
                 >
                   student
-                </label>
+                </label> */}
 
-                {/* teacher block */}
-                <div class="hidden peer-checked/teacher:block w-full">
-                  <div className="flex w-full flex-col md:flex-row lg:flex-row flex-wrap">
-                    {/* Group field start here */}
-                    {/* <div class="py-2 pr-2 w-full md:w-1/2  lg:w-72 ">
+              {/* teacher block */}
+              {/* <div class="hidden peer-checked/teacher:block w-full">
+                  <div className="flex w-full flex-col md:flex-row lg:flex-row flex-wrap"> */}
+              {/* Group field start here */}
+              {/* <div class="py-2 pr-2 w-full md:w-1/2  lg:w-72 ">
                     <div class="relative">
                       <label for="" class="leading-7 text-sm ">
                         Expertise Group
@@ -271,7 +271,7 @@ const SignUp = () => {
                     </div>
                   </div>
                   {/* name field start here */}
-                    <div class="py-2 pr-2 w-full md:w-1/2  lg:w-72 ">
+              {/* <div class="py-2 pr-2 w-full md:w-1/2  lg:w-72 ">
                       <div class="relative">
                         <label for="address" class="leading-7 text-sm ">
                           Qualification
@@ -285,9 +285,9 @@ const SignUp = () => {
                           class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700  px-3 leading-8 transition-colors duration-200 ease-in-out "
                         />
                       </div>
-                    </div>
+                    </div> */}
 
-                    {/* <div class=" w-full ">
+              {/* <div class=" w-full ">
                     <div class="relative">
                       <label for="image" class="leading-7 text-sm ">
                         Upload Your Image
@@ -299,14 +299,14 @@ const SignUp = () => {
                       />
                     </div>
                   </div> */}
-                  </div>
-                </div>
+          {/* </div>
+        </div> */}
 
-                {/* student block */}
-                <div class="hidden peer-checked/student:block ">
-                  <div className="flex w-full flex-col md:flex-row lg:flex-row flex-wrap ">
-                    {/* Roll field start here */}
-                    <div class="p-2 w-full md:w-1/2  lg:w-72">
+        {/* student block */}
+        {/* <div class="hidden peer-checked/student:block ">
+                  <div className="flex w-full flex-col md:flex-row lg:flex-row flex-wrap "> */}
+        {/* Roll field start here */}
+        {/* <div class="p-2 w-full md:w-1/2  lg:w-72">
                       <div class="relative">
                         <label for="roll" class="leading-7 text-sm ">
                           Roll
@@ -318,16 +318,16 @@ const SignUp = () => {
                           class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700  px-3 leading-8 transition-colors duration-200 ease-in-out"
                         />
                       </div>
-                    </div>
+                    </div> */}
 
-                    <div class="p-2 w-full md:w-1/2  lg:w-72">
+        {/* <div class="p-2 w-full md:w-1/2  lg:w-72">
                       <div class="relative">
                         <label for="email" class="leading-7 text-sm ">
                           Session
-                        </label>
+                        </label> */}
 
-                        {/* target 1 */}
-                        <select
+        {/* target 1 */}
+        {/* <select
                           name="session"
                           class="select w-full select-sm bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none  text-gray-700  px-3  py-1 transition-colors duration-200 ease-in-out"
                         >
@@ -341,18 +341,18 @@ const SignUp = () => {
                           <option value="2027">2027</option>
                           <option value="2028">2028</option>
                           <option value="2029">2029</option>
-                          <option value="2030">2030</option>
-                          {/* {
+                          <option value="2030">2030</option> */}
+        {/* {
                         options.map((option,key) =>{ 
                           return <option key={key}>{option}</option>
                         })
                         } */}
-                        </select>
-                        {/* <Select options={options}  autoFocus={true}  onChange={handle_Session_Change} class="text-black bg-white" ></Select> */}
-                      </div>
-                    </div>
+        {/* </select> */}
+        {/* <Select options={options}  autoFocus={true}  onChange={handle_Session_Change} class="text-black bg-white" ></Select> */}
+        {/* </div>
+                    </div> */}
 
-                    {/* <div class="p-2 w-full ">
+        {/* <div class="p-2 w-full ">
                     <div class="relative">
                       <label for="email" class="leading-7 text-sm ">
                         Upload Your Image
@@ -364,10 +364,10 @@ const SignUp = () => {
                       />
                     </div>
                   </div> */}
-                  </div>
+        {/* </div>
                 </div>
-              </fieldset>
-              {/* <div class="p-2 w-full ">
+              </fieldset> */}
+        {/* <div class="p-2 w-full ">
                 <div class="relative">
                   <label for="email" class="leading-7 text-sm pe-2 ">
                     Upload Your Image
@@ -378,33 +378,40 @@ const SignUp = () => {
                   />
                 </div>
               </div> */}
-              <div class="p-2 w-full md:w-1/2  lg:w-72"></div>
+        <div class="p-2 w-full md:w-1/2  lg:w-72"></div>
 
-              <div class="p-2 w-full">
-                <button
-                  type="submit"
-                  class="  w-full  text-center  text-white bg-cyan-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
-                >
-                  Sign Up
-                </button>
-              </div>
-            </form>
+        {/* <div class="p-2 w-full">
+          <button
+            type="submit"
+            class="  w-full  text-center  text-white bg-cyan-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
+          >
+            Sign Up
+          </button>
+        </div> */}
 
-            <p className="text-2xl text-center  text-white mt-3">
-              <small>
-                If you have an account? please{" "}
-                <Link className="text-cyan-500 text-bolder mx-2" to="/signIn">
-                  {" "}
-                  Sign In{" "}
-                </Link>
-              </small>
-            </p>
-          </div>
-        </div>
-      </section>
+        <button
+                                    type="submit"
+                                    class="  w-full   text-center  text-white bg-cyan-500 border-0 py-2 ml-2 s  lg:mr-14  focus:outline-none hover:bg-indigo-600 rounded text-lg"
+                                >
+                                    Sign Up
+                                </button>
+      </form>
 
-      <Footer></Footer>
+      <p className="text-2xl text-center  text-white mt-3">
+        <small>
+          If you have an account? please{" "}
+          <Link className="text-cyan-500 text-bolder mx-2" to="/signIn">
+            {" "}
+            Sign In{" "}
+          </Link>
+        </small>
+      </p>
     </div>
+        </div >
+      </section >
+
+  <Footer></Footer>
+    </div >
   );
 };
 

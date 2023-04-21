@@ -69,7 +69,8 @@ const StudentAttendance = () => {
                 <td></td>
                 <td>{i.date}</td>
                 <td>2023</td>
-                <td>{i.isPresent}</td>
+                <td>{i.isPresent? "Yes": "No"}</td>
+                { console.log(i.isPresent) }
 
                 {/* <td><label for="attendance-modal" className='btn btn-sm text-xs bg-cyan-500 outline-none border-none ' >Update Attendance</label></td> */}
 

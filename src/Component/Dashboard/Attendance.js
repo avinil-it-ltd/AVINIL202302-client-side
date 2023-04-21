@@ -97,7 +97,7 @@ const Attendance = () => {
       "http://localhost:5000/api/v1/create-attendance",
       info
     );
-    if (respose.status === 2000) {
+    if (respose.status === 200) {
       console.log(respose);
 
     } else {
@@ -115,7 +115,7 @@ const Attendance = () => {
         'http://localhost:5000/api/v1/create-attendance',
        info
       );
-      if (respose.status === 2000) {
+      if (respose.status === 200) {
         console.log(respose);
   
       } else {
