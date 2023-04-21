@@ -2,25 +2,22 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Modal from "./Modal/Modal";
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import Modalone from "./Modal/Modelone";
 >>>>>>> 06e9ed40ceb361f2af81a05fdf1942571de5a245
+=======
+import Modalone from "./Modal/Modelone";
+>>>>>>> 79627e6fb9b159cab1b8457995f0833f44f9b287
 
 const ScienceStudent = () => {
   const [student, setStudent] = useState([]);
   const [userData, setUserData] = useState({});
-<<<<<<< HEAD
 
   useEffect(() => {
     const data = async () => {
       let respose = await axios.get(
-        "https://cms2023.onrender.com//api/v1/get-user-by-group/Science"
-=======
-  useEffect(() => {
-    const data = async () => {
-      let respose = await axios.get(
-        "http://localhost:5000/api/v1/get-user-by-group/Science"
->>>>>>> 06e9ed40ceb361f2af81a05fdf1942571de5a245
+        "https://cms2023.onrender.com/api/v1/get-user-by-group/Science"
       );
       console.log(respose);
       if (respose.status == 200) {
@@ -33,15 +30,11 @@ const ScienceStudent = () => {
     };
     data().then((respose) => console.log(respose));
   }, []);
-<<<<<<< HEAD
 
-=======
->>>>>>> 06e9ed40ceb361f2af81a05fdf1942571de5a245
   const handleMidScience = (data) => {
     console.log(userData);
     setUserData(data);
   };
-<<<<<<< HEAD
   return (
     <div>
     {/* update mid result modal */}
@@ -193,6 +186,8 @@ const ScienceStudent = () => {
     </div>
   </div>
 =======
+=======
+>>>>>>> 79627e6fb9b159cab1b8457995f0833f44f9b287
 
   return (
     <div>
@@ -272,7 +267,10 @@ const ScienceStudent = () => {
         </table>
       </div>
     </div>
+<<<<<<< HEAD
 >>>>>>> 06e9ed40ceb361f2af81a05fdf1942571de5a245
+=======
+>>>>>>> 79627e6fb9b159cab1b8457995f0833f44f9b287
   );
 };
 
