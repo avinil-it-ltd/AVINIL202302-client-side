@@ -24,7 +24,7 @@ const SignUp = () => {
     const userPass = e.target.password.value;
     const userType = e.target.type.value; //student or teacher
    /// const imageUrl = e.image;
-    // const roll = e.target.roll.value;
+    const roll = e.target.roll.value;
     const group = e.target.subject.value;
     const session = e.target.session.value;
     const phone = e.target.phone.value;
@@ -34,14 +34,12 @@ const SignUp = () => {
     const imageHostKey = 'dc93277713c4fada975cf1d234c5d0a0'
 console.log(imageHostKey);
     const image = e.target.img.files[0];
-    const formData = new FormData();
+    const formData = new FormData()
     formData.append('image', image)
-    // imageHostKey = "dc93277713c4fada975cf1d234c5d0a0"
-    // const url = `https://api.imgbb.com/1/upload?expiration=600&key=${imageHostKey}`
-    const url = "https://api.imgbb.com/1/upload?expiration=600&key=dc93277713c4fada975cf1d234c5d0a0"
+    const url = `https://api.imgbb.com/1/upload?expiration=600&key=${imageHostKey}`
     fetch(url, {
-      method: 'POST',
-      body: formData
+        method: 'POST',
+        body: formData
     })
         .then(res => res.json())
         .then(imageData => {
@@ -54,7 +52,7 @@ console.log(imageHostKey);
       userName: userName,
       userPass: userPass,
       userType: userType,
-      // roll: roll,
+      roll: roll,
       mobile: phone,
       imageUrl:imageData.data.url,
       group: group,
@@ -84,10 +82,10 @@ console.log(imageHostKey);
   }
   const databaseInsert = async (info) => {
     let respose = await axios.post(
-      "http://localhost:5000/api/v1/create-user",
+      "https://cms2023.onrender.com//api/v1/create-user",
       info
     );
-
+ 
     if (respose.status == 200) {
       console.log(respose.data);
       // localStorage.setItem("users", JSON.stringify(respose.data));
@@ -239,7 +237,7 @@ console.log(imageHostKey);
 
                 </div>
               </div>
-              {/* <fieldset className="px-2 my-4">
+              <fieldset className="px-2 my-4">
                 <span className="mr-10 md:mr-0 md:pr-10 lg:pr-10">
                   Select the position
                 </span>
@@ -249,23 +247,23 @@ console.log(imageHostKey);
                   id="teacher"
                   class="mr-2 peer/teacher cursor-pointer"
                   type="radio"
-                  name="status" */}
-              {/* // onChange={handleType} */}
-              {/* /> */}
+                  name="status"
+                  // onChange={handleType}
+                />
 
-              {/* <label
+                <label
                   for="teacher"
                   class="mr-2 md:mr-5 lg:mr-16 cursor-pointer peer-checked/teacher:text-sky-500"
                 >
                   teacher
-                </label> */}
+                </label>
 
-              {/* <input
-                  
+                <input
+                  // {...register({"student":true})}
 
                   id="student"
                   value="student"
-                  
+                  // onChange={handleType}
                   class="mr-2 peer/student cursor-pointer"
                   type="radio"
                   name="status"
@@ -275,13 +273,13 @@ console.log(imageHostKey);
                   class="cursor-pointer peer-checked/student:text-sky-500"
                 >
                   student
-                </label> */}
+                </label>
 
-              {/* teacher block */}
-              {/* <div class="hidden peer-checked/teacher:block w-full">
-                  <div className="flex w-full flex-col md:flex-row lg:flex-row flex-wrap"> */}
-              {/* Group field start here */}
-              {/* <div class="py-2 pr-2 w-full md:w-1/2  lg:w-72 ">
+                {/* teacher block */}
+                <div class="hidden peer-checked/teacher:block w-full">
+                  <div className="flex w-full flex-col md:flex-row lg:flex-row flex-wrap">
+                    {/* Group field start here */}
+                    {/* <div class="py-2 pr-2 w-full md:w-1/2  lg:w-72 ">
                     <div class="relative">
                       <label for="" class="leading-7 text-sm ">
                         Expertise Group
@@ -298,7 +296,7 @@ console.log(imageHostKey);
                     </div>
                   </div>
                   {/* name field start here */}
-              {/* <div class="py-2 pr-2 w-full md:w-1/2  lg:w-72 ">
+                    <div class="py-2 pr-2 w-full md:w-1/2  lg:w-72 ">
                       <div class="relative">
                         <label for="address" class="leading-7 text-sm ">
                           Qualification
@@ -312,9 +310,9 @@ console.log(imageHostKey);
                           class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700  px-3 leading-8 transition-colors duration-200 ease-in-out "
                         />
                       </div>
-                    </div> */}
+                    </div>
 
-              {/* <div class=" w-full ">
+                    {/* <div class=" w-full ">
                     <div class="relative">
                       <label for="image" class="leading-7 text-sm ">
                         Upload Your Image
@@ -326,14 +324,14 @@ console.log(imageHostKey);
                       />
                     </div>
                   </div> */}
-              {/* </div>
-        </div> */}
+                  </div>
+                </div>
 
-              {/* student block */}
-              {/* <div class="hidden peer-checked/student:block ">
-                  <div className="flex w-full flex-col md:flex-row lg:flex-row flex-wrap "> */}
-              {/* Roll field start here */}
-              {/* <div class="p-2 w-full md:w-1/2  lg:w-72">
+                {/* student block */}
+                <div class="hidden peer-checked/student:block ">
+                  <div className="flex w-full flex-col md:flex-row lg:flex-row flex-wrap ">
+                    {/* Roll field start here */}
+                    <div class="p-2 w-full md:w-1/2  lg:w-72">
                       <div class="relative">
                         <label for="roll" class="leading-7 text-sm ">
                           Roll
@@ -345,16 +343,16 @@ console.log(imageHostKey);
                           class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700  px-3 leading-8 transition-colors duration-200 ease-in-out"
                         />
                       </div>
-                    </div> */}
+                    </div>
 
-              {/* <div class="p-2 w-full md:w-1/2  lg:w-72">
+                    <div class="p-2 w-full md:w-1/2  lg:w-72">
                       <div class="relative">
                         <label for="email" class="leading-7 text-sm ">
                           Session
-                        </label> */}
+                        </label>
 
-              {/* target 1 */}
-              {/* <select
+                        {/* target 1 */}
+                        <select
                           name="session"
                           class="select w-full select-sm bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none  text-gray-700  px-3  py-1 transition-colors duration-200 ease-in-out"
                         >
@@ -368,18 +366,18 @@ console.log(imageHostKey);
                           <option value="2027">2027</option>
                           <option value="2028">2028</option>
                           <option value="2029">2029</option>
-                          <option value="2030">2030</option> */}
-              {/* {
+                          <option value="2030">2030</option>
+                          {/* {
                         options.map((option,key) =>{ 
                           return <option key={key}>{option}</option>
                         })
                         } */}
-              {/* </select> */}
-              {/* <Select options={options}  autoFocus={true}  onChange={handle_Session_Change} class="text-black bg-white" ></Select> */}
-              {/* </div>
-                    </div> */}
+                        </select>
+                        {/* <Select options={options}  autoFocus={true}  onChange={handle_Session_Change} class="text-black bg-white" ></Select> */}
+                      </div>
+                    </div>
 
-              {/* <div class="p-2 w-full ">
+                    {/* <div class="p-2 w-full ">
                     <div class="relative">
                       <label for="email" class="leading-7 text-sm ">
                         Upload Your Image
@@ -391,9 +389,9 @@ console.log(imageHostKey);
                       />
                     </div>
                   </div> */}
-              {/* </div>
+                  </div>
                 </div>
-              </fieldset> */}
+              </fieldset>
               {/* <div class="p-2 w-full ">
                 <div class="relative">
                   <label for="email" class="leading-7 text-sm pe-2 ">
@@ -407,21 +405,14 @@ console.log(imageHostKey);
               </div> */}
               <div class="p-2 w-full md:w-1/2  lg:w-72"></div>
 
-              {/* <div class="p-2 w-full">
-          <button
-            type="submit"
-            class="  w-full  text-center  text-white bg-cyan-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
-          >
-            Sign Up
-          </button>
-        </div> */}
-
-              <button
-                type="submit"
-                class="  w-full   text-center  text-white bg-cyan-500 border-0 py-2 ml-2 s  lg:mr-14  focus:outline-none hover:bg-indigo-600 rounded text-lg"
-              >
-                Sign Up
-              </button>
+              <div class="p-2 w-full">
+                <button
+                  type="submit"
+                  class="  w-full  text-center  text-white bg-cyan-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
+                >
+                  Sign Up
+                </button>
+              </div>
             </form>
 
             <p className="text-2xl text-center  text-white mt-3">
@@ -434,11 +425,11 @@ console.log(imageHostKey);
               </small>
             </p>
           </div>
-        </div >
-      </section >
+        </div>
+      </section>
 
       <Footer></Footer>
-    </div >
+    </div>
   );
 };
 

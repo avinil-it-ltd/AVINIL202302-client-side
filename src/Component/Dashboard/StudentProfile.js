@@ -9,7 +9,7 @@ const Profile = () => {
     useEffect(()=>{
       const data = async()=>{
           let respose =await axios.get(
-              `http://localhost:5000/api/v1/get-single-user/${user?.email}`
+              `https://cms2023.onrender.com//api/v1/get-single-user/${user?.email}`
             );
             console.log(respose);
             if (respose.status == 200) {
