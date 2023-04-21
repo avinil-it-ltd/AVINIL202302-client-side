@@ -1,37 +1,68 @@
 import axios from "axios";
-import React from "react";
+import React, { useState } from "react";
 
 const Modalone = ({ userData }) => {
+  const [test, setTest] = useState({});
   const { _id, group } = userData;
   console.log(_id, group);
-  const handleMidResult = async(e) => {
+  const handleFinalResult = async (e) => {
     e.preventDefault();
     const form = e.target;
-    const data = {
-        student:_id,
+    if (group == "Science") {
+      const data = {
+        student: _id,
         FinalTerm: [
-        {
-          bangla: form.bangla.value,
-          english: form.english.value,
-          math: form.math.value,
-        //   physics: form.physics.value,
-        //   chemistry: form.chemistry.value,
-        //   biology: form.biology.value,
-          business: form.business.value,
-          finance: form.finance.value,
-        },
-      ],
-    };
+          {
+            bangla: form.bangla.value,
+            english: form.english.value,
+            math: form.math.value,
+            physics: form.physics.value,
+            chemistry: form.chemistry.value,
+            biology: form.biology.value,
+          },
+        ],
+      };
+      setTest(data);
+    } else if (group == "Commerce") {
+      const data = {
+        student: _id,
+        FinalTerm: [
+          {
+            bangla: form.bangla.value,
+            english: form.english.value,
+            math: form.math.value,
+            business: form.business.value,
+            finance: form.finance.value,
+          },
+        ],
+      };
+      setTest(data);
+    } else if (group == "Humanities") {
+      const data = {
+        student: _id,
+        FinalTerm: [
+          {
+            bangla: form.bangla.value,
+            english: form.english.value,
+            math: form.math.value,
+            phychology: form.phychology.value,
+            sociology: form.sociology.value,
+          },
+        ],
+      };
+      setTest(data);
+    }
+
+    console.log(test);
     let respose = await axios.post(
-        'https://cms2023.onrender.com/api/v1/create-mark',
-        data
-      );
-      if (respose.status === 200) {
-        console.log(respose);
-  
-      } else {
-        console.log(respose);
-      }
+      "https://cms2023.onrender.com/api/v1/create-mark",
+      test
+    );
+    if (respose.status === 200) {
+      console.log(respose);
+    } else {
+      console.log(respose);
+    }
   };
   return (
     <div>
@@ -45,7 +76,7 @@ const Modalone = ({ userData }) => {
             ✕
           </label>
 
-          <form onSubmit={handleMidResult} className="grid grid-cols-1 gap-3">
+          <form onSubmit={handleFinalResult} className="grid grid-cols-1 gap-3">
             <input
               type="number"
               placeholder="bangla number"
