@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 
 const Modalone = ({ userData }) => {
@@ -6,6 +7,7 @@ const Modalone = ({ userData }) => {
   console.log(_id, group);
   const handleFinalResult = async (e) => {
     e.preventDefault();
+    console.log(e.target)
     const form = e.target;
     if (group == "Science") {
       const data = {
@@ -21,6 +23,17 @@ const Modalone = ({ userData }) => {
           },
         ],
       };
+console.log(data);
+      let respose = await axios.post(
+        "https://cms2023.onrender.com/api/v1/create-mark",
+        data
+      );
+      if (respose.status === 200) {
+        console.log(respose);
+      } else {
+        console.log(respose);
+      }
+    
       setTest(data);
     } else if (group == "Commerce") {
       const data = {
@@ -35,6 +48,16 @@ const Modalone = ({ userData }) => {
           },
         ],
       };
+      let respose = await axios.post(
+        "https://cms2023.onrender.com/api/v1/create-mark",
+        data
+      );
+      if (respose.status === 200) {
+        console.log(respose);
+      } else {
+        console.log(respose);
+      }
+   
       setTest(data);
     } else if (group == "Humanities") {
       const data = {
@@ -49,19 +72,19 @@ const Modalone = ({ userData }) => {
           },
         ],
       };
+      let respose = await axios.post(
+        "https://cms2023.onrender.com/api/v1/create-mark",
+        data
+      );
+      if (respose.status === 200) {
+        console.log(respose);
+      } else {
+        console.log(respose);
+      }
       setTest(data);
     }
+   
 
-    console.log(test);
-    let respose = await axios.post(
-      "https://cms2023.onrender.com/api/v1/create-mark",
-      test
-    );
-    if (respose.status === 200) {
-      console.log(respose);
-    } else {
-      console.log(respose);
-    }
   };
   return (
     <div>
@@ -76,6 +99,7 @@ const Modalone = ({ userData }) => {
           </label>
 
           <form onSubmit={handleFinalResult} className="grid grid-cols-1 gap-3">
+            {/* <input name="some" type="text" placeholder="something"/> */}
             <input
               type="number"
               placeholder="bangla number"

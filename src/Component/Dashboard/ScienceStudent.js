@@ -6,6 +6,8 @@ import Modalone from "./Modal/Modelone";
 const CommerceStudent = () => {
   const [student, setStudent] = useState([]);
   const [userData, setUserData] = useState({});
+  const [finalData, setfinalData] = useState({});
+  // const [userData, setUserData] = useState({});
   useEffect(() => {
     const data = async () => {
       let respose = await axios.get(
@@ -27,12 +29,16 @@ const CommerceStudent = () => {
     console.log(userData);
     setUserData(data);
   };
+  const handleFinalScience = (data) => {
+    console.log(finalData);
+    setfinalData(data);
+  };
 
   return (
     <div>
       {/* update mid result modal */}
       <Modal userData={userData} />
-      {/* <Modalone userData={userData} /> */}
+      <Modalone userData={finalData} />
 
       <div class="overflow-x-auto w-full">
         <p className="text-white text-3xl text-center py-2">
@@ -87,7 +93,7 @@ const CommerceStudent = () => {
                 <td>
           
                 <label
-                    onClick={() => handleMidScience(i)}
+                    onClick={() => handleFinalScience(i)}
                     htmlFor="my-modal-4"
                     className="btn btn-sm text-xs bg-lime-500 outline-none border-none "
                   >
