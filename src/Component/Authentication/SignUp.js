@@ -259,7 +259,7 @@ const SignUp = () => {
                 </button>
               </div>
             </form>
-
+{/* Hello */}
             <p className="text-2xl text-center  text-white mt-3">
               <small>
                 If you have an account? please{" "}
