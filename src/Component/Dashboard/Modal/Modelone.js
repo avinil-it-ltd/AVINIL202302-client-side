@@ -106,14 +106,14 @@ const Modalone = ({ userData }) => {
               type="number"
               placeholder="bangla number"
               name="bangla"
-              className="input input-bordered w-full"
+              className="input input-bordered w-full "
             />
 
             <input
               name="english"
               type="number"
               placeholder="english number"
-              className="input input-bordered w-full"
+              className="input input-bordered w-full "
             />
             <input
               type="number"
@@ -139,7 +139,7 @@ const Modalone = ({ userData }) => {
                   type="number"
                   name="biology"
                   placeholder="biology number"
-                  className="input input-bordered w-full"
+                  className="input input-bordered w-full "
                 />
               </>
             ) : null}
@@ -149,7 +149,7 @@ const Modalone = ({ userData }) => {
                   type="number"
                   name="finance"
                   placeholder="finance number"
-                  className="input input-bordered w-full"
+                  className="input input-bordered w-full "
                 />
                 <input
                   type="number"
@@ -176,7 +176,7 @@ const Modalone = ({ userData }) => {
               </>
             ) : null}
             <button
-              className="input input-bordered w-full bg-cyan-500 btn"
+              className="input btn bg-cyan-500 input-bordered w-full "
               type="submit"
             >
               Submit

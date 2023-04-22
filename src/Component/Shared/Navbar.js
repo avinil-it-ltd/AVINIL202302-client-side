@@ -1,20 +1,38 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Drawer from 'react-modern-drawer'
 import 'react-modern-drawer/dist/index.css'
 import logo from '../../image/logo1.png'
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 const Navbar = () => {
     const { logOut, user } = useContext(AuthContext);
-
+    const navigate = useNavigate();
     const [isOpen, setIsOpen] = React.useState(false)
+    const location = useLocation();
+    const from = "/";
+
     const toggleDrawer = () => {
         setIsOpen((prevState) => !prevState)
     }
+    let userData = [];
 
     console.log("bbv", user)
-    const item = JSON.parse(localStorage.getItem("users")) || {};
+    let item = JSON.parse(localStorage.getItem("users"));
     console.log(item);
+    if (item) {
+        console.log("yes")
+        userData = item[0];
+        console.log(userData)
+    }
+    else {
+        console.log(item);
+    }
+    const handleLogOut = () => {
+        // navigate(from, { replace: true })
+        // location.reload()
+        logOut()
+        navigate('/')
+    }
     return (
         <header class="text-gray-600 body-font bg-slate-900">
             <div class="container mx-auto ">
@@ -36,37 +54,52 @@ const Navbar = () => {
 
                                 {
                                     user && user?.uid ? <>
-                                        
+
                                         <div class="collapse">
-                                    <input type="checkbox" class="peer" />
-                                    <div class="flex collapse-title  ">
-                                        <Link to="/dashboard">Dashboard</Link>
-                                    </div>
-                                    <div class="collapse-content ">
-                                        <li className='py-0 my-0  text-sm'><Link className='py-0 my-1 ' to="/dashboard/studentProfile">My Profile</Link></li>
-                                        <li className='py-0 my-0  text-sm'><Link className='py-0 my-1 ' to="/dashboard/studentAttendance">My Attendance</Link></li>
-                                        <li className='py-0 my-0  text-sm'><Link className='py-0 my-1 ' to="/dashboard/studentResult">My Result</Link></li>
+                                            <input type="checkbox" class="peer" />
+                                            <div class="flex collapse-title  ">
+                                                <Link to="/dashboard">Dashboard</Link>
+                                            </div>
+                                            <div class="collapse-content ">
+                                                {userData?.userType == "student" ? <>
+
+                                                    <li className='py-0 my-0  text-sm'><Link className='py-0 my-1 ' to="/dashboard/studentProfile">My Profile</Link></li>
+                                                    <li className='py-0 my-0  text-sm'><Link className='py-0 my-1 ' to="/dashboard/studentAttendance">My Attendance</Link></li>
+                                                    <li className='py-0 my-0  text-sm'><Link className='py-0 my-1 ' to="/dashboard/studentResult">My Result</Link></li>
+
+                                                </> : null
+
+                                                }
+
+
+                                                {userData?.userType == "teacher" ? <>
+                                                    <li className='py-0 my-0  text-sm'><Link className='py-0 my-1 ' to="/dashboard/teacherProfile">My Profile</Link></li>
+
+                                                    {userData.group == "Science" && <li className='py-0 my-0  text-sm'><Link className='py-0 my-1 ' to="/dashboard/scienceStudent">Science Student</Link></li>}
+                                                    {userData.group == "Commerce" && <li className='py-0 my-0  text-sm'><Link className='py-0 my-1 ' to="/dashboard/commerceStudent">Commerce Student</Link></li>}
+                                                    {userData.group == "Humanities" && <li className='py-0 my-0  text-sm'><Link className='py-0 my-1 ' to="/dashboard/humanitiesStudent">Humanities Student</Link></li>}
+                                                    <li className='py-0 my-0  text-sm'><Link className='py-0 my-1 ' to="/dashboard/attendance">Attendance</Link></li>
+                                                </> : null}
 
 
 
 
-                                        <li className='py-0 my-0  text-sm'><Link className='py-0 my-1 ' to="/dashboard/teacherProfile">My Profile</Link></li>
-                                        <li className='py-0 my-0  text-sm'><Link className='py-0 my-1 ' to="/dashboard/scienceStudent">Science Student</Link></li>
-                                        <li className='py-0 my-0  text-sm'><Link className='py-0 my-1 ' to="/dashboard/commerceStudent">Commerce Student</Link></li>
-                                        <li className='py-0 my-0  text-sm'><Link className='py-0 my-1 ' to="/dashboard/humanitiesStudent">Humanities Student</Link></li>
-                                        <li className='py-0 my-0  text-sm'><Link className='py-0 my-1 ' to="/dashboard/attendance">Attendance</Link></li>
-
-                                        {/* <li className='py-0 my-0  text-sm'><Link className='py-0 my-0 ' to="dashboard/allStudent">All Student</Link></li> */}
-                                    </div>
-                                </div>
+                                                {/* <li className='py-0 my-0  text-sm'><Link className='py-0 my-0 ' to="dashboard/allStudent">All Student</Link></li> */}
+                                            </div>
+                                        </div>
 
                                     </> :
                                         <>
-                                            
+
                                         </>
                                 }
 
-                                
+
+
+
+
+
+
 
                                 <li ><Link to="/contact">Contact</Link></li>
 
@@ -75,7 +108,10 @@ const Navbar = () => {
                                         <li><Link to='/dashboard'> DashBoard </Link></li>
 
 
-                                        <li><button onClick={logOut}>LogOut</button></li>
+                                        <li><Link
+                                            to="/"
+                                            onClick={handleLogOut}
+                                        >LogOut</Link></li>
 
                                     </> :
                                         <>
@@ -120,7 +156,11 @@ const Navbar = () => {
                                         <li><Link to='/dashboard'> Dashboard </Link></li>
 
 
-                                        <button onClick={logOut}>LogOut</button>
+                                        <li><Link
+                                            to='/'
+                                            onClick={handleLogOut}
+
+                                        >LogOut</Link></li>
 
                                     </> :
                                         <>
@@ -132,11 +172,15 @@ const Navbar = () => {
                                 }
 
                                 {
-                                    item?.userType == "admin" && user?.uid ? <>
-                                        <li><Link to='/dashboard'> DashBoard </Link></li>
+                                    userData?.userType == "admin" && user?.uid ? <>
+                                        <li><Link to='/'> DashBoard </Link></li>
 
 
-                                        <button onClick={logOut}>LogOut</button>
+                                        <li><Link
+                                            to='/'
+                                            onClick={handleLogOut}
+
+                                        >LogOut</Link></li>
 
 
                                         <li><Link to='/signIn'>Login</Link></li>

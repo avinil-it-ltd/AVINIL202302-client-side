@@ -33,7 +33,7 @@ const Dashboard = () => {
   console.log(datas[0]?.userType);
 
 
-  // const item = JSON.parse(localStorage.getItem("users"))[0];
+  // const item = JSON.parse(localStorage.getItem("users"));
 
   return (
     <div className="bg-slate-900">

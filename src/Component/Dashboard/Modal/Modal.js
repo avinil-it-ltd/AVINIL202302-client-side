@@ -177,7 +177,7 @@ const Modal = ({ userData }) => {
             ) : null}
 
             <button
-              className="input input-bordered w-full btn bg-cyan-500"
+              className="input btn bg-cyan-500 input-bordered w-full "
               type="submit"
             >
               Submit

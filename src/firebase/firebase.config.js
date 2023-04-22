@@ -11,6 +11,12 @@ const firebaseConfig = {
   // storageBucket: "studentms-5f2cc.appspot.com",
   // messagingSenderId: "470687201238",
   // appId: "1:470687201238:web:5de608532ea72873575677"
+  // apiKey: "AIzaSyBC410tgun1JzjSP-g1BKLGNzAinjO_MR4",
+  // authDomain: "onlinecollege-6dcd2.firebaseapp.com",
+  // projectId: "onlinecollege-6dcd2",
+  // storageBucket: "onlinecollege-6dcd2.appspot.com",
+  // messagingSenderId: "468095441232",
+  // appId: "1:468095441232:web:6b463b0233dcda89c9b455"
 
   apiKey: "AIzaSyDDALwQGYKxOk5XFTLAw2Dhs0MgZ8NT-NU",
   authDomain: "onlinecollege-c53f6.firebaseapp.com",

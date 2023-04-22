@@ -9,7 +9,7 @@ import axios from "axios";
 import SweetAlert from "react-swal";
 
 const SignUp = () => {
-  const [imageurls,setUrl] = useState('')
+  const [imageurls, setUrl] = useState('')
   const { createUser } = useContext(AuthContext);
 
   const navigate = useNavigate();
@@ -23,7 +23,7 @@ const SignUp = () => {
 
     const userPass = e.target.password.value;
     const userType = e.target.type.value; //student or teacher
-   /// const imageUrl = e.image;
+    /// const imageUrl = e.image;
     // const roll = e.target.roll.value;
     const group = e.target.subject.value;
     // const session = e.target.session.value;
@@ -31,45 +31,46 @@ const SignUp = () => {
     console.log(phone);
     const address = e.target.address.value;
     // const qualification = e.target.qualification.value;
-    const imageHostKey = 'dc93277713c4fada975cf1d234c5d0a0'
-console.log(imageHostKey);
+
+    // console.log(imageHostKey);
     const image = e.target.img.files[0];
     const formData = new FormData()
     formData.append('image', image)
-    const url = `https://api.imgbb.com/1/upload?expiration=600&key=${imageHostKey}`
+    const url = `https://api.imgbb.com/1/upload?expiration=600&key=${process.env.REACT_APP_imagebb_key}`
     fetch(url, {
-        method: 'POST',
-        body: formData
+      method: 'POST',
+      body: formData
     })
-        .then(res => res.json())
-        .then(imageData => {
-            console.log(imageData)
-            if (imageData.success) {
-                console.log(imageData.data.url)
-                setUrl(imageData.data.url)
-                  const info = {
-      email: email,
-      userName: userName,
-      userPass: userPass,
-      userType: userType,
-      // roll: roll,
-      mobile: phone,
-      imageUrl:imageData.data.url,
-      group: group,
-      // session: session,
-      address: address,
-      // qualification: qualification,
-    };
-    createUser(email, userPass)
-    .then((result) => {
-      const user = result.user;
-      databaseInsert(info);
-      navigate(from, { replace: true });
-    })
-    .catch((error) => console.error(error));  
-            }})
+      .then(res => res.json())
+      .then(imageData => {
+        console.log(imageData)
+        if (imageData.success) {
+          console.log(imageData.data.url)
+          setUrl(imageData.data.url)
+          const info = {
+            email: email,
+            userName: userName,
+            userPass: userPass,
+            userType: userType,
+            // roll: roll,
+            mobile: phone,
+            imageUrl: imageData.data.url,
+            group: group,
+            // session: session,
+            address: address,
+            // qualification: qualification,
+          };
+          createUser(email, userPass)
+            .then((result) => {
+              const user = result.user;
+              databaseInsert(info);
+              navigate(from, { replace: true });
+            })
+            .catch((error) => console.error(error));
+        }
+      })
 
-  
+
     // console.log(info);
     // // console.log(name,email,password)
     // createUser(email, userPass)
@@ -86,7 +87,7 @@ console.log(imageHostKey);
       "https://cms2023.onrender.com/api/v1/create-user",
       info
     );
- 
+
     if (respose.status == 200) {
       console.log(respose.data);
       // localStorage.setItem("users", JSON.stringify(respose.data));
@@ -127,7 +128,8 @@ console.log(imageHostKey);
                     type="text"
                     id="name"
                     name="Username"
-                    class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700  px-3 leading-8 transition-colors duration-200 ease-in-out "
+                    placeholder="Enter Your Name"
+                    class="w-full bg-white text-black  rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700  px-3 leading-8 transition-colors duration-200 ease-in-out "
                   />
                 </div>
               </div>
@@ -141,7 +143,8 @@ console.log(imageHostKey);
                     type="email"
                     id="email"
                     name="email"
-                    class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700  px-3 leading-8 transition-colors duration-200 ease-in-out"
+                    placeholder="Enter Your Email"
+                    class="w-full bg-white text-black rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700  px-3 leading-8 transition-colors duration-200 ease-in-out"
                   />
                 </div>
               </div>
@@ -154,19 +157,20 @@ console.log(imageHostKey);
                     type="text"
                     id="phone"
                     name="phone"
-                    class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700  px-3 leading-8 transition-colors duration-200 ease-in-out "
+                    placeholder="Enter Your Address"
+                    class="w-full bg-white  text-black rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700  px-3 leading-8 transition-colors duration-200 ease-in-out "
                   />
                 </div>
               </div>
-              <div class="py-2 pr-2 w-full md:w-1/2  lg:w-72 ">
+              <div class="p-2 w-full md:w-1/2  lg:w-72 ">
                 <div class="relative">
-                  <label for="" class="leading-7 text-sm ">
+                  <label for="" class="leading-7 text-sm pe-2 ">
                     Group
                   </label>
 
                   <select
                     name="subject"
-                    class="select w-full select-sm bg-white text-black rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none    px-3  py-1 transition-colors duration-200 ease-in-out"
+                    class="select w-full select-sm bg-white  rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none  text-gray-700  px-3  py-1 transition-colors duration-200 ease-in-out"
                   >
                     <option disabled selected>
                       Pick your Group
@@ -185,7 +189,7 @@ console.log(imageHostKey);
                     Address
                   </label>
                   <input
-                    placeholder="Enter Address"
+                    placeholder="Enter Your Address"
                     type="text"
                     id="address"
                     name="address"
@@ -204,7 +208,7 @@ console.log(imageHostKey);
                     type="password"
                     id="password"
                     name="password"
-                    class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700  px-3 leading-8 transition-colors duration-200 ease-in-out"
+                    class="w-full bg-gray-100  rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700  px-3 leading-8 transition-colors duration-200 ease-in-out"
                   />
                 </div>
               </div>
@@ -231,14 +235,14 @@ console.log(imageHostKey);
               </div>
               <div class="p-2 w-full md:w-1/2  lg:w-72 ">
                 <div class="relative">
-                  <label for="file" class="leading-7 text-sm pe-2 ">
+                  <label for="file" class=" leading-7 text-sm pe-2 ">
                     Upload Your Image
                   </label>
-                  <input type="file" name='img' className="file-input file-input-sm file-input-bordered file-input-primary w-full max-w-xs" />
+                  <input type="file" name='img' className="file-input  text-black file-input-sm file-input-bordered file-input-cyan-500 w-full max-w-xs" />
 
                 </div>
               </div>
-            
+
               <div class="p-2 w-full md:w-1/2  lg:w-72"></div>
 
               <div class="p-2 w-full pr-14">

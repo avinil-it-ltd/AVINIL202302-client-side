@@ -17,7 +17,7 @@ const Courses = () => {
                                 <div class="w-8 h-8 mr-3 inline-flex items-center justify-center rounded-full  text-white flex-shrink-0">
                                     <img src={physics} alt="" />
                                 </div>
-                                <h2 class=" text-lg title-font text-indigo-500  font-medium">Physics</h2>
+                                <h2 class=" text-lg title-font text-indigo-500  font-medium">Science</h2>
                             </div>
                             <div class="flex-grow">
                                 <p class="leading-relaxed text-base">Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine.</p>
