@@ -141,7 +141,7 @@ console.log(imageHostKey);
                     type="email"
                     id="email"
                     name="email"
-                    class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700  px-3 leading-8 transition-colors duration-200 ease-in-out"
+                    class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700  px-3 leading-8 transition-colors duration-200 ease-in-out"
                   />
                 </div>
               </div>
@@ -154,7 +154,7 @@ console.log(imageHostKey);
                     type="text"
                     id="phone"
                     name="phone"
-                    class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700  px-3 leading-8 transition-colors duration-200 ease-in-out "
+                    class="w-full bg-white  rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700  px-3 leading-8 transition-colors duration-200 ease-in-out "
                   />
                 </div>
               </div>
@@ -166,7 +166,7 @@ console.log(imageHostKey);
 
                   <select
                     name="subject"
-                    class="select w-full select-sm bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none  text-gray-700  px-3  py-1 transition-colors duration-200 ease-in-out"
+                    class="select w-full select-sm bg-white  rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none  text-gray-700  px-3  py-1 transition-colors duration-200 ease-in-out"
                   >
                     <option disabled selected>
                       Pick your Group
@@ -234,14 +234,14 @@ console.log(imageHostKey);
                   <label for="file" class="leading-7 text-sm pe-2 ">
                     Upload Your Image
                   </label>
-                  <input type="file" name='img' className="file-input file-input-bordered file-input-primary w-full max-w-xs" />
+                  <input type="file" name='img' className="file-input file-input-sm file-input-bordered file-input-primary w-full max-w-xs" />
 
                 </div>
               </div>
             
               <div class="p-2 w-full md:w-1/2  lg:w-72"></div>
 
-              <div class="p-2 w-full">
+              <div class="p-2 w-full pr-14">
                 <button
                   type="submit"
                   class="  w-full  text-center  text-white bg-cyan-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"

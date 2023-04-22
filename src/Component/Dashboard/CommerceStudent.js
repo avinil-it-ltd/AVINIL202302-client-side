@@ -97,7 +97,7 @@ const CommerceStudent = () => {
                 <label
                     onClick={() => handleFinalCommerce(i)}
                     htmlFor="my-modal-4"
-                    className="btn btn-sm text-xs bg-lime-500 outline-none border-none "
+                    className="btn btn-sm text-xs bg-blue-500 outline-none border-none "
                   >
 
                     Update Final Result

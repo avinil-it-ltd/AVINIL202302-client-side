@@ -16,6 +16,7 @@ import HumanitiesStudent from "./Component/Dashboard/HumanitiesStudent";
 import AllStudent from "./Component/Dashboard/AllStudent";
 import Attendance from "./Component/Dashboard/Attendance";
 import AuthProvider from "./AuthProvider/AuthProvider";
+import About from "./Component/About";
 
 function App() {
   const router = createBrowserRouter([
@@ -25,6 +26,7 @@ function App() {
     { path: "signUp", element: <SignUp></SignUp> },
     { path: "*", element: <NotFound></NotFound> },
     { path: "contact", element: <Contact></Contact> },
+    { path: "about", element: <About></About> },
 
     {
       path: "dashboard",

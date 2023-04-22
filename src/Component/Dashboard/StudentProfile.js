@@ -33,7 +33,7 @@ const Profile = () => {
       <section class="text-white bg-slate-800 mx-5  body-font">
         <div class="container  mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
           <div class=" lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
-            <div class="avatar mx-5 md:mx-20 lg:mx-40   my-5 ">
+            <div class="avatar mx-5 md:mx-10 lg:mx-20   my-5 ">
               <div class="w-52 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                 <img
                   alt=""
@@ -41,8 +41,8 @@ const Profile = () => {
                 />                            </div>
             </div>
           </div>
-          <div class="lg:flex-grow  md:w-1/2 lg:pl-24 md:pl-16 flex flex-col  md:items-start md:text-left text-start ">
-            <p>Name:{datas[0]?.userName}</p>
+          <div class="lg:flex-grow  md:w-1/2  lg:w-full lg:pl-20 lg:pr-32 md:pl-16 flex flex-col  md:items-start md:text-left text-start ">
+            <p>Name :  <span className='ml-2'> {datas[0]?.userName}</span></p>
 
             {
               datas[0]?.userType === 'teacher' ?
@@ -50,16 +50,16 @@ const Profile = () => {
 
                 </>
                 : <>
-                  <p>Roll: {datas[0]?.roll}</p>
-                  <p>Fathers Name: {datas[0]?.fatherName}</p>
-                  <p>Mothers name: {datas[0]?.motherName}</p>
+                  <p>Roll : <span className='ml-2'>{datas[0]?.roll}</span></p>
+                  <p>Fathers Name :  <span className='ml-2'>{datas[0]?.fatherName}</span> </p>
+                  <p>Mothers name :  <span className='ml-2'>{datas[0]?.motherName}</span> </p>
                 </>
 
             }
-            <p>group: {datas[0]?.group}</p>
+            <p>group :  <span className='ml-2'> {datas[0]?.group}</span></p>
 
-            <p>Address: {datas[0]?.address}</p>
-            <p>Contact number: {datas[0]?.mobile}</p>
+            <p>Address :  <span className='ml-2'>{datas[0]?.address}</span></p>
+            <p>Contact number :  <span className='ml-2'>{datas[0]?.mobile}</span> </p>
 
 
 

@@ -1,20 +1,29 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Drawer from 'react-modern-drawer'
 import 'react-modern-drawer/dist/index.css'
 import logo from '../../image/logo1.png'
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 const Navbar = () => {
     const { logOut, user } = useContext(AuthContext);
-
+    const navigate = useNavigate();
     const [isOpen, setIsOpen] = React.useState(false)
+    const location = useLocation();
+    const from =  "/";
+
     const toggleDrawer = () => {
         setIsOpen((prevState) => !prevState)
     }
 
     console.log("bbv", user)
-    const item = JSON.parse(localStorage.getItem("users"))[0];
+    const item = JSON.parse(localStorage.getItem("users"))[0] || {};
     console.log(item);
+    const handleLogOut = ()=>{
+        // navigate(from, { replace: true })
+        // location.reload()
+        logOut()
+        navigate('/')
+    }
     return (
         <header class="text-gray-600 body-font bg-slate-900">
             <div class="container mx-auto ">
@@ -31,30 +40,52 @@ const Navbar = () => {
                             <Link to="/home" className='text-center  font-bold text-xl  flex'> <img className='w-16 mr-2' src={logo} alt="" />Online College</Link>
                             <ul class="menu  px-1">
                                 <li><Link to="/home">Home</Link></li>
-                                {/* <li><Link to="/about">About Us</Link></li> */}
-
-                                <div class="collapse">
-                                    <input type="checkbox" class="peer" />
-                                    {/* <div class="flex collapse-title  ">
-                                        <Link to="/dashboard">Dashboard</Link>
-                                    </div> */}
-                                    <div class="collapse-content ">
-                                        <li className='py-0 my-0  text-sm'><Link className='py-0 my-1 ' to="/dashboard/studentProfile">My Profile</Link></li>
-                                        <li className='py-0 my-0  text-sm'><Link className='py-0 my-1 ' to="/dashboard/studentAttendance">My Attendance</Link></li>
-                                        <li className='py-0 my-0  text-sm'><Link className='py-0 my-1 ' to="/dashboard/studentResult">My Result</Link></li>
+                                <li><Link to="/about">About Us</Link></li>
 
 
+                                {
+                                    user && user?.uid ? <>
+
+                                        <div class="collapse">
+                                            <input type="checkbox" class="peer" />
+                                            <div class="flex collapse-title  ">
+                                                <Link to="/dashboard">Dashboard</Link>
+                                            </div>
+                                            <div class="collapse-content ">
+                                                {item?.userType == "student" ? <>
+
+                                                    <li className='py-0 my-0  text-sm'><Link className='py-0 my-1 ' to="/dashboard/studentProfile">My Profile</Link></li>
+                                                    <li className='py-0 my-0  text-sm'><Link className='py-0 my-1 ' to="/dashboard/studentAttendance">My Attendance</Link></li>
+                                                    <li className='py-0 my-0  text-sm'><Link className='py-0 my-1 ' to="/dashboard/studentResult">My Result</Link></li>
+
+                                                </> : null
+
+                                                }
 
 
-                                        <li className='py-0 my-0  text-sm'><Link className='py-0 my-1 ' to="/dashboard/teacherProfile">My Profile</Link></li>
-                                        <li className='py-0 my-0  text-sm'><Link className='py-0 my-1 ' to="/dashboard/scienceStudent">Science Student</Link></li>
-                                        <li className='py-0 my-0  text-sm'><Link className='py-0 my-1 ' to="/dashboard/commerceStudent">Commerce Student</Link></li>
-                                        <li className='py-0 my-0  text-sm'><Link className='py-0 my-1 ' to="/dashboard/humanitiesStudent">Humanities Student</Link></li>
-                                        <li className='py-0 my-0  text-sm'><Link className='py-0 my-1 ' to="/dashboard/attendance">Attendance</Link></li>
+                                                {item?.userType == "teacher" ? <>
+                                                    <li className='py-0 my-0  text-sm'><Link className='py-0 my-1 ' to="/dashboard/teacherProfile">My Profile</Link></li>
 
-                                        {/* <li className='py-0 my-0  text-sm'><Link className='py-0 my-0 ' to="dashboard/allStudent">All Student</Link></li> */}
-                                    </div>
-                                </div>
+                                                    {item.group == "Science" && <li className='py-0 my-0  text-sm'><Link className='py-0 my-1 ' to="/dashboard/scienceStudent">Science Student</Link></li>}
+                                                    {item.group == "Commerce" && <li className='py-0 my-0  text-sm'><Link className='py-0 my-1 ' to="/dashboard/commerceStudent">Commerce Student</Link></li>}
+                                                    {item.group == "Humanities" && <li className='py-0 my-0  text-sm'><Link className='py-0 my-1 ' to="/dashboard/humanitiesStudent">Humanities Student</Link></li>}
+                                                    <li className='py-0 my-0  text-sm'><Link className='py-0 my-1 ' to="/dashboard/attendance">Attendance</Link></li>
+                                                </> : null}
+
+
+
+
+                                                {/* <li className='py-0 my-0  text-sm'><Link className='py-0 my-0 ' to="dashboard/allStudent">All Student</Link></li> */}
+                                            </div>
+                                        </div>
+
+                                    </> :
+                                        <>
+
+                                        </>
+                                }
+
+
 
                                 <li ><Link to="/contact">Contact</Link></li>
 
@@ -63,18 +94,19 @@ const Navbar = () => {
                                         <li><Link to='/dashboard'> DashBoard </Link></li>
 
 
-                                        <button onClick={logOut}>LogOut</button>
+                                        <li><Link 
+                                        to="/"  
+                                        onClick={handleLogOut}
+                                        >LogOut</Link></li>
 
                                     </> :
                                         <>
                                             <li><Link to='/signIn'>Login</Link></li>
-                                            {/* <li><Link to='/signUp'>Register</Link></li> */}
                                         </>
 
 
                                 }
 
-                                {/* <li><Link to='/signIn'>SignIn</Link></li> */}
                             </ul>
                         </Drawer>
                     </>
@@ -92,7 +124,7 @@ const Navbar = () => {
                         <div class="navbar-end hidden lg:flex">
                             <ul class="menu menu-horizontal px-1">
                                 <li><Link to="/home">Home</Link></li>
-                                {/* <li><Link to="/about">About Us</Link></li> */}
+                                <li><Link to="/about">About Us</Link></li>
 
                                 {/* <li tabindex="0"> */}
                                 {/* <Link to="/dashboard">Dashboard</Link> */}
@@ -110,7 +142,11 @@ const Navbar = () => {
                                         <li><Link to='/dashboard'> Dashboard </Link></li>
 
 
-                                        <button onClick={logOut}>LogOut</button>
+                                        <li><Link  
+                                        to='/'
+                                       onClick={handleLogOut}
+                                       
+                                       >LogOut</Link></li> 
 
                                     </> :
                                         <>
@@ -123,10 +159,14 @@ const Navbar = () => {
 
                                 {
                                     item?.userType == "admin" && user?.uid ? <>
-                                        <li><Link to='/dashboard'> DashBoard </Link></li>
+                                        <li><Link to='/'> DashBoard </Link></li>
 
 
-                                        <button onClick={logOut}>LogOut</button>
+                                       <li><Link  
+                                       to='/'
+                                       onClick={handleLogOut}
+                                       
+                                       >LogOut</Link></li> 
 
 
                                         <li><Link to='/signIn'>Login</Link></li>

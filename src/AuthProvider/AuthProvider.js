@@ -9,13 +9,14 @@ import {
 } from "firebase/auth";
 import { createContext } from "react";
 import app from "../firebase/firebase.config";
+import { useNavigate } from "react-router-dom";
 
 export const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
 
 
 
-
+  
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const auth = getAuth(app);
@@ -33,6 +34,7 @@ const AuthProvider = ({ children }) => {
   };
   const logOut = () => {
     setLoading(true);
+  
     return signOut(auth);
   };
   useEffect(() => {
