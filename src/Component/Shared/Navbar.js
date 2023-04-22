@@ -14,10 +14,20 @@ const Navbar = () => {
     const toggleDrawer = () => {
         setIsOpen((prevState) => !prevState)
     }
+    let userData = [];
 
     console.log("bbv", user)
-    const item = JSON.parse(localStorage.getItem("users"))[0] || {};
+    let item = JSON.parse(localStorage.getItem("users")) ;
     console.log(item);
+    if(item)
+    {
+        console.log("yes")
+        userData = item[0];
+        console.log(userData)
+    }
+    else{
+        console.log(item);
+    }
     const handleLogOut = ()=>{
         // navigate(from, { replace: true })
         // location.reload()
@@ -52,7 +62,7 @@ const Navbar = () => {
                                                 <Link to="/dashboard">Dashboard</Link>
                                             </div>
                                             <div class="collapse-content ">
-                                                {item?.userType == "student" ? <>
+                                                {userData?.userType == "student" ? <>
 
                                                     <li className='py-0 my-0  text-sm'><Link className='py-0 my-1 ' to="/dashboard/studentProfile">My Profile</Link></li>
                                                     <li className='py-0 my-0  text-sm'><Link className='py-0 my-1 ' to="/dashboard/studentAttendance">My Attendance</Link></li>
@@ -63,12 +73,12 @@ const Navbar = () => {
                                                 }
 
 
-                                                {item?.userType == "teacher" ? <>
+                                                {userData?.userType == "teacher" ? <>
                                                     <li className='py-0 my-0  text-sm'><Link className='py-0 my-1 ' to="/dashboard/teacherProfile">My Profile</Link></li>
 
-                                                    {item.group == "Science" && <li className='py-0 my-0  text-sm'><Link className='py-0 my-1 ' to="/dashboard/scienceStudent">Science Student</Link></li>}
-                                                    {item.group == "Commerce" && <li className='py-0 my-0  text-sm'><Link className='py-0 my-1 ' to="/dashboard/commerceStudent">Commerce Student</Link></li>}
-                                                    {item.group == "Humanities" && <li className='py-0 my-0  text-sm'><Link className='py-0 my-1 ' to="/dashboard/humanitiesStudent">Humanities Student</Link></li>}
+                                                    {userData.group == "Science" && <li className='py-0 my-0  text-sm'><Link className='py-0 my-1 ' to="/dashboard/scienceStudent">Science Student</Link></li>}
+                                                    {userData.group == "Commerce" && <li className='py-0 my-0  text-sm'><Link className='py-0 my-1 ' to="/dashboard/commerceStudent">Commerce Student</Link></li>}
+                                                    {userData.group == "Humanities" && <li className='py-0 my-0  text-sm'><Link className='py-0 my-1 ' to="/dashboard/humanitiesStudent">Humanities Student</Link></li>}
                                                     <li className='py-0 my-0  text-sm'><Link className='py-0 my-1 ' to="/dashboard/attendance">Attendance</Link></li>
                                                 </> : null}
 
@@ -158,7 +168,7 @@ const Navbar = () => {
                                 }
 
                                 {
-                                    item?.userType == "admin" && user?.uid ? <>
+                                    userData?.userType == "admin" && user?.uid ? <>
                                         <li><Link to='/'> DashBoard </Link></li>
 
 
