@@ -15,7 +15,9 @@ const SignUp = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
-
+  let test  = process.env.REACT_APP_IMG_KEY
+  console.log(test)
+  console.log("hello",process.env.REACT_APP_IMG_KEY)
   const handleSubmit = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
@@ -36,7 +38,10 @@ const SignUp = () => {
     const image = e.target.img.files[0];
     const formData = new FormData()
     formData.append('image', image)
-    const url = `https://api.imgbb.com/1/upload?expiration=600&key=${process.env.REACT_APP_imagebb_key}`
+    console.log("first")
+    console.log("hello",process.env.REACT_APP_IMG_KEY)
+    let  img_key = "dc93277713c4fada975cf1d234c5d0a0"
+    const url = `https://api.imgbb.com/1/upload?expiration=600&key=${img_key}`
     fetch(url, {
       method: 'POST',
       body: formData
@@ -157,7 +162,7 @@ const SignUp = () => {
                     type="text"
                     id="phone"
                     name="phone"
-                    placeholder="Enter Your Address"
+                    placeholder="Enter Phone Number"
                     class="w-full bg-white  text-black rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700  px-3 leading-8 transition-colors duration-200 ease-in-out "
                   />
                 </div>
@@ -189,7 +194,7 @@ const SignUp = () => {
                     Address
                   </label>
                   <input
-                    placeholder="Enter Your Address"
+                    placeholder="Enter Address"
                     type="text"
                     id="address"
                     name="address"
