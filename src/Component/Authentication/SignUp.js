@@ -39,7 +39,7 @@ const SignUp = () => {
     const formData = new FormData()
     formData.append('image', image)
     console.log("first")
-    console.log("hello",process.env.REACT_APP_IMG_KEY)
+    // console.log("hello",process.env.REACT_APP_IMG_KEY)
     let  img_key = "dc93277713c4fada975cf1d234c5d0a0"
     const url = `https://api.imgbb.com/1/upload?expiration=600&key=${img_key}`
     fetch(url, {
