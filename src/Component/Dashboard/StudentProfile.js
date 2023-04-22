@@ -50,9 +50,9 @@ const Profile = () => {
 
                 </>
                 : <>
-                  <p>Roll : <span className='ml-2'>{datas[0]?.roll}</span></p>
+                  {/* <p>Roll : <span className='ml-2'>{datas[0]?.roll}</span></p>
                   <p>Fathers Name :  <span className='ml-2'>{datas[0]?.fatherName}</span> </p>
-                  <p>Mothers name :  <span className='ml-2'>{datas[0]?.motherName}</span> </p>
+                  <p>Mothers name :  <span className='ml-2'>{datas[0]?.motherName}</span> </p> */}
                 </>
 
             }
