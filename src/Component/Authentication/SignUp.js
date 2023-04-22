@@ -70,7 +70,15 @@ console.log(imageHostKey);
             }})
 
   
-    
+    // console.log(info);
+    // // console.log(name,email,password)
+    // createUser(email, userPass)
+    //   .then((result) => {
+    //     const user = result.user;
+    //     databaseInsert(info);
+    //     navigate(from, { replace: true });
+    //   })
+    //   .catch((error) => console.error(error));
   }
   const databaseInsert = async (info) => {
     let respose = await axios.post(
@@ -226,14 +234,14 @@ console.log(imageHostKey);
                   <label for="file" class="leading-7 text-sm pe-2 ">
                     Upload Your Image
                   </label>
-                  <input type="file" name='img' className="file-input file-input-sm file-input-bordered  w-full max-w-xs" />
+                  <input type="file" name='img' className="file-input file-input-sm file-input-bordered file-input-primary w-full max-w-xs" />
 
                 </div>
               </div>
             
               <div class="p-2 w-full md:w-1/2  lg:w-72"></div>
 
-              <div class="p-2 w-full">
+              <div class="p-2 w-full pr-14">
                 <button
                   type="submit"
                   class="  w-full  text-center  text-white bg-cyan-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
@@ -262,4 +270,3 @@ console.log(imageHostKey);
 };
 
 export default SignUp;
-
