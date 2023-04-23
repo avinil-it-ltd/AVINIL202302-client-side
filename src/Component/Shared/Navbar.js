@@ -33,6 +33,7 @@ const Navbar = () => {
         logOut()
         navigate('/')
     }
+    // console.log("hello",process.env.REACT_APP_IMG_KEY)
     return (
         <header class="text-gray-600 body-font bg-slate-900">
             <div class="container mx-auto ">
