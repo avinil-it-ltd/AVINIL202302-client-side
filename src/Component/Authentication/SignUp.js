@@ -9,15 +9,19 @@ import axios from "axios";
 import SweetAlert from "react-swal";
 
 const SignUp = () => {
+
   const [imageurls, setUrl] = useState('')
   const { createUser } = useContext(AuthContext);
 
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
-  let test  = process.env.REACT_APP_IMG_KEY
+  let test = process.env.REACT_APP_IMG_KEY
   console.log(test)
-  console.log("hello",process.env.REACT_APP_IMG_KEY)
+  console.log("hello", process.env.REACT_APP_IMG_KEY)
+  // let test2 = process.env.REACT_APP_UPLOAD_PRESET
+
+  console.log("hello", process.env.REACT_APP_IMG_KEY, process.env.REACT_APP_UPLOAD_PRESET, process.env.REACT_APP_CLOUD_NAME, process.env.REACT_APP_CLOUD_ENV_NAME)
   const handleSubmit = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
@@ -25,33 +29,39 @@ const SignUp = () => {
 
     const userPass = e.target.password.value;
     const userType = e.target.type.value; //student or teacher
-    /// const imageUrl = e.image;
-    // const roll = e.target.roll.value;
+
     const group = e.target.subject.value;
-    // const session = e.target.session.value;
+
     const phone = e.target.phone.value;
     console.log(phone);
     const address = e.target.address.value;
-    // const qualification = e.target.qualification.value;
 
-    // console.log(imageHostKey);
     const image = e.target.img.files[0];
+
+
     const formData = new FormData()
-    formData.append('image', image)
+
+    formData.append('file', image)
+
     console.log("first")
     // console.log("hello",process.env.REACT_APP_IMG_KEY)
-    
-    const url = `https://api.imgbb.com/1/upload?expiration=600&key=${process.env.REACT_APP_IMG_KEY}`
+    formData.append("upload_preset", process.env.REACT_APP_UPLOAD_PRESET)
+    formData.append("cloud_name", process.env.REACT_APP_CLOUD_NAME)
+    console.log(formData)
+    const url = `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUD_ENV_NAME}/image/upload`
+    // const url = `https://api.imgbb.com/1/upload?expiration=600&key=${process.env.REACT_APP_IMG_KEY}`
+    console.log("hello", process.env.UPLOAD_PRESET, process.env.CLOUD_NAME, process.env.CLOUD_ENV_NAME)
     fetch(url, {
       method: 'POST',
       body: formData
     })
+
       .then(res => res.json())
       .then(imageData => {
         console.log(imageData)
-        if (imageData.success) {
-          console.log(imageData.data.url)
-          setUrl(imageData.data.url)
+        if (imageData) {
+          console.log(imageData.secure_url)
+          setUrl(imageData.secure_url)
           const info = {
             email: email,
             userName: userName,
@@ -59,7 +69,7 @@ const SignUp = () => {
             userType: userType,
             // roll: roll,
             mobile: phone,
-            imageUrl: imageData.data.url,
+            imageUrl: imageData.secure_url || "no image",
             group: group,
             // session: session,
             address: address,
@@ -259,7 +269,7 @@ const SignUp = () => {
                 </button>
               </div>
             </form>
-{/* Hello */}
+            {/* Hello */}
             <p className="text-2xl text-center  text-white mt-3">
               <small>
                 If you have an account? please{" "}

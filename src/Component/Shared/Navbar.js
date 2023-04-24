@@ -16,16 +16,16 @@ const Navbar = () => {
     }
     let userData = [];
 
-    console.log("bbv", user)
+    // console.log("bbv", user)
     let item = JSON.parse(localStorage.getItem("users"));
-    console.log(item);
+    // console.log(item);
     if (item) {
-        console.log("yes")
+        // console.log("yes")
         userData = item[0];
-        console.log(userData)
+        // console.log(userData)
     }
     else {
-        console.log(item);
+        // console.log(item);
     }
     const handleLogOut = () => {
         // navigate(from, { replace: true })
@@ -33,7 +33,7 @@ const Navbar = () => {
         logOut()
         navigate('/')
     }
-    // console.log("hello",process.env.REACT_APP_IMG_KEY)
+    console.log("hello",process.env.REACT_APP_IMG_KEY)
     return (
         <header class="text-gray-600 body-font bg-slate-900">
             <div class="container mx-auto ">
@@ -74,7 +74,7 @@ const Navbar = () => {
 
 
                                                 {userData?.userType == "teacher" ? <>
-                                                    <li className='py-0 my-0  text-sm'><Link className='py-0 my-1 ' to="/dashboard/teacherProfile">My Profile</Link></li>
+                                                    <li className='py-0 my-0  text-sm'><Link className='py-0 my-1 ' to="/dashboard/studentProfile">My Profile</Link></li>
 
                                                     {userData.group == "Science" && <li className='py-0 my-0  text-sm'><Link className='py-0 my-1 ' to="/dashboard/scienceStudent">Science Student</Link></li>}
                                                     {userData.group == "Commerce" && <li className='py-0 my-0  text-sm'><Link className='py-0 my-1 ' to="/dashboard/commerceStudent">Commerce Student</Link></li>}

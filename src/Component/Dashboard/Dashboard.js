@@ -67,7 +67,7 @@ const Dashboard = () => {
                 <>
                   <li>
                     {/* <Link to="/dashboard/teacherProfile">My Profile</Link> */}
-                    <Link to="/dashboard/teacherProfile">{datas[0]?.name ? datas[0]?.name : "My Profile"}</Link>
+                    <Link to="/dashboard/studentProfile">{datas[0]?.name ? datas[0]?.name : "My Profile"}</Link>
                   </li>
                   {datas[0]?.group === "Science" ? (
                     <>

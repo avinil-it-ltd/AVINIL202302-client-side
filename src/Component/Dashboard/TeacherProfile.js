@@ -21,8 +21,6 @@ const TeacherProfile = () => {
             } else {
                 console.log(respose);
             }
-
-
         }
         data()
             .then(respose => console.log(respose))
