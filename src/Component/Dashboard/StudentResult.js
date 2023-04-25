@@ -1,8 +1,11 @@
 import axios from "axios";
 import { lastDayOfMonth } from "date-fns";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useContext } from "react";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const StudentResult = () => {
+  const { user,state } = useContext(AuthContext);
+
   const [number, setNumber] = useState(0);
   const [midGPA, setMidGpa] = useState(0);
   const [finaGPA, setFinalGpa] = useState(0);
@@ -15,16 +18,15 @@ const StudentResult = () => {
   const [userData, setUserData] = useState();
   const [self, setSelf] = useState({});
   
-
+console.log(state.data);
   useEffect(() => {
-    const item = JSON.parse(localStorage.getItem("users"));
-    setSelf(item[0]);
-    if (item) {
+    setSelf(user);
+    if (user) {
       // console.log("dsfd", item[0]._id);
       const data = async () => {
         let respose = await axios.get(
 
-          `https://cms2023.onrender.com/api/v1/get-mark-student/${item[0]._id}`
+          `https://cms2023.onrender.com/api/v1/get-mark-student/${state?.data[0]?. _id}`
         );
 
         if (respose.status == 200) {
@@ -43,12 +45,10 @@ const StudentResult = () => {
       };
       data().then((respose) => console.log(respose));
     }
-
- 
-    setUserData(item[0])
+   // setUserData(item[0])
     
   
-  }, [items]);
+  }, []);
   console.log(marksMid)
 
 

@@ -8,29 +8,31 @@ import { async } from "q";
 
 const Dashboard = () => {
   const [datas, setDatas] = useState([]);
-  const { user } = useContext(AuthContext);
-  console.log(user?.email);
-  useEffect(() => {
-    const data = async () => {
-      let respose = await axios.get(
-        `https://cms2023.onrender.com/api/v1/get-single-user/${user?.email}`
-      );
-      console.log(respose);
-      if (respose?.status == 200) {
-        console.log(respose?.data?.data);
-        setDatas(respose?.data?.data);
+  const { user,state } = useContext(AuthContext);
+  // console.log(state.data[0]?);
+  // const item = JSON.parse(localStorage.getItem("users"));
+  // console.log(item);
+  // useEffect(() => {
+  //   const data = async () => {
+  //     let respose = await axios.get(
+  //       `https://cms2023.onrender.com/api/v1/get-single-user/${user?.email}`
+  //     );
+  //     console.log(respose);
+  //     if (respose?.status == 200) {
+  //       console.log(respose?.data?.data);
+  //       setDatas(respose?.data?.data);
 
-        localStorage.setItem("users", JSON.stringify(respose?.data?.data));
+  //       localStorage.setItem("users", JSON.stringify(respose?.data?.data));
 
-        return respose;
-      } else {
-        console.log(respose);
-      }
-    };
-    data().then((respose) => console.log(respose));
-  }, [user?.email]);
-  console.log(datas[0]);
-  console.log(datas[0]?.userType);
+  //       return respose;
+  //     } else {
+  //       console.log(respose);
+  //     }
+  //   };
+  //   data().then((respose) => console.log(respose));
+  // }, [user?.email]);
+  // console.log(datas[0]);
+  // console.log(state.data[0]?.userType);
 
 
   // const item = JSON.parse(localStorage.getItem("users"));
@@ -56,20 +58,20 @@ const Dashboard = () => {
                 <div class="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                   <img
                     alt=""
-                    src={datas[0]?.imageUrl}
+                    src={state?.data[0]?.imageUrl}
                   />
                 </div>
               </div>
 
               {/* <!-- student access content here --> */}
 
-              {datas[0]?.userType === "teacher" ? (
+              {((state.data[0]?.userType === "teacher" || user) && state.data[0]?.userType!==undefined) ? (
                 <>
                   <li>
                     {/* <Link to="/dashboard/teacherProfile">My Profile</Link> */}
-                    <Link to="/dashboard/studentProfile">{datas[0]?.name ? datas[0]?.name : "My Profile"}</Link>
+                    <Link to="/dashboard/studentProfile">{state.data[0]?.name ? state.data[0]?.name : "My Profile"}</Link>
                   </li>
-                  {datas[0]?.group === "Science" ? (
+                  {state.data[0]?.group === "Science" ? (
                     <>
                       <li>
                         <Link to="/dashboard/scienceStudent">
@@ -78,7 +80,7 @@ const Dashboard = () => {
                       </li>
                     </>
                   ) : null}
-                  {datas[0]?.group === "Commerce" ? (
+                  {((state.data[0]?.group  === "Commerce" || user) && state.data[0]?.userType!==undefined) ? (
                     <>
                       <li>
                         <Link to="/dashboard/commerceStudent">
@@ -87,7 +89,7 @@ const Dashboard = () => {
                       </li>
                     </>
                   ) : null}
-                  {datas[0]?.group === "Humanities" ? (
+                  {state.data[0]?.group === "Humanities" ? (
                     <>
                       <li>
                         <Link to="/dashboard/humanitiesStudent">
@@ -106,7 +108,7 @@ const Dashboard = () => {
 
                 </>
               )}
-              {datas[0]?.userType == 'student' ? <>
+              {state.data[0]?.userType == 'student' ? <>
                 <li>
                   <Link to="/dashboard/studentProfile">My Profile</Link>
                 </li>
@@ -123,7 +125,7 @@ const Dashboard = () => {
               }
 
 
-              {datas[0]?.userType == "admin" ? <>
+              {state.data[0]?.userType == "admin" ? <>
 
 
                 <li>

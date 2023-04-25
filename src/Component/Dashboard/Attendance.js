@@ -3,6 +3,8 @@ import { format } from "date-fns";
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 import axios from "axios";
+import emailjs from "@emailjs/browser";
+
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Attendance = () => {
@@ -29,8 +31,8 @@ const Attendance = () => {
       );
       console.log(respose);
       if (respose.status == 200) {
-        console.log("na", respose.data.data[0].group);
-        setDatas(respose.data.data[0].group);
+        console.log("na", respose?.data?.data[0]?.group);
+        setDatas(respose?.data?.data[0]?.group);
         return respose;
       } else {
         console.log(respose);
@@ -113,7 +115,14 @@ const Attendance = () => {
     }
 
   }
-  const handleAbsent = async (id) => {
+  const handleAbsent = async (id,name) => {
+
+    emailjs.sendForm('service_i8ie5mf', 'template_avrndva', name,"OMVTrZJ8Q7HWM7UVX")
+    .then((result) => {
+      console.log(result.text);
+    }, (error) => {
+      console.log(error.text);
+    });
     const info = {
       student: id,
       date: selected,
@@ -324,7 +333,7 @@ const Attendance = () => {
                   </td>
 
                   <td>
-                    <button disabled={disableds == i._id} onClick={() => handleAbsent(i?._id)} className="btn btn-sm text-xs bg-green-500 outline-none border-none ">
+                    <button disabled={disableds == i._id} onClick={() => handleAbsent(i?._id,i?.userName)} className="btn btn-sm text-xs bg-green-500 outline-none border-none ">
                       Absent
                     </button>
                   </td>

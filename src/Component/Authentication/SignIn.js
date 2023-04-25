@@ -17,6 +17,8 @@ const SignIn = () => {
         console.log(email,password);
         login(email,password)
         .then(res=>{
+          localStorage.setItem("email", JSON.stringify({email:email}));
+
             const user=res.user;
             console.log(user)
            

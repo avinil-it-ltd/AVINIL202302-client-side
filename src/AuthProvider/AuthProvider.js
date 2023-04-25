@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import {
   createUserWithEmailAndPassword,
   getAuth,
@@ -10,13 +10,13 @@ import {
 import { createContext } from "react";
 import app from "../firebase/firebase.config";
 import { useNavigate } from "react-router-dom";
+import { dataReducer, initalState } from "../state/DataState/DataReducer";
+import { actionType } from "../state/DataState/actionTypes";
 
 export const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
-
-
-
-  
+  const [state,dispatch] = useReducer(dataReducer,initalState)
+ 
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const auth = getAuth(app);
@@ -37,7 +37,10 @@ const AuthProvider = ({ children }) => {
   
     return signOut(auth);
   };
+  
+  
   useEffect(() => {
+
     const unaubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       setLoading(false);
@@ -45,9 +48,33 @@ const AuthProvider = ({ children }) => {
     return () => unaubscribe();
   }, []);
 
+  const item = JSON.parse(localStorage.getItem("email"));
+  console.log(item);
+   useEffect(()=>{
+    dispatch({type:actionType.FATCHING_START})
+
+ fetch(
+  `https://cms2023.onrender.com/api/v1/get-single-user/${item?.email}`
+
+    )
+    .then((response) => response.json())
+    .then(data=>dispatch({type:actionType.FATCHING_SUCCESS,payload:data.data}))
+.catch(()=>{
+  dispatch({type:actionType.FATCHING_ERROR})
+})
+   },[])
+     
+console.log(state);
+   
+    
+  
+
+  // }
+  // console.log('ffff',GetUserByGroup())
+
 
   
-  const authInfo = { createUser, login, updateUser, logOut, user, loading };
+  const authInfo = { createUser, login, updateUser, logOut, user, loading ,state,dispatch};
 
   
   return (

@@ -17,7 +17,7 @@ const Navbar = () => {
     let userData = [];
 
     // console.log("bbv", user)
-    let item = JSON.parse(localStorage.getItem("users"));
+    let item = JSON.parse(localStorage.getItem("email"));
     // console.log(item);
     if (item) {
         // console.log("yes")
