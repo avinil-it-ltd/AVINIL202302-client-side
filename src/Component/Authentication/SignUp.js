@@ -59,7 +59,7 @@ const SignUp = () => {
       .then(res => res.json())
       .then(imageData => {
         console.log(imageData)
-        if (imageData) {
+        if (imageData.secure_url) {
           console.log(imageData.secure_url)
           setUrl(imageData.secure_url)
           const info = {
