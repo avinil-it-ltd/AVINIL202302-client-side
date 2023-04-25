@@ -30,6 +30,7 @@ const Navbar = () => {
     const handleLogOut = () => {
         // navigate(from, { replace: true })
         // location.reload()
+        localStorage.clear();
         logOut()
         navigate('/')
     }

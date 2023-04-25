@@ -9,6 +9,7 @@ import { async } from "q";
 const Dashboard = () => {
   const [datas, setDatas] = useState([]);
   const { user,state } = useContext(AuthContext);
+
   // console.log(state.data[0]?);
   // const item = JSON.parse(localStorage.getItem("users"));
   // console.log(item);
@@ -32,7 +33,7 @@ const Dashboard = () => {
   //   data().then((respose) => console.log(respose));
   // }, [user?.email]);
   // console.log(datas[0]);
-  // console.log(state.data[0]?.userType);
+  console.log(state.data[0]?.userType);
 
 
   // const item = JSON.parse(localStorage.getItem("users"));

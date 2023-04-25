@@ -19,6 +19,8 @@ import AuthProvider from "./AuthProvider/AuthProvider";
 import About from "./Component/About";
 
 function App() {
+
+  
   const router = createBrowserRouter([
     { path: "/", element: <Home></Home> },
     { path: "home", element: <Home></Home> },
