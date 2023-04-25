@@ -54,27 +54,35 @@ const StudentResult = () => {
 
   let getGpa = percentage => {
     console.log(percentage)
+    percentage = parseInt(percentage)
     let grades = "F";
     if (percentage <= 100 && percentage >= 80) {
+      console.log(percentage)
       grades = "A+";
     }
     else if (percentage <= 79 && percentage >= 70) {
+      console.log(percentage)
       grades = "A";
     }
 
     else if (percentage <= 69 && percentage >= 60) {
+      console.log(percentage)
       grades = "A-";
     }
     else if (percentage <= 59 && percentage >= 50) {
+      console.log(percentage)
       grades = "B";
     }
     else if (percentage <= 49 && percentage >= 40) {
+      console.log(percentage)
       grades = "C";
     }
     else if (percentage <= 40 && percentage >= 33) {
+      console.log(percentage)
       grades = "D";
     }
     else {
+      console.log("Hello",percentage)
       grades = "F";
     }
 
@@ -88,7 +96,7 @@ console.log(userData?.group);
     let sum = 0
     console.log(marksMid?.bangla)
     console.log((sum + parseInt(marksMid?.bangla) + parseInt(marksMid?.finance) + parseInt(marksMid?.math) + parseInt(marksMid?.business) + parseInt(marksMid?.english)))
-    // let mid = sum + parseInt(items[0]?.Midterm[0].bangla) * 5 / 10 + parseInt(items[0]?.Midterm[0].finance) * 5 / 10 + parseInt(items[0]?.Midterm[0].math) * 5 / 10 + parseInt(items[0]?.Midterm[0].business) * 5 / 10 + parseInt(items[0]?.Midterm[0].english) * 5 / 10
+    
     let mid = getGpa((sum + parseInt(marksMid?.bangla) + parseInt(marksMid?.finance) + parseInt(marksMid?.math) + parseInt(marksMid?.business) + parseInt(marksMid?.english)) / 5)
     console.log(mid);
     mGPA = mid;
