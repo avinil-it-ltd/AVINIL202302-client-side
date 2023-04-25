@@ -18,11 +18,11 @@ const CommerceStudent = () => {
       );
       console.log(respose);
       if (respose.status == 200) {
-        console.log(respose.data.data);
+       
         setStudent(respose.data.data);
         return respose;
       } else {
-        console.log(respose);
+        
       }
     };
     data().then((respose) => console.log(respose));

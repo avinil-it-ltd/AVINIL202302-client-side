@@ -9,19 +9,24 @@ import axios from "axios";
 import SweetAlert from "react-swal";
 
 const SignUp = () => {
-
-  const [imageurls, setUrl] = useState('')
+  const [imageurls, setUrl] = useState("");
   const { createUser } = useContext(AuthContext);
 
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
-  let test = process.env.REACT_APP_IMG_KEY
-  console.log(test)
-  console.log("hello", process.env.REACT_APP_IMG_KEY)
+  let test = process.env.REACT_APP_IMG_KEY;
+  console.log(test);
+  console.log("hello", process.env.REACT_APP_IMG_KEY);
   // let test2 = process.env.REACT_APP_UPLOAD_PRESET
 
-  console.log("hello", process.env.REACT_APP_IMG_KEY, process.env.REACT_APP_UPLOAD_PRESET, process.env.REACT_APP_CLOUD_NAME, process.env.REACT_APP_CLOUD_ENV_NAME)
+  console.log(
+    "hello",
+    process.env.REACT_APP_IMG_KEY,
+    process.env.REACT_APP_UPLOAD_PRESET,
+    process.env.REACT_APP_CLOUD_NAME,
+    process.env.REACT_APP_CLOUD_ENV_NAME
+  );
   const handleSubmit = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
@@ -38,30 +43,33 @@ const SignUp = () => {
 
     const image = e.target.img.files[0];
 
+    const formData = new FormData();
 
-    const formData = new FormData()
+    formData.append("file", image);
 
-    formData.append('file', image)
-
-    console.log("first")
+    console.log("first");
     // console.log("hello",process.env.REACT_APP_IMG_KEY)
-    formData.append("upload_preset", process.env.REACT_APP_UPLOAD_PRESET)
-    formData.append("cloud_name", process.env.REACT_APP_CLOUD_NAME)
-    console.log(formData)
-    const url = `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUD_ENV_NAME}/image/upload`
+    formData.append("upload_preset", process.env.REACT_APP_UPLOAD_PRESET);
+    formData.append("cloud_name", process.env.REACT_APP_CLOUD_NAME);
+    console.log(formData);
+    const url = `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUD_ENV_NAME}/image/upload`;
     // const url = `https://api.imgbb.com/1/upload?expiration=600&key=${process.env.REACT_APP_IMG_KEY}`
-    console.log("hello", process.env.UPLOAD_PRESET, process.env.CLOUD_NAME, process.env.CLOUD_ENV_NAME)
+    console.log(
+      "hello",
+      process.env.UPLOAD_PRESET,
+      process.env.CLOUD_NAME,
+      process.env.CLOUD_ENV_NAME
+    );
     fetch(url, {
-      method: 'POST',
-      body: formData
+      method: "POST",
+      body: formData,
     })
-
-      .then(res => res.json())
-      .then(imageData => {
-        console.log(imageData)
+      .then((res) => res.json())
+      .then((imageData) => {
+        console.log(imageData);
         if (imageData.secure_url) {
-          console.log(imageData.secure_url)
-          setUrl(imageData.secure_url)
+          console.log(imageData.secure_url);
+          setUrl(imageData.secure_url);
           const info = {
             email: email,
             userName: userName,
@@ -75,6 +83,8 @@ const SignUp = () => {
             address: address,
             // qualification: qualification,
           };
+          localStorage.setItem("email", JSON.stringify({email:email}));
+
           createUser(email, userPass)
             .then((result) => {
               const user = result.user;
@@ -83,8 +93,7 @@ const SignUp = () => {
             })
             .catch((error) => console.error(error));
         }
-      })
-
+      });
 
     // console.log(info);
     // // console.log(name,email,password)
@@ -95,16 +104,14 @@ const SignUp = () => {
     //     navigate(from, { replace: true });
     //   })
     //   .catch((error) => console.error(error));
-  }
+  };
   const databaseInsert = async (info) => {
     let respose = await axios.post(
-
       "https://cms2023.onrender.com/api/v1/create-user",
       info
     );
 
     if (respose.status == 200) {
-      console.log(respose.data);
       // localStorage.setItem("users", JSON.stringify(respose.data));
     } else {
       console.log(respose);
@@ -253,8 +260,11 @@ const SignUp = () => {
                   <label for="file" class=" leading-7 text-sm pe-2 ">
                     Upload Your Image
                   </label>
-                  <input type="file" name='img' className="file-input  text-black file-input-sm file-input-bordered file-input-cyan-500 w-full max-w-xs" />
-
+                  <input
+                    type="file"
+                    name="img"
+                    className="file-input  text-black file-input-sm file-input-bordered file-input-cyan-500 w-full max-w-xs"
+                  />
                 </div>
               </div>
 

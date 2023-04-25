@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import emailjs from "@emailjs/browser";
 
 const Modal = ({ userData }) => {
   const [test, setTest] = useState({})
@@ -23,6 +24,12 @@ const Modal = ({ userData }) => {
           },
         ],
       }
+      emailjs.sendForm('service_i8ie5mf', 'template_avrndva', data,"OMVTrZJ8Q7HWM7UVX")
+      .then((result) => {
+        console.log(result.text);
+      }, (error) => {
+        console.log(error.text);
+      });
       let respose = await axios.post(
         'https://cms2023.onrender.com/api/v1/create-mark',
         data
