@@ -65,7 +65,7 @@ const Dashboard = () => {
 
               {/* <!-- student access content here --> */}
 
-              {((state.data[0]?.userType === "teacher" || user) && state.data[0]?.userType!==undefined) ? (
+              {((state.data[0]?.userType === "teacher" )) ? (
                 <>
                   <li>
                     {/* <Link to="/dashboard/teacherProfile">My Profile</Link> */}
@@ -80,7 +80,7 @@ const Dashboard = () => {
                       </li>
                     </>
                   ) : null}
-                  {((state.data[0]?.group  === "Commerce" || user) && state.data[0]?.userType!==undefined) ? (
+                  {((state.data[0]?.group  === "Commerce" )) ? (
                     <>
                       <li>
                         <Link to="/dashboard/commerceStudent">
