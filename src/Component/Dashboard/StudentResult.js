@@ -49,7 +49,7 @@ const StudentResult = () => {
     // setUserData(item[0])
 
 
-  }, []);
+  }, [state.data]);
   console.log(marksMid)
 
 

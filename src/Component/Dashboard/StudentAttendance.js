@@ -5,7 +5,9 @@ import axios from "axios";
 const StudentAttendance = () => {
   const [items, setItems] = useState([]);
   const [s, setS] = useState([]);
-
+  const item = JSON.parse(localStorage.getItem("users"));
+  setS(item);
+  console.log("dsfd", item[0]._id);
   useEffect(() => {
     const item = JSON.parse(localStorage.getItem("users"));
     if (item) {
@@ -28,7 +30,7 @@ const StudentAttendance = () => {
       data().then((respose) => console.log(respose));
     }
   }, [items?._id]);
-//   console.log(s[0]?.userName);
+  console.log(s[0]?.userName);
   return (
     <div>
       <div class="overflow-x-auto w-full">
@@ -69,7 +71,7 @@ const StudentAttendance = () => {
                 <td></td>
                 <td>{i.date}</td>
                 <td>2023</td>
-                <td>{i.isPresent?"YES":"NO"}</td>
+                <td>{i.isPresent ? "YES" : "NO"}</td>
 
                 {/* <td><label for="attendance-modal" className='btn btn-sm text-xs bg-cyan-500 outline-none border-none ' >Update Attendance</label></td> */}
 
