@@ -5,28 +5,29 @@ import axios from "axios";
 const StudentAttendance = () => {
   const [items, setItems] = useState([]);
   const [s, setS] = useState([]);
-  const item = JSON.parse(localStorage.getItem("users"));
-  setS(item);
-  console.log("dsfd", item[0]._id);
+  // const item = JSON.parse(localStorage.getItem("users"));
+  // setS(item);
+  // console.log("dsfd", item[0]._id);
+  const { user, state } = useContext(AuthContext);
   useEffect(() => {
-    const item = JSON.parse(localStorage.getItem("users"));
-    if (item) {
-      setS(item);
-      console.log("dsfd", item[0]._id);
-      const data = async () => {
-        let respose = await axios.get(
-          `https://cms2023.onrender.com/api/v1/get-attendance-id/${item[0]._id}`
-        );
+    // const item = JSON.parse(localStorage.getItem("users"));
+    // if (item) {
+    //   setS(item);
+    //   console.log("dsfd", item[0]._id);
+    const data = async () => {
+      let respose = await axios.get(
+        `https://cms2023.onrender.com/api/v1/get-attendance-id/${state?.data[0]?._id}`
+      );
 
-        if (respose.status == 200) {
-          console.log(respose?.data?.data);
-          //setDatas(respose.data.data)
-          setItems(respose?.data?.data);
-          return respose;
-        } else {
-          console.log(respose);
-        }
-      };
+      if (respose.status == 200) {
+        console.log(respose?.data?.data);
+        //setDatas(respose.data.data)
+        setItems(respose?.data?.data);
+        return respose;
+      } else {
+        console.log(respose);
+      }
+      // };
       data().then((respose) => console.log(respose));
     }
   }, [items?._id]);

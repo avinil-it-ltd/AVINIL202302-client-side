@@ -18,7 +18,7 @@ const StudentResult = () => {
   const [itemsFinal, setItemsFinal] = useState([]);
   const [userData, setUserData] = useState();
   const [self, setSelf] = useState({});
-
+// console.log(state)
   console.log(state.data);
   useEffect(() => {
     setSelf(user);
@@ -35,7 +35,7 @@ const StudentResult = () => {
 
           setMarksMid(respose?.data?.data[0].Midterm[0]);
           console.log(marksMid, "hello");
-          setMarksFinal(respose?.data?.data[1].FinalTerm[0]);
+          setMarksFinal(respose?.data?.data[0].FinalTerm[0] || respose?.data?.data[1].FinalTerm[0]);
           console.log(marksFinal, "hello");
 
 
@@ -51,6 +51,7 @@ const StudentResult = () => {
 
   }, [state.data]);
   console.log(marksMid)
+  console.log(marksFinal)
 
 
   let getGpa = percentage => {
