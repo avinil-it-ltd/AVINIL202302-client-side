@@ -27,13 +27,13 @@ const StudentResult = () => {
       const data = async () => {
         let respose = await axios.get(
 
-          `https://cms2023.onrender.com/api/v1/get-mark-student/${state?.data[0]?._id}`
+          `http://localhost:5000/api/v1/get-mark-student/${state?.data[0]?._id}`
         );
 
         if (respose.status == 200) {
           console.log(respose?.data?.data[0])
 
-          setMarksMid(respose?.data?.data[0].Midterm[0]);
+          setMarksMid(respose?.data?.data[0].Midterm[0] || respose?.data?.data[1].Midterm[0]);
           console.log(marksMid, "hello");
           setMarksFinal(respose?.data?.data[0].FinalTerm[0] || respose?.data?.data[1].FinalTerm[0]);
           console.log(marksFinal, "hello");

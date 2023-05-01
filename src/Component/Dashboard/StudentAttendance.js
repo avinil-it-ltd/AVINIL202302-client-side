@@ -1,3 +1,18 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//OLD_VERSION
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import axios from "axios";
@@ -9,29 +24,48 @@ const StudentAttendance = () => {
   // setS(item);
   // console.log("dsfd", item[0]._id);
   const { user, state } = useContext(AuthContext);
+  console.log(state?.data[0].imageUrl)
+  
   useEffect(() => {
     // const item = JSON.parse(localStorage.getItem("users"));
     // if (item) {
     //   setS(item);
-    //   console.log("dsfd", item[0]._id);
-    const data = async () => {
-      let respose = await axios.get(
-        `https://cms2023.onrender.com/api/v1/get-attendance-id/${state?.data[0]?._id}`
-      );
+    setS(user);
+    if (user) {
+      console.log("dsfd", state?.data[0]?._id);
+      const data = async () => {
+        let respose = await axios.get(
 
-      if (respose.status == 200) {
-        console.log(respose?.data?.data);
-        //setDatas(respose.data.data)
-        setItems(respose?.data?.data);
-        return respose;
-      } else {
-        console.log(respose);
+          `http://localhost:5000/api/v1/get-attendance-id/${state?.data[0]?._id}`
+        );
+
+        if (respose?.status == 200) {
+          console.log(respose?.data?.data[0])
+
+          // const data = async () => {
+          //   let respose = await axios.get(
+
+          //     `http://localhost:5000/api/v1/get-attendance-id/${state?.data[0]?._id}`
+          //   );
+
+          // console.log(respose)
+          // if (respose.status) {
+            console.log(respose?.data?.data);
+            //setDatas(respose.data.data)
+            setItems(respose?.data?.data);
+            return respose;
+          } else {
+            console.log(respose);
+          }
+        };
+        data().then((respose) => console.log(respose));
       }
-      // };
-      data().then((respose) => console.log(respose));
-    }
-  }, [items?._id]);
-  console.log(s[0]?.userName);
+    }, [state?.data]);
+  console.log(state?.data[0]?.userName);
+  let name = state?.data[0]?.userName;
+
+  // console.log(items[0]?.date.slice(0,10))
+  // let date = items[0]?.date.slice(0,10)
   return (
     <div>
       <div class="overflow-x-auto w-full">
@@ -62,15 +96,16 @@ const StudentAttendance = () => {
                     <div class="mask mask-squircle w-12 h-12">
                       <img
                         alt=""
-                        src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+                        // src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+                        src={state?.data[0].imageUrl}
                       />
                     </div>
                   </div>
                 </td>
 
-                <td>{s[0]?.userName}</td>
-                <td></td>
-                <td>{i.date}</td>
+                <td>{name}</td>
+                <td>1</td>
+                <td>{i.date.slice(0,10)}</td>
                 <td>2023</td>
                 <td>{i.isPresent ? "YES" : "NO"}</td>
 

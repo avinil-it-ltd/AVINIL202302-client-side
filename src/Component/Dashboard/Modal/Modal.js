@@ -8,8 +8,8 @@ const Modal = ({ userData }) => {
   console.log(_id, group);
   const handleMidResult = async (e) => {
     e.preventDefault();
+    console.log(e.target)
     const form = e.target;
-
     if (group == "Science") {
       const data = {
         student: _id,
@@ -24,12 +24,12 @@ const Modal = ({ userData }) => {
           },
         ],
       }
-      emailjs.sendForm('service_i8ie5mf', 'template_avrndva', data,"OMVTrZJ8Q7HWM7UVX")
-      .then((result) => {
-        console.log(result.text);
-      }, (error) => {
-        console.log(error.text);
-      });
+      // emailjs.sendForm('service_i8ie5mf', 'template_avrndva', data,"OMVTrZJ8Q7HWM7UVX")
+      // .then((result) => {
+      //   console.log(result.text);
+      // }, (error) => {
+      //   console.log(error.text);
+      // });
       let respose = await axios.post(
         'https://cms2023.onrender.com/api/v1/create-mark',
         data
