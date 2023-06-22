@@ -54,7 +54,7 @@ const AuthProvider = ({ children }) => {
     dispatch({ type: actionType.FATCHING_START })
 
     fetch(
-      `https://cms2023.onrender.com/api/v1/get-single-user/${item?.email}`
+      `http://localhost:5000/api/v1/get-single-user/${item?.email}`
 
     )
       .then((response) => response.json())

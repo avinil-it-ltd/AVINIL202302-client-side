@@ -26,7 +26,7 @@ const Modalone = ({ userData }) => {
       console.log(data)
 
       let respose = await axios.post(
-        "https://cms2023.onrender.com/api/v1/create-mark",
+        "http://localhost:5000/api/v1/create-mark",
         data
       );
       if (respose.status === 200) {
@@ -51,7 +51,7 @@ const Modalone = ({ userData }) => {
 
       };
       let respose = await axios.post(
-        "https://cms2023.onrender.com/api/v1/create-mark",
+        "http://localhost:5000/api/v1/create-mark",
         data
       );
       if (respose.status === 200) {
@@ -74,7 +74,7 @@ const Modalone = ({ userData }) => {
       };
       console.log(data)
       let respose = await axios.post(
-        "https://cms2023.onrender.com/api/v1/create-mark",
+        "http://localhost:5000/api/v1/create-mark",
         data
       );
       if (respose.status === 200) {

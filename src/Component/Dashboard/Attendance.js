@@ -27,7 +27,7 @@ const Attendance = () => {
     const data = async () => {
       let respose = await axios.get(
 
-        `https://cms2023.onrender.com/api/v1/get-single-user/${user?.email}`
+        `http://localhost:5000/api/v1/get-single-user/${user?.email}`
       );
       console.log(respose);
       if (respose.status == 200) {
@@ -43,7 +43,7 @@ const Attendance = () => {
     const Commerce = async () => {
       let respose = await axios.get(
 
-        "https://cms2023.onrender.com/api/v1/get-user-by-group/Commerce"
+        "http://localhost:5000/api/v1/get-user-by-group/Commerce"
       );
       console.log(respose);
       if (respose.status == 200) {
@@ -58,7 +58,7 @@ const Attendance = () => {
     const Science = async () => {
       let respose = await axios.get(
 
-        "https://cms2023.onrender.com/api/v1/get-user-by-group/Science"
+        "http://localhost:5000/api/v1/get-user-by-group/Science"
       );
       console.log(respose);
       if (respose.status == 200) {
@@ -74,7 +74,7 @@ const Attendance = () => {
     const Humanities = async () => {
       let respose = await axios.get(
 
-        "https://cms2023.onrender.com/api/v1/get-user-by-group/Humanities"
+        "http://localhost:5000/api/v1/get-user-by-group/Humanities"
       );
       console.log(respose);
       if (respose.status == 200) {
@@ -104,7 +104,7 @@ const Attendance = () => {
   const databaseInsert = async (info) => {
     let respose = await axios.post(
 
-      "https://cms2023.onrender.com/api/v1/create-attendance",
+      "http://localhost:5000/api/v1/create-attendance",
       info
     );
     if (respose.status === 200) {
@@ -115,14 +115,14 @@ const Attendance = () => {
     }
 
   }
-  const handleAbsent = async (id,name) => {
+  const handleAbsent = async (id, name) => {
 
-    emailjs.sendForm('service_i8ie5mf', 'template_avrndva', name,"OMVTrZJ8Q7HWM7UVX")
-    .then((result) => {
-      console.log(result.text);
-    }, (error) => {
-      console.log(error.text);
-    });
+    emailjs.sendForm('service_i8ie5mf', 'template_avrndva', name, "OMVTrZJ8Q7HWM7UVX")
+      .then((result) => {
+        console.log(result.text);
+      }, (error) => {
+        console.log(error.text);
+      });
     const info = {
       student: id,
       date: selected,
@@ -130,7 +130,7 @@ const Attendance = () => {
     }
     let respose = await axios.post(
 
-      'https://cms2023.onrender.com/api/v1/create-attendance',
+      'http://localhost:5000/api/v1/create-attendance',
       info
     );
     if (respose.status === 200) {
@@ -144,6 +144,7 @@ const Attendance = () => {
 
 
   }
+  // scienceStudent?.map((i,c) => console.log(e.email));
   return (
     <div className="">
       <div className="mx-auto w-96 ">
@@ -163,11 +164,13 @@ const Attendance = () => {
             {/* <!-- head --> */}
             <thead>
               <tr className="bg-slate-800">
+
+                <th>Roll</th>
                 <th>Image</th>
                 <th>Date</th>
                 <th>Name</th>
                 <th>Email</th>
-                <th>Roll</th>
+                {/* <th>Roll</th> */}
                 <th>Group</th>
                 <th>Present</th>
                 <th>Absent</th>
@@ -176,39 +179,57 @@ const Attendance = () => {
 
             <tbody>
               {
-                datas === "Science" ? scienceStudent.map(i => <tr>
-                  <td>
-                    <div class="avatar">
-                      <div class="mask mask-squircle w-12 h-12">
-                        <img
-                          alt=""
-                          src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
-                        />
-                      </div>
-                    </div>
-                  </td>
-                  <td>02/01/2023</td>
-                  <td>{i.userName} </td>
-                  <td>{i.email} </td>
-                  <td>2034129</td>
-                  <td>Science</td>
+                datas === "Science" ? scienceStudent.map((i, c) => {
+                  // const [userName, email] = i;
+                  // console.log(i)
+                  return (
 
-                  <td>
-                    <button disabled={disabled == i._id} onClick={() => handlePresent(i?._id)} className="btn btn-sm text-xs bg-lime-500 outline-none border-none ">
-                      Present
-                    </button>
-                  </td>
+                    <tr>
+                      
+                      <td>{c + 1}</td>
+                      <td>
+                        <div class="avatar">
+                          <div class="mask mask-squircle w-12 h-12">
+                            <img
+                              alt=""
+                              src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+                            />
+                          </div>
+                        </div>
+                      </td>
 
-                  <td>
-                    <button disabled={disableds == i._id} onClick={() => handleAbsent(i?._id)} className="btn btn-sm text-xs bg-green-500 outline-none border-none ">
-                      Absent
-                    </button>
-                  </td>
-                </tr>)
+                      <td>02/01/2023</td>
+                      <td>{i.userName} </td>
+                      <td>{i.email} </td>
+                      {/* <td>{i.userName} </td> */}
+                      {/* <td>{email} </td> */}
+                      {/* console.log(i.email) */}
+                      {/* <td>2034129</td> */}
+                      <td>Science</td>
+
+                      <td>
+                        <button disabled={disabled == i._id} onClick={() => handlePresent(i?._id)} className="btn btn-sm text-xs bg-lime-500 outline-none border-none ">
+                          Present
+                        </button>
+                      </td>
+
+                      <td>
+                        <button disabled={disableds == i._id} onClick={() => handleAbsent(i?._id)} className="btn btn-sm text-xs bg-green-500 outline-none border-none ">
+                          Absent
+                        </button>
+                      </td>
+                    </tr>
+
+                  )
+                }
+
+
+                )
                   : null
               }
               {
-                datas === "Commerce" ? commerceStudent.map(i => <tr>
+                datas === "Commerce" ? commerceStudent.map((i, c) => <tr>
+                  <td>{c + 1}</td>
                   <td>
                     <div class="avatar">
                       <div class="mask mask-squircle w-12 h-12">
@@ -219,10 +240,14 @@ const Attendance = () => {
                       </div>
                     </div>
                   </td>
+                  {/* <td>02/01/2023</td>
+                  <td>{i.userName} </td>
+                  <td>{i.email} </td>
+                  {/* <td>2034129</td> */}
+
                   <td>02/01/2023</td>
                   <td>{i.userName} </td>
                   <td>{i.email} </td>
-                  <td>2034129</td>
                   <td>Commerce</td>
 
                   <td>
@@ -241,7 +266,8 @@ const Attendance = () => {
                   : null
               }
               {
-                datas === "Humanities" ? humanitiesStudent.map(i => <tr>
+                datas === "Humanities" ? humanitiesStudent.map((i, c) => <tr>
+                  <td>{c + 1}</td>
                   <td>
                     <div class="avatar">
                       <div class="mask mask-squircle w-12 h-12">
@@ -255,7 +281,7 @@ const Attendance = () => {
                   <td>02/01/2023</td>
                   <td>{i.userName} </td>
                   <td>{i.email} </td>
-                  <td>2034129</td>
+                  {/* <td>2034129</td> */}
                   <td>Humanities</td>
 
                   <td>
@@ -273,7 +299,8 @@ const Attendance = () => {
                   : null
               }
               {datas == "admin" ?
-                scienceStudent.map(i => <tr>
+                scienceStudent.map((i, c) => <tr>
+                  <td>{c + 1}</td>
                   <td>
                     <div class="avatar">
                       <div class="mask mask-squircle w-12 h-12">
@@ -285,8 +312,11 @@ const Attendance = () => {
                     </div>
                   </td>
                   <td>02/01/2023</td>
+
+
                   <td>{i.userName} </td>
-                  <td>2034129</td>
+                  <td>{i.email} </td>
+                  {/* <td>2034129</td> */}
                   <td>Science</td>
 
                   <td>
@@ -309,7 +339,8 @@ const Attendance = () => {
               }
 
               {datas == "admin" ?
-                commerceStudent.map(i => <tr>
+                commerceStudent.map((i, c) => <tr>
+                  <td>{c + 1}</td>
                   <td>
                     <div class="avatar">
                       <div class="mask mask-squircle w-12 h-12">
@@ -322,7 +353,8 @@ const Attendance = () => {
                   </td>
                   <td>02/01/2023</td>
                   <td>{i.userName} </td>
-                  <td>2034129</td>
+                  <td>{i.email} </td>
+
                   <td>Commerce</td>
 
                   <td>
@@ -333,7 +365,7 @@ const Attendance = () => {
                   </td>
 
                   <td>
-                    <button disabled={disableds == i._id} onClick={() => handleAbsent(i?._id,i?.userName)} className="btn btn-sm text-xs bg-green-500 outline-none border-none ">
+                    <button disabled={disableds == i._id} onClick={() => handleAbsent(i?._id, i?.userName)} className="btn btn-sm text-xs bg-green-500 outline-none border-none ">
                       Absent
                     </button>
                   </td>
@@ -346,7 +378,8 @@ const Attendance = () => {
               }
 
               {datas == "admin" ?
-                commerceStudent.map(i => <tr>
+                commerceStudent.map((i, c) => <tr>
+                  <td>{c + 1}</td>
                   <td>
                     <div class="avatar">
                       <div class="mask mask-squircle w-12 h-12">
@@ -359,7 +392,8 @@ const Attendance = () => {
                   </td>
                   <td>02/01/2023</td>
                   <td>{i.userName} </td>
-                  <td>2034129</td>
+                  <td>{i.email} </td>
+
                   <td>Commerce</td>
 
                   <td>

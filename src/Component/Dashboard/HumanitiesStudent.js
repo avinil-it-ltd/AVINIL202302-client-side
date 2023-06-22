@@ -10,7 +10,7 @@ const HumanitiesStudent = () => {
   useEffect(() => {
     const data = async () => {
       let respose = await axios.get(
-        "https://cms2023.onrender.com/api/v1/get-user-by-group/Humanities"
+        "http://localhost:5000/api/v1/get-user-by-group/Humanities"
       );
       console.log(respose);
       if (respose.status == 200) {
@@ -41,7 +41,7 @@ const HumanitiesStudent = () => {
 
   //   const data = async () => {
   //     let respose = await axios.get(
-  //       "https://cms2023.onrender.com/api/v1/get-user-by-group/Science"
+  //       "http://localhost:5000/api/v1/get-user-by-group/Science"
   //     );
   //     console.log(respose);
   //     if (respose.status == 200) {

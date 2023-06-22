@@ -107,7 +107,7 @@ const SignUp = () => {
   };
   const databaseInsert = async (info) => {
     let respose = await axios.post(
-      "https://cms2023.onrender.com/api/v1/create-user",
+      "http://localhost:5000/api/v1/create-user",
       info
     );
 

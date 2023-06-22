@@ -31,7 +31,7 @@ const Modal = ({ userData }) => {
       //   console.log(error.text);
       // });
       let respose = await axios.post(
-        'https://cms2023.onrender.com/api/v1/create-mark',
+        'http://localhost:5000/api/v1/create-mark',
         data
       )
       if (respose.status === 200) {
@@ -55,7 +55,7 @@ const Modal = ({ userData }) => {
         ]
       }
       let respose = await axios.post(
-        'https://cms2023.onrender.com/api/v1/create-mark',
+        'http://localhost:5000/api/v1/create-mark',
         data
       )
       if (respose.status === 200) {
@@ -81,7 +81,7 @@ const Modal = ({ userData }) => {
         ],
       }
       let respose = await axios.post(
-        'https://cms2023.onrender.com/api/v1/create-mark',
+        'http://localhost:5000/api/v1/create-mark',
         data
       )
       if (respose.status === 200) {
